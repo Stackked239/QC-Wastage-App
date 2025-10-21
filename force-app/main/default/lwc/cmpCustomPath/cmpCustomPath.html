@@ -1,0 +1,184 @@
+<template>
+
+    <table style="width:100%">
+        <tr>
+            <td> 
+                <template if:true={QuoteRequestCurrent}>
+                    <div class="circle"></div>
+                </template>
+
+                <template if:true={QuoteRequestNotStarted}>
+                    <div class="circleNotStarted"></div>
+                </template>
+
+                <template if:true={QuoteRequestprogress}>
+                    <div class="round">
+                        <input type="checkbox" checked id="checkbox" disabled="disabled"/>
+                         <label for="checkbox"></label>
+                    </div>
+                </template>
+            </td>
+               
+            <td>
+                 <hr class="hrClass" style="margin-left: -19px;"/>
+            </td>
+       
+            <td >
+                <template if:true={QuoteReadyCurrent}>
+                    <div class="circle"></div>
+                </template> 
+
+                <template if:true={QuoteReadyNotStarted}>
+                    <div class="circleNotStarted"></div>
+                </template>
+
+                <template if:true={QuoteReadyprogress}>
+                    <div class="round">
+                        <input type="checkbox" checked id="checkbox1" disabled="disabled"/>
+                         <label for="checkbox"></label>
+                    </div>
+                </template>
+                
+            </td>
+
+            <td>
+                 <hr class="hrClass" style="margin-left: -9px;"/>
+            </td>
+
+            <td >
+                <template if:true={QuoteApprovedCurrent}>
+                    <div class="circle"></div>
+                </template> 
+
+                <template if:true={QuoteApprovedNotStarted}>
+                    <div class="circleNotStarted"></div>
+                </template>
+
+                <template if:true={QuoteApprovedprogress}>
+                    <div class="round">
+                        <input type="checkbox" checked id="checkbox2" disabled="disabled"/>
+                         <label for="checkbox"></label>
+                    </div>
+                </template>
+               
+            </td>
+            <td>
+                 <hr class="hrClass" style="margin-left: -29px;"/>
+            </td>
+
+            <td >
+                <template if:true={ArtStartedCurrent}>
+                    <div class="circle"></div>
+                </template> 
+
+                <template if:true={ArtStartedNotStarted}>
+                    <div class="circleNotStarted"></div>
+                </template>
+
+                <template if:true={ArtStartedprogress}>
+                    <div class="round">
+                        <input type="checkbox" checked id="checkbox3" disabled="disabled"/>
+                         <label for="checkbox"></label>
+                    </div>
+                </template>
+               
+            </td>
+            <td>
+                 <hr class="hrClass" style="margin-left: -15px;"/>
+            </td>
+
+            <td > 
+                <template if:true={ArtReadyCurrent}>
+                    <div class="circle"></div>
+                </template>
+
+                <template if:true={ArtReadyNotStarted}>
+                    <div class="circleNotStarted"></div>
+                </template>
+
+                <template if:true={ArtReadyprogress}>
+                    <div class="round">
+                        <input type="checkbox" checked id="checkbox4" disabled="disabled"/>
+                         <label for="checkbox"></label>
+                    </div>
+                </template>
+                
+            </td>
+            <td>
+                 <hr class="hrClass" style="margin-left: -8px;"/>
+            </td>
+
+            <td > 
+                <template if:true={ArtApprovedCurrent}>
+                    <div class="circle"></div>
+                </template>
+
+                <template if:true={ArtApprovedNotStarted}>
+                    <div class="circleNotStarted"></div>
+                </template>
+
+                <template if:true={ArtApprovedprogress}>
+                    <div class="round">
+                        <input type="checkbox" checked id="checkbox5" disabled="disabled"/>
+                         <label for="checkbox"></label>
+                    </div>
+                </template>
+                
+            </td>
+            <td>
+                 <hr class="hrClass" style="margin-left: -28px;"/>
+            </td>
+
+            <td> 
+                <template if:true={SizeSubmittedCurrent}>
+                    <div class="circle"></div>
+                </template>
+
+                <template if:true={SizeSubmittedNotStarted}>
+                    <div class="circleNotStarted"></div>
+                </template>
+
+                <template if:true={SizeSubmittedprogress}>
+                    <div class="round">
+                        <input type="checkbox" checked id="checkbox6" disabled="disabled"/>
+                         <label for="checkbox"></label>
+                    </div>
+                </template>
+                
+            </td>
+            <td>
+                 <hr class="hrClass" style="margin-left: -30px;"/>
+            </td>
+
+            <td > 
+                <template if:true={ScheduledforProductionCurrent}>
+                    <div class="circle"></div>
+                </template>
+
+                 <template if:true={ScheduledforProductionNotStarted}>
+                    <div class="circleNotStarted"></div>
+                </template>
+
+                 <template if:true={ScheduledforProductionprogress}>
+                    <div class="round">
+                        <input type="checkbox" checked id="checkbox7" disabled="disabled"/>
+                         <label for="checkbox"></label>
+                    </div>
+                 </template>
+                 
+            </td>
+        </tr>
+
+        <tr>
+            <td><b> Quote <br/>Request </b></td> <td></td>
+            <td><b>  Quote <br/> Ready </b> </td><td></td>
+            <td><b>  Quote <br/> Approved </b></td><td></td>
+            <td><b>  Art <br/> Started </b></td><td></td>
+            <td><b>  Art <br/> Ready </b> </td><td></td>
+            <td><b>  Art <br/> Approved </b></td><td></td>
+            <td><b>  Size <br/> Submitted  </b></td><td></td>
+            <td><b>  Scheduled for <br/>Production </b></td>
+        </tr>
+    </table>
+     
+</template>

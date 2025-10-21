@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Art_Priority__c</fullName>
+    <label>Art Priority</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Normal</fullName>
+                <default>false</default>
+                <label>Normal</label>
+            </value>
+            <value>
+                <fullName>High</fullName>
+                <default>false</default>
+                <label>High</label>
+            </value>
+            <value>
+                <fullName>Revision</fullName>
+                <default>false</default>
+                <label>Revision</label>
+            </value>
+            <value>
+                <fullName>Rush</fullName>
+                <default>false</default>
+                <label>Rush</label>
+            </value>
+            <value>
+                <fullName>!Rush Today!</fullName>
+                <default>false</default>
+                <label>!Rush Today!</label>
+            </value>
+            <value>
+                <fullName>Rush Revision</fullName>
+                <default>false</default>
+                <label>Rush Revision</label>
+            </value>
+            <value>
+                <fullName>CSI</fullName>
+                <default>false</default>
+                <label>CSI</label>
+            </value>
+            <value>
+                <fullName>CSI Revision</fullName>
+                <default>false</default>
+                <label>CSI Revision</label>
+            </value>
+            <value>
+                <fullName>National</fullName>
+                <default>false</default>
+                <label>National</label>
+            </value>
+            <value>
+                <fullName>National Revision</fullName>
+                <default>false</default>
+                <label>National Revision</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

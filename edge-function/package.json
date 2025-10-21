@@ -1,0 +1,25 @@
+{
+  "name": "wastage-app-redirect",
+  "version": "1.0.0",
+  "description": "Edge function to redirect Salesforce Community URLs to new Wastage PWA",
+  "main": "worker.js",
+  "scripts": {
+    "dev": "wrangler dev --env development",
+    "deploy": "wrangler deploy --env production",
+    "deploy:dev": "wrangler deploy --env development",
+    "tail": "wrangler tail --env production",
+    "test": "wrangler dev --env development --local"
+  },
+  "keywords": [
+    "cloudflare",
+    "workers",
+    "edge",
+    "redirect",
+    "salesforce"
+  ],
+  "author": "Sunday Cool",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}

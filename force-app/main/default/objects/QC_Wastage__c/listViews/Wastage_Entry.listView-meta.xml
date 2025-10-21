@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Wastage_Entry</fullName>
+    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Pulled_from_Inventory__c</columns>
+    <columns>Job__c</columns>
+    <columns>Inventory_SKU__c</columns>
+    <columns>Inventory_colors__c</columns>
+    <columns>Inventory_adult_sizes__c</columns>
+    <columns>Inventory_youth_sizes__c</columns>
+    <columns>of_shirts__c</columns>
+    <columns>of_non_shirt_items__c</columns>
+    <columns>Avoidable__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Location__c</columns>
+    <columns>Issue_Group__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Issue_Group__c</field>
+        <operation>notEqual</operation>
+        <value>Understaged</value>
+    </filters>
+    <filters>
+        <field>Do_Not_Pull_From_Inventory__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Good_Type__c</field>
+        <operation>equals</operation>
+        <value>Inventory</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterOrEqual</operation>
+        <value>11/3/2024 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>Outbound_Inventory_Movement__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Inbound_Inventory_Movement__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>Wastage Entry</label>
+</ListView>

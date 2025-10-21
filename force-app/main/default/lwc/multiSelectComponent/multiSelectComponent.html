@@ -1,0 +1,8 @@
+<template>
+    <lightning-combobox name="Select Options" label={garmentType} value={value} placeholder="Select" options={listOptions} onchange={handleChange}></lightning-combobox>
+    <div class="slds-p-around--large">
+        <template for:each={allLabels} for:item="value">
+                <lightning-pill class="pillClass" key={value} label={value} name={value} onremove={handleRemove}></lightning-pill> &nbsp;
+        </template>
+    </div>
+</template>

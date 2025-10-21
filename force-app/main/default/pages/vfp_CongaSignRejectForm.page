@@ -1,0 +1,96 @@
+<apex:page controller="CongaSignRejectController">
+    <apex:slds />
+    <apex:form >
+        <apex:actionFunction action="{!saveRejectedFormData}" name="saveForm" reRender="alerts">
+            <apex:param name="commentsInput" value=""/>
+        </apex:actionFunction>
+        <div class="slds-scope">
+            <div class="slds-grid slds-wrap">
+                
+                <!-- HEADER -->
+                <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--2-of-12 "></div>  
+                <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--6-of-12">  
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--1-of-1"> 
+                            <div class="slds-page-header" style="margin-top:10px;margin-bottom:10px;height: 45px;background-color:#f0f5f5;font-size: 15px;">
+                                <div class="slds-align_absolute-center">
+                                    <h1>Conga Sign Reject Form</h1> 
+                                </div>
+                            </div>
+                        </div>
+                        <article class="slds-card slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--1-of-1">
+                            
+                            <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--1-of-1"> 
+                                <apex:outputPanel layout="none" id="alerts">
+                                    <apex:outputPanel layout="block"  rendered="{!isSuccess}">
+                                        <div class="slds-notify slds-align_absolute-center slds-notify_alert slds-theme_alert-texture slds-theme_success" role="alert">
+                                            <h2>Thank you for submiting information with us </h2>
+                                        </div>
+                                    </apex:outputPanel>
+                                    <apex:outputPanel layout="block" rendered="{!isError}">
+                                        <div class="slds-notify slds-align_absolute-center slds-notify_alert slds-notify_alert slds-alert_error" role="alert">
+                                            <h2>Something went Wrong due to {!errormsg}</h2>
+                                        </div>
+                                    </apex:outputPanel>
+                                </apex:outputPanel>
+                            </div>
+                            <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--1-of-1" style="margin-top:20px;margin-left:10px;"> 
+                                <div class="slds-form-element">
+                                    <div class="slds-form-element__control">
+                                        <label class="slds-checkbox">
+                                            <apex:inputcheckbox id="isinstance" styleclass="slds-input" selected="{!isChecked}" />
+                                            <span class="slds-checkbox--faux"></span>
+                                            <span class="slds-form-element__label">Rejected</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--1-of-1" style="margin-top:12px;margin-left:10px;"> 
+                                <div id="textareaDiv" class="slds-form-element slds-size--1-of-2">
+                                    <div class="slds-form-element__control">
+                                        <label class="slds-form-element__label" for="horizontal-input-id-02">Comments</label>
+                                        <div class="slds-form-element__control">
+                                            <textarea id="comments"  class="slds-textarea"></textarea>
+                                        </div>
+                                        <div id="requiredFieldMsg" class="slds-form-element__help" style="display:none;">Please Enter a value</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--1-of-1" style="margin-top:12px;margin-left:10px;margin-bottom:20px;"> 
+                                <apex:commandButton styleClass="slds-button slds-button--neutral" value="Cancel"  />
+                                <apex:commandButton styleClass="slds-button slds-button--brand" value="Save" onclick="saveFormData(); return false;" />
+                            </div>
+                        </article>
+                    </div>
+                    
+                    
+                </div> 
+                <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--4-of-12 "></div>
+                
+            </div>
+        </div>
+          <script>
+        
+        function saveFormData(){
+            var commentsData = document.getElementById('comments').value;
+            
+            if(commentsData=='' || commentsData==null){
+                var commentelement = document.getElementById('textareaDiv');
+                commentelement.classList.add("slds-has-error");
+                var requiredmsgblock = document.getElementById('requiredFieldMsg');
+                requiredmsgblock.style.display = 'block';
+            }
+            else{
+                var commentelement = document.getElementById('textareaDiv');
+                commentelement.classList.remove("slds-has-error");
+                var requiredmsgblock = document.getElementById('requiredFieldMsg');
+                requiredmsgblock.style.display = 'none';
+                saveForm(commentsData)
+            }  
+        }
+        
+        </script>
+        
+    </apex:form>
+</apex:page>

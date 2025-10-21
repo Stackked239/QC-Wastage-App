@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Issue_Group__c</fullName>
+    <label>Issue Group</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Crooked/Off Centered</fullName>
+                <default>false</default>
+                <label>Crooked/Off Centered</label>
+            </value>
+            <value>
+                <fullName>DTF Machine</fullName>
+                <default>false</default>
+                <label>DTF Machine</label>
+            </value>
+            <value>
+                <fullName>DTF Press</fullName>
+                <default>false</default>
+                <label>DTF Press</label>
+            </value>
+            <value>
+                <fullName>ink issue</fullName>
+                <default>false</default>
+                <label>ink issue</label>
+            </value>
+            <value>
+                <fullName>Manufacturing</fullName>
+                <default>false</default>
+                <label>Manufacturing</label>
+            </value>
+            <value>
+                <fullName>No Tag</fullName>
+                <default>false</default>
+                <label>No Tag</label>
+            </value>
+            <value>
+                <fullName>Not Clearing</fullName>
+                <default>false</default>
+                <label>Not Clearing</label>
+            </value>
+            <value>
+                <fullName>Not Enough Pressure</fullName>
+                <default>false</default>
+                <label>Not Enough Pressure</label>
+            </value>
+            <value>
+                <fullName>Overstaged</fullName>
+                <default>false</default>
+                <label>Overstaged</label>
+            </value>
+            <value>
+                <fullName>Pigment</fullName>
+                <default>false</default>
+                <label>Pigment</label>
+            </value>
+            <value>
+                <fullName>Pinhole</fullName>
+                <default>false</default>
+                <label>Pinhole</label>
+            </value>
+            <value>
+                <fullName>Pre-Press</fullName>
+                <default>false</default>
+                <label>Pre-Press</label>
+            </value>
+            <value>
+                <fullName>Press Manual error</fullName>
+                <default>false</default>
+                <label>Press Manual error</label>
+            </value>
+            <value>
+                <fullName>QC Rack</fullName>
+                <default>false</default>
+                <label>QC Rack</label>
+            </value>
+            <value>
+                <fullName>Receiving QC</fullName>
+                <default>false</default>
+                <label>Receiving QC</label>
+            </value>
+            <value>
+                <fullName>Registration</fullName>
+                <default>false</default>
+                <label>Registration</label>
+            </value>
+            <value>
+                <fullName>Sample</fullName>
+                <default>false</default>
+                <label>Sample</label>
+            </value>
+            <value>
+                <fullName>screens issue</fullName>
+                <default>false</default>
+                <label>screens issue</label>
+            </value>
+            <value>
+                <fullName>Test Shirts</fullName>
+                <default>false</default>
+                <label>Test Shirts</label>
+            </value>
+            <value>
+                <fullName>Too Much Pressure</fullName>
+                <default>false</default>
+                <label>Too Much Pressure</label>
+            </value>
+            <value>
+                <fullName>Trash</fullName>
+                <default>false</default>
+                <label>Trash</label>
+            </value>
+            <value>
+                <fullName>Understaged</fullName>
+                <default>false</default>
+                <label>Understaged</label>
+            </value>
+            <value>
+                <fullName>Wrong Tag</fullName>
+                <default>false</default>
+                <label>Wrong Tag</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,351 @@
+<template>
+    <!-- LWC Header Label -->
+    <div class="slds-grid slds-gutters slds-p-around_medium headerTitle">
+        <div class="slds-col slds-size_2-of-3">Opportunity Product - Order Form</div>
+    </div>
+    <br/>
+
+    <!-- Header Section -->
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_2-of-3 slds-p-around_medium slds-box slds-theme_shade">
+            <span style="font-size:16px;margin-left: 15px;"> Select the SKU Code & Color:</span>
+            <br/><br/>
+            <template if:true={showBlankCodeColorError}>
+                <span style="color: red;margin-left: 3%;">{errorMessage}</span>
+            </template>
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-2 slds-p-left_medium">
+                    <lightning-combobox name="progress" label="SKU Code" value={skuCodeInput} required placeholder="Select SKU Code" options={skuCodePicklistValue.data.values} onchange={handleSKUCodeChange}></lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-p-left_medium">
+                    <lightning-input type="number" value={frontColor} label="Colors on Front" required onchange={handleFrontColorChange}></lightning-input>
+                </div>
+
+                <div class="slds-col slds-size_1-of-2 slds-p-left_medium slds-p-top_medium">
+                    <lightning-combobox name="skucolor" label="SKU Color" value={skuColorInput} required placeholder="Select SKU Color" options={skuColorPicklistVal.data.values} onchange={handleSKUColorChange}></lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-p-left_medium slds-p-top_medium">
+                    <lightning-input value={backColor} label="Colors on Back" type="number" onchange={handleBackColorChange}></lightning-input>
+                </div>
+
+                <div class="slds-col slds-size_1-of-2 slds-p-left_medium slds-p-top_medium">
+                    <lightning-input label="Total Garments" type="number" value={garments} required onchange={handleGarmentChange}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-p-left_medium slds-p-top_medium">
+                    <lightning-input type="number" value={otherColor} label="Colors on Other" onchange={handleOtherColorChange}></lightning-input>
+                </div>
+            </div>
+        </div>
+        <div class="slds-col slds-size_1-of-3 slds-p-left_medium slds-p-right_medium">
+            <lightning-textarea name="notes" disabled value={opptyNotes} label="Notes from OPP" style='--sds-c-textarea-sizing-min-height:247px;'></lightning-textarea>
+        </div>
+        <div class="slds-m-around_medium" style="margin-left: 30%;">
+            <lightning-button variant="destructive" label="Apply" onclick={handleApplyChange}></lightning-button>
+            <template if:true={showProdEditor}>
+                <lightning-button-icon  icon-name="utility:moneybag" alternative-text="Refresh Price" class="slds-m-left--large" onclick={refreshUnitPrice}></lightning-button-icon>
+            </template>
+        </div>
+    </div>
+
+    <!-- To display the error, if any -->
+    <template if:true={showError}>
+        <br/>
+        <span style="color: red;margin: 2%;">No SKU Group exists for selected SKU Code and Color. Please change the SKU Code or Color and try again.</span>
+    </template>
+
+    <!-- Opportunity Product Editor -->
+    <template if:true={showProdEditor}>
+        <div class="slds-m-top--large slds-m-left--xx-large slds-m-right--xx-large">
+            <div class="container">        
+                <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped " > 
+                    <thead>
+                        <tr class="slds-text-title_caps">                        
+                            <th scope="col" style="width:15%;">
+                                <div class="slds-truncate" title="SKU">SKU</div>
+                            </th>
+                            <th scope="col" style="width:15%;">
+                                <div class="slds-truncate" title="Color">Color</div>
+                            </th>
+                            <th scope="col" style="width:10%;">
+                                <div class="slds-truncate" title="Size">Size</div>
+                            </th>
+                            <th scope="col" style="width:15%;">
+                                <div class="slds-truncate" title="Quantity">Quantity</div>
+                            </th>                        
+                            <th scope="col" style="width:15%;">
+                                <div class="slds-truncate" title="Unit Price">Unit Price</div>
+                            </th>
+                            <th scope="col" style="width:15%;">
+                                <div class="slds-truncate" title="Total">Total</div>
+                            </th>
+                            <th scope="col" style="width:10%;">
+                                <div class="slds-truncate slds-m-left--small" title="Actions">Actions</div>
+                            </th>                                             
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <template for:each={prodsToInsert} for:item="prod" for:index="indx">
+                            <tr key={prod.id} id={prod.id}> 
+                                <td>
+                                    <span tabindex="-1">{prod.SKUID_SKU__c}</span>
+                                </td>
+                                <td>
+                                    <span tabindex="-1">{prod.SKUID_Color__c}</span>
+                                </td>
+                                <td>
+                                    <span tabindex="-1">{prod.SKUID_Size__c}</span>
+                                </td>                                                        
+                                <td>
+                                    <lightning-input data-id={indx} value={prod.Quantity} type="number" onkeydown={handleKeyDown} onchange={handleQtyChange} variant="label-hidden"></lightning-input>                               
+                                </td>
+                                <td>
+                                    <lightning-input data-id={indx} tabindex="-1" value={prod.UnitPrice} type="number" step="0.01" formatter="currency" onchange={handleUnitPriceChange} variant="label-hidden"></lightning-input>                        
+                                </td>
+                                <td>
+                                    <span style="margin-left: 3%;" tabindex="-1" >$ {prod.TotalPrice}</span>
+                                </td>
+                                <td>
+                                    <lightning-button-icon tabindex="-1" icon-name="utility:moneybag" data-id={indx} alternative-text="Reprice" class="slds-m-right_large" onclick={handleRePriceRow} title="Reprice"></lightning-button-icon>
+                                    <span> </span>
+                                    <lightning-button-icon tabindex="-1" icon-name="action:delete" data-id={indx} alternative-text="Delete" onclick={handleRemoveRow} title="Delete"></lightning-button-icon>
+                                </td>                                
+                            </tr>
+                        </template>
+                        <tr> 
+                            <td>
+                                <span><b>Sub-Total</b></span>
+                            </td>
+                            <td>
+                                <span></span>
+                            </td>
+                            <td>
+                                <span></span>
+                            </td>                                                        
+                            <td>
+                                <span style="font-size: 16px;margin-left: 5%;"><b>{qtytotal}</b></span>
+                            </td>
+                            <td></td>
+                            <td>
+                                <span style="font-size: 16px;"><b>$ {subtotalPrice}</b></span>
+                            </td>
+                            <td></td>                                
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Button to add single Opportunity Product -->
+            <div class="slds-m-left--x-large">
+                <lightning-button size="xx-large" variant="base" label="Add Product" title="Add Product" icon-name="action:add_relationship" onclick={showModalBox}></lightning-button>
+            </div>
+            
+            <!-- Services Table -->
+            <br/><br/><br/>
+            <template if:false={showserviceProds}>
+                <span style="color: rgb(43, 15, 15);margin: 2%;">Service Setup Products already exists on this opportunity.</span>
+            </template>
+            <template if:true={showserviceProds}>
+                <table class="slds-table slds-table_bordered slds-table_cell-buffer"> 
+                    <thead>
+                        <tr class="slds-text-title_caps">                        
+                            <th scope="col" style="width:25%;">
+                                <div class="slds-truncate" title="Services">Set Up’s and Services </div>
+                            </th>
+                            <th scope="col" style="width:25%;">
+                                <div class="slds-truncate" title="Quantity">Quantity</div>
+                            </th>                        
+                            <th scope="col" style="width:25%;">
+                                <div class="slds-truncate" title="Unit Price">Unit Price</div>
+                            </th>
+                            <th scope="col" style="width:25%;">
+                                <div class="slds-truncate" title="Total">Total</div>
+                            </th>                                            
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <template for:each={serviceProdRecords} for:item="servProd" for:index="indx">
+                            <tr key={servProd.id} id={servProd.id}> 
+                                <td>
+                                    <span>{servProd.Name}</span>
+                                </td>                                                        
+                                <td>
+                                    <lightning-input data-id={indx} value={servProd.Quantity} type="number" onchange={handleServiceQtyChange} variant="label-hidden"></lightning-input>                               
+                                </td>
+                                <td>
+                                    <lightning-input data-id={indx} value={servProd.UnitPrice} type="number" step="0.01" formatter="currency" onchange={handleServiceUnitPriceChange} variant="label-hidden"></lightning-input>
+                                </td>
+                                <td style="margin-left: 3%;">
+                                    <span>$ {servProd.TotalPrice}</span>
+                                </td>
+                            </tr>
+                        </template>
+                        <tr> 
+                            <td>
+                                <span><b>Sub-Total</b></span>
+                            </td>                                                        
+                            <td>  
+                                <span></span>                             
+                            </td>
+                            <td>
+                                <span></span>
+                            </td>
+                            <td>
+                                <span style="font-size: 16px;"><b>$ {serviceSubtotalPrice}</b></span>
+                            </td>                             
+                        </tr>
+                    </tbody>
+                </table>
+            </template>
+            <br/><br/>
+            <div class="slds-align--absolute-center" style="color: #bc041c;background-color: #Fffcfc;padding: 2%;">
+                <span class="slds-page-header__title">Grand Total    $ {grandTotal} </span>
+            </div>
+            <br/><br/>
+        </div>
+
+        <div class="slds-align--absolute-center slds-p-bottom_large">
+            <lightning-button variant="destructive-text" label="Delete Existing Products" disabled={opptyProdExists} onclick={handleDeleteOpptyProds}></lightning-button>
+            <span>&emsp;&emsp;</span>
+            <lightning-button variant="destructive-text" label="Reset" onclick={handleResetOpptyProds}></lightning-button>
+            <span>&emsp;&emsp;</span>
+            <lightning-button variant="destructive-text" label="Save As Draft" onclick={handleSaveOpptyProds}></lightning-button>
+            <span>&emsp;&emsp;</span>
+            <lightning-button variant="destructive" label="Create Opportunity Products" onclick={handleCreateOpptyProds}></lightning-button>
+        </div>
+
+        <!-- To show the loading/processing modal pop-up -->
+        <template if:true={isLoading}>
+            <section aria-modal="true" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container popUpContainer" >
+                    <header class="slds-modal__header">
+                        <h2 class="slds-text-heading_small">{isLoadingMsg}</h2>
+                    </header>
+                    <div class="slds-modal__content" style="height: 200px; position:relative">
+                        <lightning-spinner alternative-text="Loading..." size="medium" class="spinnerClass"></lightning-spinner>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>        
+
+        <div>
+            <!-- Add single product modal start -->
+            <template if:true={isShowModal}>
+              <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container newProdContainer">
+                  <!-- modal header start -->
+                  <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
+                      <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+                      <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Add Products</h2>
+                  </header>
+                  <!-- modal body start -->
+                  <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="tableDisplaySection">
+                      <div class="actionHeaderDiv">
+                        <div class="actionHeaderBtns">
+                          <lightning-combobox class="filterList" name="setStatus" label="SKU Filter" value={filter} options={ProductSKUOption} onchange={handleFilterChange} style="margin-right: 2rem;"></lightning-combobox>
+                          <lightning-input type="search" label="Search Product" onchange={handleSearch}></lightning-input>
+                        </div>
+                        <div class="refreshBtn">
+                            <lightning-button title="Clear" icon-name="utility:clear" variant="brand-outline" onclick={clearSelections} label="Clear"></lightning-button>&nbsp;&nbsp;
+                          <lightning-button title="Refresh Table" icon-name="utility:refresh" variant="brand-outline" onclick={refreshTable} label="Refresh Table"></lightning-button>
+                          <!-- <lightning-button title="Reset filters" icon-name="utility:refresh" variant="brand-outline" onclick={resetfilter} label="Reset Filter"></lightning-button> -->
+                        </div>
+                      </div>
+                    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                        <thead>
+                            <tr class="slds-text-title_caps">
+                                <th style="width:3.25rem;" class="slds-text-align_right">
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Name">Name</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Sort Order">Sort Order</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="SKU Code">SKU Code</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="SKU Color">SKU Color</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="SKU Size">SKU Size</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Description">Description</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={pageActions} for:item="pageAction" for:index="indx">
+                                <tr key={pageAction.product.Id}>
+                                    <th scope="row" class="slds-text-align_right" style="width:3.25rem;">
+                                        <div class="slds-form-element">
+                                            <div class="slds-form-element__control">
+                                                <label class="slds-checkbox">
+                                                    <lightning-input type="checkbox" class="checkbox" data-name= "selected" data-id={pageAction.product.Id} checked={pageAction.isChecked} value={pageAction.isChecked} onchange={checkboxSelect}></lightning-input>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th scope="row">
+                                        <div class="slds-truncate" title={pageAction.product.Name}>
+                                            {pageAction.product.Name}
+                                        </div>
+                                    </th> 
+                                    <th scope="row">
+                                        <div class="slds-truncate" title={pageAction.product.Inventory_Sort_Order__c}>
+                                          {pageAction.product.Inventory_Sort_Order__c}
+                                        </div>
+                                    </th>
+                                    <th scope="row">
+                                        <div class="slds-truncate" title={pageAction.product.SKUID_SKU__c}>
+                                            {pageAction.product.SKUID_SKU__c}
+                                        </div>
+                                    </th>
+                                    <th scope="row">
+                                        <div class="slds-truncate" title={pageAction.product.SKUID_Color__c}>
+                                            {pageAction.product.SKUID_Color__c}
+                                        </div>
+                                    </th>
+                                    <th scope="row">
+                                        <div class="slds-truncate"  title={pageAction.product.SKUID_Size__c}>
+                                            {pageAction.product.SKUID_Size__c}
+                                        </div>
+                                    </th>
+                                    <th scope="row">
+                                        <div class="slds-truncate" title={pageAction.product.Description}>
+                                            {pageAction.product.Description}
+                                        </div>
+                                    </th>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                    </div>
+                    <div style="margin-top: 20px;margin-bottom: 20px;">
+                      <div style="float: left"> Total Records: {totalRecordCount} </div>
+                      <div style="float: right;"> Page ({page} of {totalPages}) </div>
+                    </div>
+                    <div class="pagination" style="margin-top: 40px;margin-bottom: 20px;">
+                      <c-comm-list-pagination onfirst={firstHandler} onprevious={previousHandler} onnext={nextHandler} onlast={lastHandler} current-page={page} is-first-page={firstPage} is-final-page={finalPage}></c-comm-list-pagination>
+                    </div>
+                  </div>
+                  <!-- modal footer start-->
+                  <footer class="slds-modal__footer">
+                    <lightning-button variant="neutral" label="Cancel" onclick={hideModalBox} class="slds-m-left_x-small"></lightning-button>
+                    <lightning-button disabled={hideAddProducts} variant="destructive" label="Add Product" onclick={handleNewProductSelection} class="slds-m-left_x-small"></lightning-button>
+                  </footer>
+                </div>
+              </section>
+              <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+            <!-- Add single product modal end -->
+        </div>
+    </template>
+</template>

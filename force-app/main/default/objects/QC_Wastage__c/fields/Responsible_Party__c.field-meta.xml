@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Responsible_Party__c</fullName>
+    <label>Responsible Party</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>DTF Machine</fullName>
+                <default>false</default>
+                <label>DTF Machine</label>
+            </value>
+            <value>
+                <fullName>Heat Press (DTF)</fullName>
+                <default>false</default>
+                <label>Heat Press (DTF)</label>
+            </value>
+            <value>
+                <fullName>Ink</fullName>
+                <default>false</default>
+                <label>Ink</label>
+            </value>
+            <value>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+                <label>Marketing</label>
+            </value>
+            <value>
+                <fullName>Personal</fullName>
+                <default>false</default>
+                <label>Personal</label>
+            </value>
+            <value>
+                <fullName>Pre-Press</fullName>
+                <default>false</default>
+                <label>Pre-Press</label>
+            </value>
+            <value>
+                <fullName>Press</fullName>
+                <default>false</default>
+                <label>Press</label>
+            </value>
+            <value>
+                <fullName>Screens</fullName>
+                <default>false</default>
+                <label>Screens</label>
+            </value>
+            <value>
+                <fullName>Staging</fullName>
+                <default>false</default>
+                <label>Staging</label>
+            </value>
+            <value>
+                <fullName>Supplier</fullName>
+                <default>false</default>
+                <label>Supplier</label>
+            </value>
+            <value>
+                <fullName>Tagging</fullName>
+                <default>false</default>
+                <label>Tagging</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

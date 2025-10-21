@@ -1,0 +1,5 @@
+<aura:component implements="force:appHostable,force:lightningQuickActionWithoutHeader">
+	<GMBLBC:scanToRedirect sobjectName="Inventory_Transfer_Order__c" 
+                           fieldName="Name"
+                           title="Scan Order Number"/>
+</aura:component>

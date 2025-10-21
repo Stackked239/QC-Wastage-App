@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>AAkPay__Set_Case_Create_URL_Token</fullName>
+        <description>Set Create Contact URL Token To TRUE so that the URL Token generation is triggered</description>
+        <field>AAkPay__Create_URL_Token__c</field>
+        <literalValue>1</literalValue>
+        <name>Set Case Create URL Token</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Case_Description_Livechat</fullName>
+        <field>Description</field>
+        <formula>Request_Description__c</formula>
+        <name>Update Case Description Livechat</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>AAkPay__Create Case URL Token</fullName>
+        <actions>
+            <name>AAkPay__Set_Case_Create_URL_Token</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Case.AAkPay__Create_URL_Token__c</field>
+            <operation>notEqual</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Sets Create URL Checkbox to trigger creation of a related URL Token. 
+Update the filter parameters for this workflow to selectively create these. 
+URL Tokens are used for creating object specific targeted payment requests</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Link Contact to Offline case</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Case.Your_Email__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Case Description Livechat</fullName>
+        <actions>
+            <name>Update_Case_Description_Livechat</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Case.Request_Description__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Subject Livechat</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Case.Request_Topic__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

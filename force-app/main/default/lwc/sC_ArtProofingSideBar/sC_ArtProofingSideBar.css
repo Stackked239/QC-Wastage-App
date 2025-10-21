@@ -1,0 +1,35 @@
+.openbtn {
+    font-size: 0px;
+  }
+ .closebtn{
+  font-size: 0px;
+} 
+.hide{
+  display:none;
+}
+  @media only screen and (max-width: 620px) {
+    /* For mobile phones: */
+    .openbtn {
+      font-size: 20px;
+      cursor: pointer;
+      /*background-color: #111;*/
+      color: black;
+      /*padding: 10px 15px;
+      border: none;*/
+      --sds-c-button-text-color: black;
+      
+    }
+    .closebtn{
+      font-size: 20px;
+      --sds-c-button-text-color: black;
+    }
+    .show{
+      height: auto;
+    }
+    .hide{
+      display:none;
+    }
+    .mobileView{
+      width:100%;
+    }
+  }

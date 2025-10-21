@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Art_Can_Not_Change_Stage</fullName>
+    <active>false</active>
+    <errorConditionFormula>IF(
+   AND(      
+        OR(
+            $User.Email &lt;&gt; &quot;shian@sundaycool.com&quot;,
+            $User.Email &lt;&gt; &quot;mackenzie@sundaycool.com&quot;
+           ),
+       $Profile.Name = &quot;System Admin - Art&quot;,
+       ISPICKVAL(Stage__c, &quot;Art Approved&quot;)
+       ),
+   TRUE, FALSE
+ )</errorConditionFormula>
+    <errorDisplayField>Stage__c</errorDisplayField>
+    <errorMessage>Sorry Mate! Can&apos;t do that.</errorMessage>
+</ValidationRule>

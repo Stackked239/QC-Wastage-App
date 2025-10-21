@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>tyler@sundaycool.com</contactEmail>
+    <description>Backend integration for AA3</description>
+    <label>SCAA3</label>
+    <oauthConfig>
+        <callbackUrl>http://localhost:3000/auth/salesforce/callback</callbackUrl>
+        <certificate>MIID4zCCAsugAwIBAgIUJLOA/6RpNAmw2i0XhvMQuCSYg+gwDQYJKoZIhvcNAQELBQAwgZkxCzAJBgNVBAYTAlVTMRAwDgYDVQQIDAdGbG9yaWRhMRAwDgYDVQQHDAdUYXZhcmVzMRgwFgYDVQQKDA9TdW5kYXkgQ29vbCBMTEMxEDAOBgNVBAsMB1N5c3RlbXMxFTATBgNVBAMMDFR5bGVyIFJlZG1hbjEjMCEGCSqGSIb3DQEJARYUdHlsZXJAc3VuZGF5Y29vbC5jb20wHhcNMjUwNzA4MTg0MzM2WhcNMjUwODA3MTg0MzM2WjCBmTELMAkGA1UEBhMCVVMxEDAOBgNVBAgMB0Zsb3JpZGExEDAOBgNVBAcMB1RhdmFyZXMxGDAWBgNVBAoMD1N1bmRheSBDb29sIExMQzEQMA4GA1UECwwHU3lzdGVtczEVMBMGA1UEAwwMVHlsZXIgUmVkbWFuMSMwIQYJKoZIhvcNAQkBFhR0eWxlckBzdW5kYXljb29sLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJZbPJHoLXakF/PC8n9hiid0TTR8Ws9V21EdtHii7SmTvaA7Ld97i+B+kB5aCin0VSAdQNbl/lbkQjsYnb7Q5ZoSM44ucNaN4dFPwBixF0fYWsiNacIvfLgO2asctP33m6dUeSjLWevhFb/CZDK79arKCdc+T+74dmEiWpfszOFfSU3mG3BR4HoL4MNa6NI1Djil0TEEfOLAdsQd2z+N8+IM+1E33WDEvy8kbxCcFogOzXEMam0/ggAHHD17BseGeAGuHVc65B2f5ph8BWPzaEDLNJH8XvsKO0n9OzLYosxhdp8qFYL+Ov8hozRCFg27BDgtzFQVbhgqusHJbrY+UskCAwEAAaMhMB8wHQYDVR0OBBYEFK4DGRGUAmHfX9rQnPq4JfTTMJuxMA0GCSqGSIb3DQEBCwUAA4IBAQBXnUrvruVOh3o43fiuaA4YroPzWGnEpIfPgyWKtZHt0924VGQUTNgmGaC359PgngiCzMpNZS7W77QDFlx4kezoG4SNtIxTDBB/fTTHX7MAKjE1pMZ6DLrVLEFzepzemttxBD2VcwNBIYaraEzAFjjusrYw/9sKvaNfI181jgg1rEk3BFJ7Sq4dHbKA4tHWUgd6lCpeG2D6lm9P27uAJ2htPJWTBe1JAxIMY45cFKSfsY4I6VMD1/h7y57UoYPHVa1dbNYObsU90tcIENJqajCUNfE4QO09kdT8RA3F6s5mk7NT1kdlVUHsGbJJ/xrbOlqjNrqVPuEo/LfSFSqO8g5G</certificate>
+        <consumerKey>3MVG9rzI_srm0a0ShQuBCWGR_87X6U2VDOnFZuEVHCcN.P0tEaXp3T9HL8Bus5ukb6vTMJyVAAPz7fb2yppfh</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isNamedUserJwtEnabled>true</isNamedUserJwtEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Basic</scopes>
+        <scopes>Api</scopes>
+        <scopes>Web</scopes>
+        <scopes>RefreshToken</scopes>
+        <scopes>OpenID</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>BYPASS</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

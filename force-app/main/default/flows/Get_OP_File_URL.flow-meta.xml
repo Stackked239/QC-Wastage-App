@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>test bench v2</description>
+    <interviewLabel>Get OP File URL {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Get OP File URL</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Look up of related file list</description>
+        <name>Look_at_OP_Files</name>
+        <label>Look at OP Files</label>
+        <locationX>242</locationX>
+        <locationY>242</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>LinkedEntityId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>OPID</elementReference>
+            </value>
+        </filters>
+        <object>ContentDocumentLink</object>
+        <outputAssignments>
+            <assignToReference>OpFileCollection.ContentDocumentID__c</assignToReference>
+            <field>ContentDocumentId</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>OpFileCollection.Id</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Look_at_OP_Files</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <name>LookatOP</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Opportunity</objectType>
+    </variables>
+    <variables>
+        <name>OpFileCollection</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>OPFileCollection__c</objectType>
+    </variables>
+    <variables>
+        <name>OPID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <elementReference>LookatOP.Id</elementReference>
+        </value>
+    </variables>
+</Flow>

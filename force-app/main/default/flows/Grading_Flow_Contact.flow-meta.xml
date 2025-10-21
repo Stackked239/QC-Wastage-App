@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Add_Amount_and_define_stages</name>
+        <label>Add Amount and define stages</label>
+        <locationX>550</locationX>
+        <locationY>356</locationY>
+        <assignmentItems>
+            <assignToReference>Sumofamount</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Ops.Amount</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>StoreOPstages</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Ops.StageName</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Ops</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Contains_Closed_Lost</name>
+        <label>Contains Closed Lost</label>
+        <locationX>153</locationX>
+        <locationY>981</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Only_contains_closed_lost</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>StoreOPstages</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Only contains closed lost</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Stage_status</name>
+        <label>Stage status</label>
+        <locationX>357</locationX>
+        <locationY>737</locationY>
+        <defaultConnector>
+            <targetReference>Contains_Closed_Lost</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Contains_Closed_won</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>StoreOPstages</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Closed Won</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Contains Closed won</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Won_Deal_Value</name>
+        <label>Won Deal Value</label>
+        <locationX>355</locationX>
+        <locationY>537</locationY>
+        <defaultConnector>
+            <targetReference>Under_5000</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Won_Deal_value_is_over_5000</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Sumofamount</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>5000.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_over_5000</targetReference>
+            </connector>
+            <label>Won Deal value is over 5000</label>
+        </rules>
+    </decisions>
+    <interviewLabel>Grading Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Grading Flow Contact</label>
+    <loops>
+        <name>Loop_Ops</name>
+        <label>Loop Ops</label>
+        <locationX>363</locationX>
+        <locationY>357</locationY>
+        <collectionReference>OPCollection</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_Amount_and_define_stages</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Won_Deal_Value</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Collect_OPs</name>
+        <label>Collect OPs</label>
+        <locationX>190</locationX>
+        <locationY>359</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Ops</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <outputReference>OPCollection</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Amount</queriedFields>
+        <queriedFields>StageName</queriedFields>
+    </recordLookups>
+    <recordUpdates>
+        <name>Under_5000</name>
+        <label>Under 5000</label>
+        <locationX>162</locationX>
+        <locationY>533</locationY>
+        <connector>
+            <targetReference>Stage_status</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>amount_won_deals__c</field>
+            <value>
+                <stringValue>Under 5000</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_over_5000</name>
+        <label>Update over 5000</label>
+        <locationX>569</locationX>
+        <locationY>537</locationY>
+        <connector>
+            <targetReference>Stage_status</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>amount_won_deals__c</field>
+            <value>
+                <stringValue>Over 5000</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Collect_OPs</targetReference>
+        </connector>
+        <object>Contact</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <name>OPCollection</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Opportunity</objectType>
+    </variables>
+    <variables>
+        <name>StoreOPstages</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Sumofamount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+    </variables>
+</Flow>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PO_QC_Ticket_Inventory</fullName>
+    <columns>Purchase_Order__c</columns>
+    <columns>Purchase_Order_Line_Look_Up__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>of_shirts__c</columns>
+    <columns>Issue_Group__c</columns>
+    <columns>Specify__c</columns>
+    <columns>New_Product_ETA__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Solution_Complete__c</columns>
+    <columns>Solution__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Pulled_from_Inventory__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>notContain</operation>
+        <value>[FD]</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>PO QC Ticket - Inventory</label>
+</ListView>

@@ -1,0 +1,248 @@
+<apex:page standardController="AcctSeedERP__Sales_Order__c" showHeader="false" extensions="SalesOrderClass" applyBodyTag="false" lightningStylesheets="true">
+    <apex:form >
+        <head>
+            <style type="text/css">
+                .tableHeader {
+                height: 20px;
+                padding: 3px;
+                vertical-align: top;
+                border: solid 1px black;
+                background-color :#E8E8E8;
+                }
+                .tableContent {
+                height: 20px;
+                padding: 3px;
+                vertical-align: top;
+                border: solid 1px black;
+                }
+                
+                
+            </style>
+        </head>
+        
+        <table style="width:94%;margin-left:21px;margin-right:20px;">
+            <tr>
+                <td style="width:33%;">
+                    <table style="width:100%;">
+                        <tr>
+                            <td  style="text-align:left;">
+                                <apex:image value="{!URLFOR($Resource.SalesforcePrintableLogo)}" height="30px" width="100px" alt="Smiley face"  />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="width:57%;">
+                    <table style="width:100%;">
+                        <tr>
+                            <td  style="float:right;">                              
+                                <ul style="font-color:black;">
+                                    <li><a style="color:black;font-size:10px;" href="javascript:window.close();">Close Window</a></li>
+                                    <li><a style="color:black;font-size:10px;" href="javascript:window.print();">Print This Page</a></li>
+                                </ul>                                
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        
+        <div style="padding-left:21px;">
+            <h1 style="font-size:0.8rem !important;color:black;">{!AcctSeedERP__Sales_Order__c.Name}</h1>
+        </div>
+        
+        <hr/>
+        <table style="width:100%;color:black;">
+            <tr>
+                <td style="width:33%">
+                    <table style="width:100%">
+                        <tr>
+                            <td width="50%" style="text-align:right"><b>Name</b> : </td>
+                            <td width="50%" style="padding-left:5px;">{!AcctSeedERP__Sales_Order__c.Name}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%" style="text-align:right"><b>Sales Order Name</b> : </td>
+                            <td width="50%" style="padding-left:5px;">{!AcctSeedERP__Sales_Order__c.Name__c}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%" style="text-align:right"><b>Customer</b> : </td>
+                            <td width="50%" style="padding-left:5px;">{!AcctSeedERP__Sales_Order__c.AcctSeedERP__Customer__r.Name}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%" style="text-align:right"><b>Opportunity</b> : </td>
+                            <td width="50%" style="padding-left:5px;">{!AcctSeedERP__Sales_Order__c.AcctSeedERP__Opportunity__r.Name}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%" style="text-align:right"><b>Auto Production Date</b> : </td>
+                            <td width="50%" style="padding-left:5px;">{!AcctSeedERP__Sales_Order__c.Auto_Production_Date__c}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%" style="text-align:right"><b>Must Have Date</b> : </td>
+                            <td width="50%" style="padding-left:5px;">{!AcctSeedERP__Sales_Order__c.Must_Have_Date__c}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%" style="text-align:right"><b>Monday Production Id</b> : </td>
+                            <td width="50%" style="padding-left:5px;">{!AcctSeedERP__Sales_Order__c.Monday_Production_ID__c}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%" style="text-align:right"><b>Opp # of Items</b> : </td>
+                            <td width="50%" style="padding-left:5px;">{!AcctSeedERP__Sales_Order__c.OPP_of_items__c}</td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="width:33%">
+                    <table style="width:100%">
+                        <tr>
+                            <td width="50%" style="text-align:right"><b>Owner</b> : </td>
+                            <td width="50%" style="padding-left:5px;">{!AcctSeedERP__Sales_Order__c.Owner.Name}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%" style="text-align:right"><b>Status</b> : </td>
+                            <td width="50%" style="padding-left:5px;">{!AcctSeedERP__Sales_Order__c.AcctSeedERP__Status__c}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%" style="text-align:right"><b>Stages By</b> : </td>
+                            <td width="50%" style="padding-left:5px;">{!AcctSeedERP__Sales_Order__c.Staged_By__c}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%" style="text-align:right"><b>Received By</b> : </td>
+                            <td width="50%" style="padding-left:5px;">{!AcctSeedERP__Sales_Order__c.Received_By__c}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%" style="text-align:right"><b>Product Order Type</b> : </td>
+                            <td width="50%" style="padding-left:5px;">{!AcctSeedERP__Sales_Order__c.Product_Order_Type__c}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%" style="text-align:right"><b>Total</b> : </td>
+                            <td width="50%" style="padding-left:5px;">{!AcctSeedERP__Sales_Order__c.AcctSeedERP__Total__c}</td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="width:34%;">
+                    <table>
+                        <tr>
+                        	<td width="50%" style="text-align:right"><b>QR Code</b> : </td>
+                            <td width="50%" style="text-align:left"><apex:outputText value="{!AcctSeedERP__Sales_Order__c.QR_Code__c}" escape="false" /></td>
+                        </tr>
+                    </table>
+                    
+                </td>
+            </tr>
+        </table>
+        <br/><br/>
+        
+        <p style="color:black;margin-left:21px;">
+            <b>Sales Order Line</b> 
+        </p>
+        
+        <hr/>
+        
+        <table style="width:97%;margin-left: 21px;color:black;border-collapse:separate;border-spacing:0 30px;">
+            
+            <thead>
+                <tr class="tableHeader" style="margin-bottom:20px;">
+                    <td class="tableHeader" style="font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                        <b> <apex:outputText value="Product" /></b>
+                    </td>
+                    <td class="tableHeader" style="font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                        <b><apex:outputText value="Color" /></b>
+                    </td>
+                    <td class="tableHeader" style="font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                        <b> <apex:outputText value="Opp Quantity" /></b>
+                    </td>
+                    <td class="tableHeader" style="font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                        <b> <apex:outputText value="Ordered" /></b>               
+                    </td>
+                    <td class="tableHeader" style="font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                        <b> <apex:outputText value="Allocated" /></b>
+                    </td>    
+                    <td class="tableHeader" style="font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                        <b> <apex:outputText value="Quantity Received Supplier" /></b>
+                    </td>      
+                </tr>
+            </thead>
+            <apex:repeat value="{!soLine}" var="Item">
+                <tr class="tableContent" style="padding-bottom: 10px;">
+                    <td class="tableContent" style="font-size:14px;font-family: Arial, Helvetica, sans-serif;text-align:center;">
+                        <apex:outputText value="{!Item.AcctSeedERP__Product__r.Name}" />
+                    </td>
+                    <td class="tableContent" style="font-size:14px;font-family: Arial, Helvetica, sans-serif;text-align:center;">
+                        <apex:outputText value="{!Item.Color__c}" />
+                    </td>
+                    <td class="tableContent" style="font-size:14px;font-family: Arial, Helvetica, sans-serif;text-align:center;">
+                        <apex:outputText value="{!Item.Opportunity_Quantity__c}" />
+                    </td>
+                    <td class="tableContent" style="font-size:14px;font-family: Arial, Helvetica, sans-serif;text-align:center;">
+                        <apex:outputText value="{!Item.AcctSeedERP__Quantity_Ordered__c}" />
+                    </td>
+                    <td class="tableContent" style="font-size:14px;font-family: Arial, Helvetica, sans-serif;text-align:center;">
+                        <apex:outputText value="{!Item.AcctSeedERP__Quantity_Allocated__c}"/>
+                    </td>
+                    <td class="tableContent" style="font-size:14px;font-family: Arial, Helvetica, sans-serif;text-align:center;width:220px;">
+                        <apex:outputText value="{!Item.AcctSeedERP__Quantity_Received_Supplier__c}"/>
+                    </td>
+                </tr>
+            </apex:repeat>
+        </table> 
+        
+        <p style="color:black;margin-left:21px;">
+            <b>Purchase Orders</b> 
+        </p>
+        
+        <hr/>
+        
+        <table style="width:97%;margin-left: 21px;color:black;border-collapse:separate;border-spacing:0 30px;">
+            
+            <!--thead-->
+            <tr class="tableHeader" style="margin-bottom:20px;">
+                <th class="tableHeader" style="font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                    <b> <apex:outputText value="Purchase Order Name" /></b>
+                </th>
+                <th class="tableHeader" style="font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                    <b><apex:outputText value="Vendor" /></b>
+                </th>
+                <th class="tableHeader" style="font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                    <b> <apex:outputText value="Order Date" /></b>
+                </th>
+                <th class="tableHeader" style="font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                    <b> <apex:outputText value="Status" /></b>               
+                </th>
+                <th class="tableHeader" style="font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                    <b> <apex:outputText value="Type" /></b>
+                </th>    
+                <th class="tableHeader" style="font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                    <b> <apex:outputText value="Total" /></b>
+                </th>    
+                <th class="tableHeader" style="font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                    <b> <apex:outputText value="Comments" /></b>
+                </th>
+            </tr>
+            <!--/thead-->
+            <apex:repeat value="{!AcctSeedERP__Sales_Order__c.Purchase_Orders__r}" var="Item">
+                <tr class="tableContent" style="padding-bottom: 10px;">
+                    <td class="tableContent" style="font-size:14px;font-family: Arial, Helvetica, sans-serif;text-align:center;">
+                        <apex:outputText value="{!Item.Name}" />
+                    </td>
+                    <td class="tableContent" style="font-size:14px;font-family: Arial, Helvetica, sans-serif;text-align:center;">
+                        <apex:outputtext value="{!Item.AcctSeedERP__Vendor__r.Name}" />
+                    </td>
+                    <td class="tableContent" style="font-size:14px;font-family: Arial, Helvetica, sans-serif;text-align:center;">
+                        <apex:outputField value="{!Item.AcctSeedERP__Order_Date__c}" />
+                    </td>
+                    <td class="tableContent" style="font-size:14px;font-family: Arial, Helvetica, sans-serif;text-align:center;">
+                        <apex:outputText value="{!Item.AcctSeedERP__Status__c}" />
+                    </td>
+                    <td class="tableContent" style="font-size:14px;font-family: Arial, Helvetica, sans-serif;text-align:center;">
+                        <apex:outputText value="{!Item.AcctSeedERP__Type__c}"/>
+                    </td>
+                    <td class="tableContent" style="font-size:14px;font-family: Arial, Helvetica, sans-serif;text-align:center;">
+                        <apex:outputText value="{!Item.AcctSeedERP__Total__c}"/>
+                    </td>
+                    <td class="tableContent" style="font-size:14px;font-family: Arial, Helvetica, sans-serif;text-align:center;width:220px;">
+                        <apex:outputText value="{!Item.AcctSeedERP__Comment__c}"/>
+                    </td>
+                </tr>
+            </apex:repeat>
+        </table>
+        
+    </apex:form>  
+</apex:page>

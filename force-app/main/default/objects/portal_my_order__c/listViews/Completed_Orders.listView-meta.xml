@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Completed_Orders</fullName>
+    <columns>NAME</columns>
+    <columns>Must_Have_Date__c</columns>
+    <columns>Shipping_Street__c</columns>
+    <columns>Shipping_City__c</columns>
+    <columns>Shipping_StateProvince__c</columns>
+    <columns>Shipping_ZipPostal_Code__c</columns>
+    <columns>Stage__c</columns>
+    <filterScope>Mine</filterScope>
+    <label>Completed Orders</label>
+</ListView>

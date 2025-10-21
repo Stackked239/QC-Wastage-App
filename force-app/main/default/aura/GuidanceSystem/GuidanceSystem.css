@@ -1,0 +1,2437 @@
+.THIS .NextButton{
+    margin-left: 230px;
+    margin-top: 10px;
+    background:#cccccc;
+    color:#757575;
+}
+.THIS .PreviousButton{
+    margin-left: -160px;
+    margin-top: 10px;
+    background:#cccccc;
+    color:#757575;
+}
+.THIS .Previous{
+    margin-left: 202px;
+    margin-top: 10px;
+    background:#cccccc;
+    color:#757575;
+}
+
+.THIS .HideButton{
+    margin-left: -208px;
+    color:#757575;
+    text-decoration: underline;
+}
+.THIS .Hide{
+    margin-left: -280px;
+    color:#757575;
+    text-decoration: underline;
+}
+
+.THIS {
+    font-family: sans-serif;
+}
+
+.THIS .responsivePending1{
+	margin-left: 275px;
+    position: absolute;
+    margin-top:50px;
+    background:#f2f2f2;
+    padding:10px;
+}
+
+.THIS .responsivePending2{
+	background:#f2f2f2;
+    padding:10px;
+    margin-left: 275px;
+    position: absolute;
+    margin-top:133px;
+}
+
+.THIS .responsiveRevision1{
+	background:#f2f2f2;
+    padding:10px;
+    margin-left: 275px;
+    position: absolute;
+    margin-top:88px;
+}
+
+.THIS .responsiveRevision2{
+	background:#f2f2f2;
+    padding:10px;
+    margin-left: 275px;
+    position: absolute;
+    margin-top:168px;
+}
+
+.THIS .responsivePrevious{
+	background:#f2f2f2;
+    padding:10px;
+    margin-left: 275px;
+    position: absolute;
+    margin-top:168px;
+}
+
+.THIS .responsiveMyorders{
+    margin-left: 60px;
+    position: absolute;
+    margin-top:-102px;
+    background:#f2f2f2;
+    padding:10px;
+}
+
+.THIS .responsiveStage{
+    background:#f2f2f2;
+    padding:10px;
+    margin-left: 75px;
+    position: absolute;
+    margin-top:-102px;
+}
+
+.THIS .responsiveSubmitby{
+    background:#f2f2f2;
+    padding:10px;
+    margin-left: 210px;
+    position: absolute;
+    margin-top:-102px;
+}
+
+.THIS .responsiveHandsdate{
+    background:#f2f2f2;
+    padding:10px;
+    margin-left: 365px;
+    position: absolute;
+    margin-top:-102px;
+}
+
+.THIS .responsiveBalancedue{
+    background:#f2f2f2;
+    padding:10px;
+    margin-left: 520px;
+    position: absolute;
+    margin-top:-102px;
+}
+
+.THIS .responsiveTotalprice{
+    background:#f2f2f2;
+    padding:10px;
+    margin-left: 655px;
+    position: absolute;
+    margin-top:-102px;
+}
+
+.THIS .responsiveProfile{
+    background:#f2f2f2;
+    padding:10px;
+    margin-left: 206px;
+    position: absolute;
+    margin-top:-33px;
+}
+
+.THIS .responsiveAccount{
+    background:#f2f2f2;
+    padding:10px;
+    margin-left: 202px;
+    position: absolute;
+    margin-top:-12px;
+}
+
+.THIS .responsivesStageBar{
+    background:#f2f2f2;
+    padding:10px;
+    margin-left: 35%;
+    position: absolute;
+    margin-top:65px;
+}
+
+.THIS .responsivesInvoice{
+    background:#f2f2f2;
+    padding:10px;
+    margin-left: 30%;
+    position: absolute;
+    margin-top:490px;
+}
+
+.THIS .responsivesShipping{
+    background:#f2f2f2;
+    padding:10px;
+    margin-left: 60%;
+    position: absolute;
+    margin-top:700px;
+}
+
+.THIS .responsivesFile{
+    background:#f2f2f2;
+    padding:10px;
+    margin-left: 200px;
+    position: absolute;
+    margin-top:25px;
+}
+
+.THIS .responsivesImage{
+    background:#f2f2f2;
+    padding:10px;
+    margin-left: 40%;
+    position: absolute;
+    margin-top:120px;
+}
+
+.THIS .responsivesComplMyorder{
+    background:#f2f2f2;
+    padding:10px;
+    margin-left: 0px;
+    position: absolute;
+    margin-top:-130px;
+}
+
+.THIS .responsivesComplPrice{
+    background:#f2f2f2;
+    padding:10px;
+    margin-left: 265px;
+    position: absolute;
+    margin-top:-130px;
+}
+
+.THIS .responsivesTrackno{
+    background:#f2f2f2;
+    padding:10px;
+    margin-left: 510px;
+    position: absolute;
+    margin-top:-110px;
+}
+
+
+@media (max-width: 767px){
+    .THIS .responsivediv {
+        display: none;
+    }
+    
+    .THIS.homePage {
+        display: none;
+    }
+    .THIS.artProof {
+        display: none;
+    }
+    .THIS.startProAccPage {
+        display: none;
+    }
+    .THIS.conorderPage {
+        display: none;
+    }
+    
+    .THIS .responsiveRevdet {
+        display: none;
+    }
+    .THIS .responsiveCommSec {
+        display: none;
+    }
+    .THIS .responsiveOrderDet {
+        display: none;
+    }
+    .THIS .responsivesStageBar{
+        display: none;
+    }
+    .THIS .responsiveProductName {
+        display: none;
+    }
+    .THIS .responsiveColor {
+        display: none;
+    }
+    .THIS .responsiveQuantity {
+        display: none;
+    }
+    .THIS .responsivePrice {
+        display: none;
+    } 
+    .THIS .responsiveStart {
+        display: none;
+    }
+    
+    .THIS .responsiveOrder {
+        display: none;
+    }
+    
+    .THIS .responsiveHome {
+        display: none;
+    }
+    .THIS .responsivePending1{
+        display: none;
+    }
+    
+    .THIS .responsivePending2{
+        display: none;
+    }
+    
+    .THIS .responsiveRevision1{
+        display: none;
+    }
+    
+    .THIS .responsiveRevision2{
+        display: none;
+    }
+    
+    .THIS .responsivePrevious{
+        display: none;
+    }
+    
+    .THIS .responsiveMyorders{
+        display: none;
+    }
+    
+    .THIS .responsiveStage{
+        display: none;
+    }
+    
+    .THIS .responsiveSubmitby{
+        display: none;
+    }
+    
+    .THIS .responsiveHandsdate{
+        display: none;
+    }
+    
+    .THIS .responsiveBalancedue{
+        display: none;
+    }
+    
+    .THIS .responsiveTotalprice{
+        display: none;
+    }
+    
+    .THIS .responsiveProfile{
+        display: none;
+    }
+    
+    .THIS .responsiveAccount{
+        display: none;
+    }
+    
+    .THIS .responsivesInvoice{
+        display: none;
+    }
+    
+    .THIS .responsivesShipping{
+        display: none;
+    }
+    
+    .THIS .responsivesFile{
+        display: none;
+    }
+    
+    .THIS .responsivesImage{
+        display: none;
+    }
+    
+    .THIS .responsivesComplMyorder{
+        display: none;
+    }
+    
+    .THIS .responsivesComplPrice{
+        display: none;
+    }
+    
+    .THIS .responsivesTrackno{
+        display: none;
+    }
+
+
+}
+
+/*@media (min-width: 500px) and (max-width: 550px){
+    .THIS .responsivediv {
+        position: absolute;
+        margin-top:-472px;
+        margin-left: 37%;
+    }
+    
+     .THIS.homePage {
+        position: absolute;
+        margin-top:-472px;
+        margin-left: 37%;
+    }
+    .THIS.artProof {
+        margin-left:37%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:37%;
+        margin-top:-36px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:555px;
+        margin-left: 36%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:750px;
+        margin-left: 36%;
+    } 
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 43%;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:245px;
+    }
+    .THIS .responsiveColor {
+        margin-left: -1%;
+        position: absolute;
+        margin-top:245px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 19%;
+    } 
+    .THIS .responsivePrice {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 40%;
+    }
+    
+    .THIS .responsiveStart {
+        margin-left: -11px;
+        position: absolute;
+        margin-top:170px;
+    }
+    
+}
+@media (min-width: 550px) and (max-width: 600px){
+    .THIS .responsivediv {
+        position: absolute;
+        margin-top:-472px;
+        margin-left: 42%;
+    }
+
+    .THIS.homePage {
+        position: absolute;
+        margin-top:-472px;
+        margin-left: 42%;
+    }
+    .THIS.artProof {
+        margin-left:42%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:42%;
+        margin-top:-36px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:555px;
+        margin-left: 41%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:750px;
+        margin-left: 41%;
+    } 
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 43%;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:245px;
+    }
+    .THIS .responsiveColor {
+        margin-left: -1%;
+        position: absolute;
+        margin-top:245px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 22%;
+    } 
+    .THIS .responsivePrice {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 43%;
+    }
+    
+    .THIS .responsiveStart {
+        margin-left: -11px;
+        position: absolute;
+        margin-top:170px;
+    }
+    
+}
+
+@media (min-width: 600px) and (max-width: 621px){
+    .THIS .responsivediv {
+        position: absolute;
+        margin-top:-472px;
+        margin-left: 47%;
+    }
+    
+    .THIS.homePage {
+        position: absolute;
+        margin-top:-472px;
+        margin-left: 47%;
+    }
+    .THIS.artProof {
+        margin-left:47%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:47%;
+        margin-top:-36px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:565px;
+        margin-left: 43%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:725px;
+        margin-left: 43%;
+    } 
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 43%;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:245px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 0%;
+        position: absolute;
+        margin-top:245px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 23%;
+    } 
+    .THIS .responsivePrice {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 45%;
+    }
+    
+    .THIS .responsiveStart {
+        margin-left: -11px;
+        position: absolute;
+        margin-top:170px;
+    }
+    
+}
+@media (min-width: 621px) and (max-width: 650px){
+    .THIS .responsivediv {
+        position: absolute;
+        margin-top:-472px;
+        margin-left: 47%;
+    }
+    
+    .THIS.homePage {
+        position: absolute;
+        margin-top:-472px;
+        margin-left: 47%;
+    }
+    .THIS.artProof {
+        margin-left:47%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:47%;
+        margin-top:-36px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:990px;
+        margin-left: 41%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:1135px;
+        margin-left: 41%;
+    } 
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 43%;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:245px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 1%;
+        position: absolute;
+        margin-top:245px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 24%;
+    } 
+    .THIS .responsivePrice {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 48%;
+    }
+    
+    .THIS .responsiveStart {
+        margin-left: -11px;
+        position: absolute;
+        margin-top:170px;
+    }
+    .THIS .slds-nubbin_right:before {
+        left: -0.5rem;
+        right: unset;
+    }
+    .THIS .slds-nubbin_right:after {
+        left: -0.5rem;
+        right: unset;
+    }
+
+}
+@media (min-width: 650px) and (max-width: 700px){
+    .THIS .responsivediv {
+        position: absolute;
+        margin-top:-472px;
+        margin-left: 51%;
+    } 
+    
+    .THIS.homePage {
+        position: absolute;
+        margin-top:-472px;
+        margin-left: 51%;
+    }
+    .THIS.artProof {
+        margin-left:51%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:51%;
+        margin-top:-36px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:990px;
+        margin-left: 46%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:1135px;
+        margin-left: 46%;
+    } 
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 43%;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:245px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 3%;
+        position: absolute;
+        margin-top:245px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 26%;
+    } 
+    .THIS .responsivePrice {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 50%;
+    }
+    
+    .THIS .responsiveStart {
+        margin-left: -11px;
+        position: absolute;
+        margin-top:175px;
+    }
+    .THIS .slds-nubbin_right:before {
+        left: -0.5rem;
+        right: unset;
+    }
+    .THIS .slds-nubbin_right:after {
+        left: -0.5rem;
+        right: unset;
+    }
+
+}
+@media (min-width: 700px) and (max-width: 766px){
+    .THIS .responsivediv {
+        position: absolute;
+        margin-top:-472px;
+        margin-left: 55%;
+    } 
+    
+    .THIS.homePage {
+        position: absolute;
+        margin-top:-472px;
+        margin-left: 55%;
+    }
+    .THIS.artProof {
+        margin-left:55%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:55%;
+        margin-top:-36px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:990px;
+        margin-left: 50%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:1135px;
+        margin-left: 50%;
+    } 
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 50%;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:245px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 5%;
+        position: absolute;
+        margin-top:245px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 28%;
+    } 
+    .THIS .responsivePrice {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 52%;
+    }
+    
+    .THIS .responsiveStart {
+        margin-left: -11px;
+        position: absolute;
+        margin-top:175px;
+    }
+    
+}
+*/
+@media (min-width: 768px) and (max-width: 800px){
+    .THIS .responsivediv {
+        position: absolute;
+        margin-top:-1130px;
+        margin-left: 56%;
+    }
+
+    .THIS.homePage {
+        position: absolute;
+        margin-top:-1130px;
+        margin-left: 56%;
+    }
+    .THIS.artProof {
+        margin-left:56%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:56%;
+        margin-top:-36px;
+    }
+    .THIS.conorderPage {
+        margin-left:56%;
+        margin-top:-305px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 32%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:700px;
+        margin-left: 32%;
+    } 
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 50%;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 32%;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 42%;
+    } 
+    .THIS .responsivePrice {
+        display:none;
+    }
+    .THIS .responsivesShipping{
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 60%;
+        position: absolute;
+        margin-top:680px;
+    }
+    
+    .THIS .responsiveStart {
+        margin-left: -11px;
+        position: absolute;
+        margin-top:280px;
+    }
+    
+    .THIS .responsiveOrder {
+        margin-left: 255px;
+        position: absolute;
+        margin-top:-1130px;
+        background:#f2f2f2;
+        padding:10px;
+    }
+
+    .THIS .responsiveHome {
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 27%;
+        position: absolute;
+        margin-top:-165px;
+    }
+    
+    .THIS .responsivesInvoice{
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 30%;
+        position: absolute;
+        margin-top:510px;
+    }
+    
+}
+
+@media (min-width: 800px) and (max-width: 825px){
+    .THIS .responsivediv {
+        position: absolute;
+        margin-top:-1130px;
+        margin-left: 58%;
+    }
+    
+    .THIS.homePage {
+        position: absolute;
+        margin-top:-1130px;
+        margin-left: 58%;
+    }
+    .THIS.artProof {
+        margin-left:58%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:58%;
+        margin-top:-36px;
+    }
+    .THIS.conorderPage {
+        margin-left:58%;
+        margin-top:-315px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 35%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:700px;
+        margin-left: 35%;
+    } 
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 50%;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 31%;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 42%;
+    } 
+    .THIS .responsivePrice {
+        display:none;
+    }
+    .THIS .responsivesShipping{
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 60%;
+        position: absolute;
+        margin-top:680px;
+    }
+    
+    .THIS .responsiveStart {
+        margin-left: -11px;
+        position: absolute;
+        margin-top:280px;
+    }
+    
+    .THIS .responsiveOrder {
+        margin-left: 255px;
+        position: absolute;
+        margin-top:-1130px;
+        background:#f2f2f2;
+        padding:10px;
+    }
+    
+    .THIS .responsiveHome {
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 27%;
+        position: absolute;
+        margin-top:-165px;
+    }
+    
+    .THIS .responsivesInvoice{
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 30%;
+        position: absolute;
+        margin-top:510px;
+    }
+    
+}
+@media (min-width: 825px) and (max-width: 833px){
+    .THIS .responsivediv {
+        position: absolute;
+        margin-top:-1130px;
+        margin-left: 61%;
+    }
+    
+    .THIS.homePage {
+        position: absolute;
+        margin-top:-1130px;
+        margin-left: 61%;
+    }
+    .THIS.artProof {
+        margin-left:61%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:61%;
+        margin-top:-36px;
+    }
+    .THIS.conorderPage {
+        margin-left:61%;
+        margin-top:-325px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 36%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:600px;
+        margin-left: 36%;
+    } 
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 50%;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 31%;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 41%;
+    }
+    
+    .THIS .responsivePrice {
+        display:none;
+    }
+    
+    .THIS .responsivesShipping{
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 60%;
+        position: absolute;
+        margin-top:680px;
+    }
+    
+    .THIS .responsiveStart {
+        margin-left: -11px;
+        position: absolute;
+        margin-top:280px;
+    }
+    
+    .THIS .responsiveOrder {
+        margin-left: 255px;
+        position: absolute;
+        margin-top:-1130px;
+        background:#f2f2f2;
+        padding:10px;
+    }
+    
+    .THIS .responsiveHome {
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 28%;
+        position: absolute;
+        margin-top:-165px;
+    }
+    
+    .THIS .responsivesInvoice{
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 30%;
+        position: absolute;
+        margin-top:510px;
+    }
+    
+}
+@media (min-width: 833px) and (max-width: 900px){
+    .THIS .responsivediv {
+        position: absolute;
+        margin-top:-1070px;
+        margin-left: 61%;
+    }
+    
+    .THIS.homePage {
+        position: absolute;
+        margin-top:-1070px;
+        margin-left: 61%;
+    }
+    .THIS.artProof {
+        margin-left:61%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:61%;
+        margin-top:-36px;
+    }
+    .THIS.conorderPage {
+        margin-left:61%;
+        margin-top:-335px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 36%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:600px;
+        margin-left: 36%;
+    } 
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 50%;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 29%;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 39%;
+    }
+    
+    .THIS .responsivePrice {
+        display:none;
+    }
+    
+    .THIS .responsivesShipping{
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 60%;
+        position: absolute;
+        margin-top:680px;
+    }
+    
+    .THIS .responsiveStart {
+        margin-left: -11px;
+        position: absolute;
+        margin-top:280px;
+    }
+    
+    .THIS .responsiveOrder {
+        margin-left: 255px;
+        position: absolute;
+        margin-top:-1070px;
+        background:#f2f2f2;
+        padding:10px;
+    }
+    
+    .THIS .responsiveHome {
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 28%;
+        position: absolute;
+        margin-top:-165px;
+    }
+    
+    .THIS .responsivesInvoice{
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 30%;
+        position: absolute;
+        margin-top:510px;
+    }
+    
+}
+
+@media (min-width: 900px) and (max-width: 950px){
+    .THIS .responsivediv {
+        position: absolute;
+        margin-top:-1030px;
+        margin-left: 63%;
+    }
+    
+    .THIS.homePage {
+        position: absolute;
+        margin-top:-1030px;
+        margin-left: 63%;
+    }
+    .THIS.artProof {
+        margin-left:63%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:63%;
+        margin-top:-36px;
+    }
+    .THIS.conorderPage {
+        margin-left:63%;
+        margin-top:-355px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 38%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:600px;
+        margin-left: 38%;
+    } 
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 430px;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 27%;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 38%;
+    } 
+    .THIS .responsivePrice {
+        display:none;
+    }
+    .THIS .responsivesShipping{
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 60%;
+        position: absolute;
+        margin-top:680px;
+    }
+    
+    .THIS .responsiveStart {
+        margin-left: -11px;
+        position: absolute;
+        margin-top:365px;
+    }
+    
+    .THIS .responsiveOrder {
+        margin-left: 255px;
+        position: absolute;
+        margin-top:-1030px;
+        background:#f2f2f2;
+        padding:10px;
+    }
+    
+    .THIS .responsiveHome {
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 29%;
+        position: absolute;
+        margin-top:-165px;
+    }
+    
+    .THIS .responsivesInvoice{
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 30%;
+        position: absolute;
+        margin-top:510px;
+    }
+    
+}
+@media (min-width: 950px) and (max-width: 1000px){
+    .THIS .responsivediv {
+        position: absolute;
+        margin-top:-1030px;
+        margin-left: 65%;
+    }
+
+    .THIS.homePage {
+        position: absolute;
+        margin-top:-1030px;
+        margin-left: 65%;
+    }
+    .THIS.artProof {
+        margin-left:65%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:65%;
+        margin-top:-36px;
+    }
+    .THIS.conorderPage {
+        margin-left:65%;
+        margin-top:-375px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 40%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:600px;
+        margin-left: 40%;
+    } 
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 430px;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 26%;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 36%;
+    } 
+    .THIS .responsivePrice {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 47%;
+    }
+    .THIS .responsivesShipping{
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 60%;
+        position: absolute;
+        margin-top:680px;
+    }
+    
+    .THIS .responsiveStart {
+        margin-left: -11px;
+        position: absolute;
+        margin-top:365px;
+    }
+    
+    .THIS .responsiveOrder {
+        margin-left: 255px;
+        position: absolute;
+        margin-top:-1030px;
+        background:#f2f2f2;
+        padding:10px;
+    }
+    
+    .THIS .responsiveHome {
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 30%;
+        position: absolute;
+        margin-top:-165px;
+    }
+    
+    .THIS .responsivesInvoice{
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 30%;
+        position: absolute;
+        margin-top:510px;
+    }
+   
+}
+
+@media (min-width: 1000px) and (max-width: 1023px){
+    .THIS .responsivediv {
+        position: absolute;
+        margin-top:-1030px;
+        margin-left: 66%;
+    }
+
+    .THIS.homePage {
+        position: absolute;
+        margin-top:-1030px;
+        margin-left: 66%;
+    }
+    .THIS.artProof {
+        margin-left:66%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:66%;
+        margin-top:-36px;
+    }
+    .THIS.conorderPage {
+        margin-left:66%;
+        margin-top:-385px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 42%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:600px;
+        margin-left: 42%;
+    } 
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 430px;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 25%;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 34%;
+    } 
+    .THIS .responsivePrice {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 45%;
+    }
+    .THIS .responsivesShipping{
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 60%;
+        position: absolute;
+        margin-top:680px;
+    }
+    
+    .THIS .responsiveStart {
+        margin-left: -11px;
+        position: absolute;
+        margin-top:365px;
+    }
+    
+    .THIS .responsiveOrder {
+        margin-left: 255px;
+        position: absolute;
+        margin-top:-1030px;
+        background:#f2f2f2;
+        padding:10px;
+    }
+    
+    .THIS .responsiveHome {
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 32%;
+        position: absolute;
+        margin-top:-165px;
+    }
+    
+    .THIS .responsivesInvoice{
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 30%;
+        position: absolute;
+        margin-top:510px;
+    }
+    
+}
+@media (min-width: 1024px) and (max-width: 1050px){
+    .THIS .responsivediv {
+        position: absolute;
+        margin-top:-1030px;
+        margin-left: 66%;
+    }
+
+    .THIS.homePage {
+        position: absolute;
+        margin-top:-1030px;
+        margin-left: 66%;
+    }
+    .THIS.artProof {
+        margin-left:66%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:66%;
+        margin-top:-36px;
+    }
+    .THIS.conorderPage {
+        margin-left:66%;
+        margin-top:-395px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 42%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:600px;
+        margin-left: 42%;
+    } 
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 430px;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 25%;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 34%;
+    } 
+    .THIS .responsivePrice {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 45%;
+    }
+    
+    .THIS .responsiveStart {
+        margin-left: -15px;
+        position: absolute;
+        margin-top:330px;
+    }
+    
+    .THIS .responsiveOrder {
+        margin-left: 255px;
+        position: absolute;
+        margin-top:-1030px;
+        background:#f2f2f2;
+        padding:10px;
+    }
+    
+    .THIS .responsiveHome {
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 33%;
+        position: absolute;
+        margin-top:-165px;
+    }
+
+}
+@media (min-width: 1050px) and (max-width: 1064px){
+    .THIS .responsivediv {
+        position: absolute;
+        margin-top:-1030px;
+        margin-left: 68%;
+    }
+    
+    .THIS.homePage {
+        position: absolute;
+        margin-top:-1030px;
+        margin-left: 68%;
+    }
+    .THIS.artProof {
+        margin-left:68%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:68%;
+        margin-top:-36px;
+    }
+    .THIS.conorderPage {
+        margin-left:68%;
+        margin-top:-405px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 43%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:600px;
+        margin-left: 43%;
+    } 
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 430px;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 24%;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 33%;
+    } 
+    .THIS .responsivePrice {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 43%;
+    }
+    
+    .THIS .responsiveStart {
+        margin-left: -11px;
+        position: absolute;
+        margin-top:330px;
+    }
+    
+    .THIS .responsiveOrder {
+        margin-left: 255px;
+        position: absolute;
+        margin-top:-1030px;
+        background:#f2f2f2;
+        padding:10px;
+    }
+    
+    .THIS .responsiveHome {
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 34%;
+        position: absolute;
+        margin-top:-165px;
+    }
+    
+}
+@media (min-width: 1064px) and (max-width: 1100px){
+    .THIS .responsivediv {
+        position: absolute;
+        margin-top:-970px;
+        margin-left: 68%;
+    }
+    
+    .THIS.homePage {
+        position: absolute;
+        margin-top:-970px;
+        margin-left: 68%;
+    }
+    .THIS.artProof {
+        margin-left:68%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:68%;
+        margin-top:-36px;
+    }
+    .THIS.conorderPage {
+        margin-left:68%;
+        margin-top:-415px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 43%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:600px;
+        margin-left: 43%;
+    } 
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 430px;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 24%;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 33%;
+    } 
+    .THIS .responsivePrice {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 43%;
+    }
+    
+    .THIS .responsiveStart {
+        margin-left: -11px;
+        position: absolute;
+        margin-top:330px;
+    }
+    
+    .THIS .responsiveOrder {
+        margin-left: 255px;
+        position: absolute;
+        margin-top:-970px;
+        background:#f2f2f2;
+        padding:10px;
+    }
+    
+    .THIS .responsiveHome {
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 34%;
+        position: absolute;
+        margin-top:-165px;
+    }
+    
+}
+
+@media (min-width: 1100px) and (max-width: 1155px){
+    .THIS .responsivediv {
+        margin-left: 70%;
+        position: absolute;
+        margin-top:-970px;
+    }
+    
+    .THIS.homePage {
+        margin-left: 70%;
+        position: absolute;
+        margin-top:-970px;
+    }
+    .THIS.artProof {
+        margin-left:70%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:70%;
+        margin-top:-36px;
+    }
+    .THIS.conorderPage {
+        margin-left:70%;
+        margin-top:-425px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 45%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:600px;
+        margin-left: 45%;
+    }
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 430px;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 22%;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 31%;
+    } 
+    .THIS .responsivePrice {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 42%;
+    } 
+    
+    .THIS .responsiveStart {
+        margin-left: -11px;
+        position: absolute;
+        margin-top:330px;
+    }
+    
+    .THIS .responsiveOrder {
+        margin-left: 255px;
+        position: absolute;
+        margin-top:-970px;
+        background:#f2f2f2;
+        padding:10px;
+    }
+    
+    .THIS .responsiveHome {
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 35%;
+        position: absolute;
+        margin-top:-165px;
+    }
+    
+}
+@media (min-width: 1155px) and (max-width: 1200px){
+    .THIS .responsivediv {
+        margin-left: 71%;
+        position: absolute;
+        margin-top:-970px;
+    }
+    
+    .THIS.homePage {
+        margin-left: 71%;
+        position: absolute;
+        margin-top:-970px;
+    }
+    .THIS.artProof {
+        margin-left:71%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:71%;
+        margin-top:-36px;
+    }
+    .THIS.conorderPage {
+        position: absolute;
+        margin-left:71%;
+        margin-top:-445px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 46%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:600px;
+        margin-left: 46%;
+    }
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 430px;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 22%;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 30%;
+    } 
+    .THIS .responsivePrice {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 41%;
+    } 
+    
+    .THIS .responsiveStart {
+        margin-left: -11px;
+        position: absolute;
+        margin-top:330px;
+    }
+    
+    .THIS .responsiveOrder {
+        margin-left: 255px;
+        position: absolute;
+        margin-top:-970px;
+        background:#f2f2f2;
+        padding:10px;
+    }
+    
+    .THIS .responsiveHome {
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 36%;
+        position: absolute;
+        margin-top:-165px;
+    }
+    
+}
+
+@media (min-width: 1200px) and (max-width: 1250px){
+    .THIS .responsivediv {
+        position: absolute;
+        margin-top:-970px;
+        margin-left: 72%;
+    }
+
+    .THIS.homePage {
+        position: absolute;
+        margin-top:-970px;
+        margin-left: 72%;
+    }
+    .THIS.artProof {
+        margin-left:72%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:72%;
+        margin-top:-36px;
+    }
+    .THIS.conorderPage {
+        position: absolute;
+        margin-left:72%;
+        margin-top:-465px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 47%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:500px;
+        margin-left: 47%;
+    } 
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 430px;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 21%;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 29%;
+    } 
+    .THIS .responsivePrice {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 40%;
+    }
+    
+    .THIS .responsiveStart {
+        margin-left: -11px;
+        position: absolute;
+        margin-top:330px;
+    }
+    
+    .THIS .responsiveOrder {
+        margin-left: 255px;
+        position: absolute;
+        margin-top:-970px;
+        background:#f2f2f2;
+        padding:10px;
+    }
+    
+    .THIS .responsiveHome {
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 37%;
+        position: absolute;
+        margin-top:-165px;
+    }
+    
+
+}
+@media (min-width: 1250px) and (max-width: 1300px){
+    .THIS .responsivediv {
+        margin-left: 73%;
+        position: absolute;
+        margin-top:-970px;
+    }
+    
+    .THIS.homePage {
+        margin-left: 73%;
+        position: absolute;
+        margin-top:-970px;
+    }
+    .THIS.artProof {
+        margin-left:73%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:73%;
+        margin-top:-36px;
+    }
+    .THIS.conorderPage {
+        position: absolute;
+        margin-left:73%;
+        margin-top:-480px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 48%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:500px;
+        margin-left: 48%;
+    }
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 430px;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 20%;
+        position: absolute;
+        margin-top:240px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 28%;
+    } 
+    .THIS .responsivePrice {
+        position: absolute;
+        margin-top:240px;
+        margin-left: 38%;
+    } 
+    
+    .THIS .responsiveStart {
+        margin-left: -11px;
+        position: absolute;
+        margin-top:330px;
+    }
+    
+    .THIS .responsiveOrder {
+        margin-left: 255px;
+        position: absolute;
+        margin-top:-970px;
+        background:#f2f2f2;
+        padding:10px;
+    }
+    
+    .THIS .responsiveHome {
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 38%;
+        position: absolute;
+        margin-top:-165px;
+    }
+
+}
+
+@media (min-width: 1300px) and (max-width: 1350px){
+    .THIS .responsivediv {
+        position: absolute;
+        margin-top:-970px;
+        margin-left: 74%;
+    }    
+    
+    .THIS.homePage {
+        position: absolute;
+        margin-top:-970px;
+        margin-left: 74%;
+    }
+    .THIS.artProof {
+        margin-left:74%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:74%;
+        margin-top:-36px;
+    }
+    .THIS.conorderPage {
+        position: absolute;
+        margin-left:74%;
+        margin-top:-500px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 49%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:500px;
+        margin-left: 49%;
+    } 
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 430px;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:220px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 19%;
+        position: absolute;
+        margin-top:220px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:220px;
+        margin-left: 26%;
+    } 
+    .THIS .responsivePrice {
+        position: absolute;
+        margin-top:220px;
+        margin-left: 36%;
+    }
+    
+    .THIS .responsiveStart {
+        margin-left: -11px;
+        position: absolute;
+        margin-top:330px;
+    }
+    
+    .THIS .responsiveOrder {
+        margin-left: 255px;
+        position: absolute;
+        margin-top:-970px;
+        background:#f2f2f2;
+        padding:10px;
+    }
+    
+    .THIS .responsiveHome {
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 39%;
+        position: absolute;
+        margin-top:-165px;
+    }
+
+}
+@media (min-width: 1350px) and (max-width: 1400px){
+    .THIS .responsivediv {
+        margin-left: 75%;
+        position: absolute;
+        margin-top:-970px;
+    }
+    
+    .THIS.homePage {
+        margin-left: 75%;
+        position: absolute;
+        margin-top:-970px;
+    }
+    .THIS.artProof {
+        margin-left:75%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:75%;
+        margin-top:-36px;
+    }
+    .THIS.conorderPage {
+        position: absolute;
+        margin-left:75%;
+        margin-top:-515px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 50%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:500px;
+        margin-left: 50%;
+    }
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 430px;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:220px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 18%;
+        position: absolute;
+        margin-top:220px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:220px;
+        margin-left: 25%;
+    } 
+    .THIS .responsivePrice {
+        position: absolute;
+        margin-top:220px;
+        margin-left: 35%;
+    } 
+    
+    .THIS .responsiveStart {
+        margin-left: -15px;
+        position: absolute;
+        margin-top: 498px;
+    }
+    
+    .THIS .responsiveOrder {
+        margin-left: 255px;
+        position: absolute;
+        margin-top:-970px;
+        background:#f2f2f2;
+        padding:10px;
+    }
+    
+    .THIS .responsiveHome {
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 40%;
+        position: absolute;
+        margin-top:-165px;
+    }
+    
+    .THIS .slds-nubbin_bottom-right:before{
+        margin-top: -7.5rem;
+        margin-right: -32px;
+        box-shadow: 1px -1px 2px 0 rgb(0 0 0 / 16%); 
+    }
+    .THIS .slds-nubbin_bottom-right:after{
+        margin-top: -7.5rem;
+        margin-right: -32px;
+        box-shadow: 1px -1px 2px 0 rgb(0 0 0 / 16%); 
+    }
+   
+}
+
+@media (min-width: 1400px) and (max-width: 1480px){
+    .THIS .responsivediv {
+        position: absolute;
+        margin-top:-970px;
+        margin-left: 76%;
+    }
+    
+    .THIS.homePage {
+        position: absolute;
+        margin-top:-970px;
+        margin-left: 76%;
+    }
+    .THIS.artProof {
+        margin-left:76%;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:76%;
+        margin-top:-36px;
+    }
+    .THIS.conorderPage {
+        position: absolute;
+        margin-left:76%;
+        margin-top:-540px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 51%;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:500px;
+        margin-left: 51%;
+    } 
+    
+    .THIS .responsiveOrderDet {
+        margin-left: 430px;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:220px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 17%;
+        position: absolute;
+        margin-top:220px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:220px;
+        margin-left: 24%;
+    } 
+    .THIS .responsivePrice {
+        position: absolute;
+        margin-top:220px;
+        margin-left: 33%;
+    }
+    
+    .THIS .responsiveStart {
+        margin-left: -15px;
+        position: absolute;
+        margin-top: 498px;
+    }
+    
+    .THIS .responsiveOrder {
+        margin-left: 250px;
+        position: absolute;
+        margin-top:-970px;
+        background:#f2f2f2;
+        padding:10px;
+    }
+    
+    .THIS .responsiveHome {
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 40%;
+        position: absolute;
+        margin-top:-165px;
+    }
+    
+    .THIS .slds-nubbin_bottom-right:before{
+        margin-top: -7.5rem;
+        margin-right: -32px;
+        box-shadow: 1px -1px 2px 0 rgb(0 0 0 / 16%); 
+    }
+    .THIS .slds-nubbin_bottom-right:after{
+        margin-top: -7.5rem;
+        margin-right: -32px;
+        box-shadow: 1px -1px 2px 0 rgb(0 0 0 / 16%); 
+    }
+    
+}
+@media (min-width: 1480px) {
+    .THIS .responsivediv {
+        position: absolute;
+        margin-top:-970px;
+        margin-left: 1120px;
+    }
+    
+    .THIS.homePage {
+        position: absolute;
+        margin-top:-970px;
+        margin-left: 1120px;
+    }
+    .THIS.artProof {
+        margin-left:1120px;
+        margin-top:-12px;
+    }
+    .THIS.startProAccPage {
+        margin-left:1120px;
+        margin-top:-36px;
+    }
+    .THIS.conorderPage { 
+        position: absolute;
+        margin-left:1120px;
+        margin-top:-540px;
+    }
+    
+    .THIS .responsiveRevdet {
+        position: absolute;
+        margin-top:245px;
+        margin-left: 740px;
+    }
+    .THIS .responsiveCommSec {
+        position: absolute;
+        margin-top:500px;
+        margin-left: 740px;
+    }
+    .THIS .responsiveOrderDet {
+        margin-left: 430px;
+        position: absolute;
+        margin-top: 25px;
+    }
+    .THIS .responsivesStageBar{
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 510px;
+        position: absolute;
+        margin-top:65px;
+    }
+    .THIS .responsiveProductName {
+        margin-left: 0px;
+        position: absolute;
+        margin-top:220px;
+    }
+    .THIS .responsiveColor {
+        margin-left: 250px;
+        position: absolute;
+        margin-top:220px;
+    }
+    .THIS .responsiveQuantity {
+        position: absolute;
+        margin-top:220px;
+        margin-left: 350px;
+    }
+    .THIS .responsivePrice {
+        position: absolute;
+        margin-top:220px;
+        margin-left: 475px;
+    }
+    
+    .THIS .responsiveStart {
+        margin-left: -25px;
+        position: absolute;
+        margin-top: 498px;
+    }
+    
+    .THIS .responsiveOrder {
+        margin-left: 235px;
+        position: absolute;
+        margin-top:-970px;
+        background:#f2f2f2;
+        padding:10px;
+    }
+    
+    .THIS .responsiveHome {
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 560px;
+        position: absolute;
+        margin-top:-165px;
+    }
+    .THIS .responsivesShipping{
+        background:#f2f2f2;
+        padding:10px;
+        margin-left: 910px;
+        position: absolute;
+        margin-top:700px;
+    }
+    
+    .THIS .slds-nubbin_bottom-right:before{
+        margin-top: -7.5rem;
+        margin-right: -32px;
+        box-shadow: 1px -1px 2px 0 rgb(0 0 0 / 16%); 
+    }
+    .THIS .slds-nubbin_bottom-right:after{
+        margin-top: -7.5rem;
+        margin-right: -32px;
+        box-shadow: 1px -1px 2px 0 rgb(0 0 0 / 16%); 
+    }
+
+}

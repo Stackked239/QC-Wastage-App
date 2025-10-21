@@ -1,0 +1,81 @@
+<apex:component layout="none">
+    <apex:attribute name="labels" type="Object[]" default="[]" description=""/>
+    <apex:variable var="cellsPerRow" value="{!2}"/>
+
+    <head>
+        <style type="text/css">
+            @page {
+                margin: 5mm;
+                margin-top: 12mm;
+                padding:0;
+                size: {!NULLVALUE($CurrentPage.parameters.pageSize, 'Letter')};
+            }
+            body {
+                font-family: sans-serif;
+                font-size:12pt;
+                margin:0;
+                padding:0;
+            }
+            div.barcode div table {
+                margin: 0 auto;
+            }
+            td.label {
+                width: {!100/cellsPerRow}% !important;
+                height: 2in;
+                vertical-align:top;
+                border:1px dotted;
+                padding:3mm;
+            }           
+            .barcode{
+                /*font-size:12pt;*/
+            }
+        </style>
+    </head>
+    <body>
+    <apex:variable var="len" value="{!labels.size}"/>
+
+    <apex:outputPanel rendered="{!len == 0}">
+        <div style="text-align:center">Please select at least one record, prior to clicking the button.</div>
+    </apex:outputPanel>
+
+    <apex:variable var="i" value="{!0}"/>
+
+    <apex:repeat value="{!labels}" rendered="{!len != 0}">
+
+        <apex:outputPanel rendered="{!MOD(i,cellsPerRow) == 0}">
+            <apex:variable var="cell" value="{!0}"/>
+            <table width="100%" style="border-collapse:collapse; page-break-inside:avoid;">
+                <tr>
+                    <td class="label">
+                        <apex:outputPanel layout="none" rendered="{!(i+cell) < len}">
+                            <c:gcmpSobject_printLabel label="{!labels[i+cell]}"/>
+                        </apex:outputPanel>
+                    </td>
+
+                    <apex:outputPanel layout="none" rendered="{!cellsPerRow > 1}">
+                        <apex:variable var="cell" value="{!cell+1}"/>
+
+                        <td class="label">
+                            <apex:outputPanel layout="none" rendered="{!(i+cell) < len}">
+                                <c:gcmpSobject_printLabel label="{!labels[i+cell]}"/>
+                            </apex:outputPanel>
+                        </td>
+                    </apex:outputPanel>
+
+                    <apex:outputPanel layout="none" rendered="{!cellsPerRow > 2}">
+                        <apex:variable var="cell" value="{!cell+1}"/>
+
+                        <td class="label">
+                            <apex:outputPanel layout="none" rendered="{!(i+cell) < len}">
+                                <c:gcmpSobject_printLabel label="{!labels[i+cell]}"/>
+                            </apex:outputPanel>
+                        </td>
+                    </apex:outputPanel>                    
+                </tr>
+            </table>
+
+        </apex:outputPanel>
+        <apex:variable var="i" value="{!i+1}"/>
+    </apex:repeat>
+    </body>
+</apex:component>

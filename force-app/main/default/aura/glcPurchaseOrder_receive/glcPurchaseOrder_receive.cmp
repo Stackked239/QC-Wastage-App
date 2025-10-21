@@ -1,0 +1,385 @@
+<aura:component controller="gcPurchaseOrder_receive" implements="force:hasRecordId,force:lightningQuickActionWithoutHeader">
+
+
+    <aura:attribute name="showModal"		type="Boolean" 	access="private" default="false" description="Launch a modal popup from this component, typically for the purpose of editing a displayed value."/>
+    <aura:attribute name="focusTimer"		type="Object"	access="private"/>
+
+    <aura:handler name="init" 	value="{!this}" action="{!c.onInit}"/>
+    <aura:handler name="barcodeScanEvent" event="GMBLBC:barcodeScanEvent" action="{!c.onScanSuccess}"/>
+
+    <aura:attribute name="pageMessages"     type="String"/>
+    
+    <lightning:navigation aura:id="navService"/>
+
+    <!-- <aura:attribute name="action"			type="String" 	default="defaultAction"/> -->
+
+    <aura:attribute name="activeTab"        type="String"   default="poLines"   description="poLines,poMoves"/>
+
+    <aura:attribute name="poId"             type="String"/>
+    <aura:attribute name="po"               type="Object"/>
+    
+    <aura:attribute name="poLineId"         type="String"/>
+    <aura:attribute name="poLines"          type="Object[]"/>
+    <aura:attribute name="poMoves"          type="Object[]"/>
+
+    <aura:attribute name="qty"              type="Decimal"/>
+    <aura:attribute name="qtyFocus"         type="Boolean"  default="true"/>    
+    
+    <aura:attribute name="rapidMode"        type="Boolean" default="true"/>
+
+    <aura:attribute name="whsId"            type="String"/>
+    <aura:attribute name="whsOptions"       type="Object[]"/>
+
+    <aura:attribute name="locId"            type="String"/>
+    <aura:attribute name="locOptions"       type="Object[]"/>
+
+    <aura:attribute name="mapLocations"     type="Object"/>
+
+    <aura:attribute name="uiMode"           type="String"   default="scan"  description="selectLocation,detail"/>
+
+    <aura:attribute name="modalRecordId"		type="String"/>
+    <aura:attribute name="modalObjectApiName"	type="String" default="AcctSeedERP__Purchase_Order_Inventory_Movement__c"/>    
+    <aura:attribute name="modalRecordFields"	type="String[]" default="['Name','AcctSeedERP__Product__c','AcctSeedERP__Quantity__c']"/>
+
+    <aura:attribute name="recordLoadError" 	type="String"	access="private"/>
+
+    <force:recordData aura:id="recordData_po"
+                        recordId="{!v.poId}"
+                        fields="Id,Name"
+                        targetFields="{!v.po}"
+                        targetError="{!v.recordLoadError}"/>   
+
+    <GMBLBC:barcodeScanner aura:id="nativeScanner" onsuccess="{!c.onScanSuccess}" barcodeTypes="CODE_128"/>
+
+    <div style="max-width:500px; min-height:100px; margin:0 auto" class="slds-theme_default slds-p-around_small slds-is-relative">
+        <lightning:spinner aura:id="mySpinner"/>
+        <div aura:id="myBody" class="slds-hide">
+            
+            <aura:if isTrue="{!$Browser.formFactor != 'DESKTOP'}">
+                <div class="slds-grid slds-grid_vertical-align-end slds-m-bottom_xx-small">
+                    <div class="slds-col slds-text-align_left slds-has-flexi-truncate">
+                        <div  class="g-text-color_link slds-text-heading_small slds-truncate"
+                              style="font-weight:bold;" 
+                              data-selected-recordId="{!v.poId}"
+                              data-selected-replaceNavHistory="true"
+                              onclick="{!c.closeQuickAction}">
+                            <lightning:icon iconName="utility:back" class="g-fill-blue" size="small"/>&nbsp;
+                            {!v.po.Name}                            
+                        </div>
+                    </div>
+                </div>
+            </aura:if>
+            
+            <!-- Warehouse & Location -->
+            <aura:if isTrue="{!1==1}">
+                
+                <div style="font-size:14pt;background: DarkBlue;" class="slds-p-around_xx-small slds-text-color_inverse slds-text-align_center">
+                    <aura:if isTrue="{!v.uiMode == 'selectLocation'}">
+                        Select Receiving Location
+                        <aura:set attribute="else">
+                            Receiving Location
+                        </aura:set>
+                    </aura:if>
+                </div>
+
+                <div class="slds-grid slds-grid_vertical-align-end slds-m-bottom_xx-small">
+                    <div class="slds-col slds-size_5-of-12 slds-p-right_x-small">
+                        <lightning:select aura:id="selectWarehouse"
+                                            label="Warehouse"
+                                            value="{!v.whsId}"
+                                            onchange="{!c.onChangeWhs}"
+                                            disabled="{!v.uiMode != 'selectLocation'}">
+                            <aura:iteration items="{!v.whsOptions}" var="option">
+                                <option text="{!option.Name}" value="{!option.Id}" selected="{!option.Id == v.whsId}"/>
+                            </aura:iteration>
+                        </lightning:select>
+                    </div>
+                    <div class="slds-col slds-size_4-of-12">
+                        <lightning:select aura:id="selectLocation"
+                            label="Location"
+                            value="{!v.locId}"
+                            disabled="{!v.uiMode != 'selectLocation'}">
+                            <aura:iteration items="{!v.locOptions}" var="option">
+                                <option text="{!option.Name}" value="{!option.Id}" selected="{!option.Id == v.locId}"/>
+                            </aura:iteration>
+                        </lightning:select>
+                    </div>
+                    <div class="slds-col slds-size_3-of-12 slds-p-left_x-small">
+                        <aura:if isTrue="{!v.uiMode != 'selectLocation'}">
+                            <span class="slds-m-right_small slds-button slds-button_brand slds-button_stretch"
+                            onclick="{!c.onClickResetLocation}">
+                                change
+                            </span>
+                            <aura:set attribute="else">
+                                <span class="slds-m-right_small slds-button slds-button_brand"
+                                    onclick="{!c.onClickSelectLocation}">
+                                    continue...
+                                </span>                                
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                </div>
+            </aura:if>
+            
+            <!-- Scan Product Code-->
+            <aura:if isTrue="{!v.uiMode == 'scan'}">
+                <div style="font-size:14pt;" class="slds-text-align_center">                  
+                    <div style="background: DarkBlue;" class="slds-text-color_inverse slds-p-around_xx-small">
+                        Scan Product Barcode
+                    </div>
+                </div>
+ 
+                <div class="slds-grid slds-grid_vertical-align-center slds-m-top_x-small">
+                    <div class="slds-col">
+                        <GMBLBC:barcodeScanText aura:id="laserScanner_productCode"/>
+                    </div>
+                    <aura:if isTrue="{!$Browser.formFactor != 'DESKTOP'}">
+                        <div class="slds-col slds-size_3-of-12 slds-p-left_x-small">
+                            <lightning:button variant="brand" class="slds-button_stretch" onclick="{!c.onScanStart}">
+                                <lightning:icon src="{!$Resource.GMBLBC__scanIconSvg + '#g-icon'}" size="large"/>
+                            </lightning:button>
+                        </div>                
+                    </aura:if>
+                </div>
+            </aura:if>
+
+            <!-- sub-tabs -->
+            <aura:if isTrue="{!v.uiMode == 'scan'}">
+                <lightning:tabset class="slds-m-top_none slds-m-bottom_none slds-p-around_none">
+                    <lightning:tab label="PO Lines" id="lines" onactive="{!c.onActiveTab_lines}"></lightning:tab>
+                    <lightning:tab label="Inventory Movements" id="moves" onactive="{!c.onActiveTab_moves}"></lightning:tab>
+                </lightning:tabset>
+            </aura:if>
+
+
+            <!-- PO Lines -->
+            <aura:if isTrue="{!or(and(v.uiMode == 'scan',v.activeTab == 'poLines'),v.uiMode == 'detail')}">
+                <aura:if isTrue="{!v.uiMode == 'scan'}">
+                    <div class="slds-text-title slds-m-top_none slds-text-align_center slds-p-around_xx-small slds-theme_shade slds-border_top slds-border_bottom">
+                        Purchase Order Lines ({!v.poLines.length})
+                    </div>
+                </aura:if>
+                <aura:if isTrue="{!v.uiMode == 'detail'}">
+                    <div style="font-size:14pt;" class="slds-text-align_center">                  
+                        <div style="background: DarkBlue;" class="slds-text-color_inverse slds-p-around_xx-small">
+                            Selected Purchase Order Line
+                        </div>
+                    </div>                    
+                </aura:if>
+
+                <ui:scrollerWrapper class="scroller2 slds-border_bottom">
+                    <aura:iteration items="{!v.poLines}" var="r">
+                    
+                        <aura:if isTrue="{!or(v.poLineId == null,v.poLineId==r.Id)}">
+
+                            <div class="g-box slds-grid slds-wrap">
+
+                                <div class="slds-col slds-size_3-of-12 slds-text-align_left">
+
+                                </div>                            
+                                <div class="slds-col slds-size_6-of-12 slds-text-align_center">
+                                    <span class="slds-text-link"
+                                        data-selected-recordId="{!r.Id}"
+                                        onclick="{!c.goToRecord}">
+                                        {!r.Name}
+                                    </span>
+                                </div>
+
+                                <div class="slds-col slds-size_3-of-12 slds-text-align_right">
+                                    <aura:if isTrue="{!v.poLineId == null}">
+                                        <span class="slds-m-around_none slds-p-left_x-small slds-p-right_x-small slds-button slds-button_brand"
+                                                data-selected-recordId="{!r.Id}"
+                                                onclick="{!c.onClickSelectPol}">
+                                            select
+                                        </span>
+                                        <!--
+                                        <aura:set attribute="else">
+                                            
+                                            <span class="slds-m-around_none slds-p-left_x-small slds-p-right_x-small slds-button slds-button_brand"
+                                            data-selected-recordId="{!r.Id}"
+                                            onclick="{!c.onClickResetPol}">
+                                                change
+                                            </span>                                            
+                                        </aura:set>   
+                                        -->                                   
+                                    </aura:if>
+                                </div>
+
+                                <div class="slds-col slds-size_1-of-3">Product</div>
+                                <div class="slds-col slds-size_2-of-3 slds-text-align_right">{!r.AcctSeedERP__Product__r.Name}</div>
+
+                                <div class="slds-col slds-size_1-of-3">Product Code</div>
+                                <div class="slds-col slds-size_2-of-3 slds-text-align_right">{!r.AcctSeedERP__Product__r.ProductCode}</div>
+
+                                <div class="slds-col slds-size_2-of-3">Received / Ordered</div>
+                                <div class="slds-col slds-size_1-of-3 slds-text-align_right slds-p-right_xx-small" 
+                                      style="{!r.AcctSeedERP__Quantity_Received__c > r.AcctSeedERP__Quantity__c ? 'background-color:red' : (r.AcctSeedERP__Quantity_Received__c == r.AcctSeedERP__Quantity__c ? 'background-color:green' : 'background-color:yellow')}">
+                                        <b>{!r.AcctSeedERP__Quantity_Received__c}&nbsp;/&nbsp;{!r.AcctSeedERP__Quantity__c}</b>
+                                </div>
+                            </div>                            
+                        </aura:if>
+
+                    </aura:iteration>
+                </ui:scrollerWrapper>
+            </aura:if>
+
+            <!-- Enter Qty / Scan Serial -->
+            <aura:if isTrue="{!v.uiMode == 'detail'}">
+                <div style="font-size:14pt;background: DarkBlue;" class="slds-p-around_xx-small slds-text-color_inverse slds-text-align_center">
+                    Enter Qty
+                </div>
+                <!--
+                <div style="font-size:12pt;" class="slds-grid slds-m-top_xx-small slds-grid_vertical-align-center slds-text-align_center">
+                    <div class="slds-col slds-size_3-of-12 slds-text-color_inverse slds-p-around_xx-small" style="background: DarkBlue;">Enter Qty</div>
+                    <aura:if isTrue="{!!v.qtyFocus}">
+                        <div class="slds-col slds-size_1-of-12" style="font-size:14pt;"><b>OR</b></div>
+                        <div class="slds-col slds-size_8-of-12 slds-text-color_inverse slds-p-around_xx-small" style="background: DarkBlue;">Scan Serial Number</div>                        
+                        <aura:set attribute="else">
+                            <div class="slds-col"></div>
+                        </aura:set>
+                    </aura:if>
+                </div>                    
+                -->
+                        
+                <div class="slds-grid slds-grid_vertical-align-center slds-m-top_xx-small slds-m-bottom_large">
+
+                    <div class="slds-col slds-size_3-of-12 slds-m-top_xx-small slds-m-bottom_xx-small" onkeypress="{!c.onQtyKeyPress}">
+                        <lightning:input aura:id="inputQty"
+                            onfocus="{!c.onFocusQty}"
+                            type="number"
+                            value="{!v.qty}"
+                            variant="label-hidden"/>
+                    </div>
+                    
+                    <aura:if isTrue="{!!v.qtyFocus}">
+                        <div class="slds-col slds-size_1-of-12"></div>
+                        <div class="slds-col slds-p-top_xx-small">
+                            <GMBLBC:barcodeScanText aura:id="laserScanner_serialNumber"/>
+                        </div>
+                        <aura:if isTrue="{!$Browser.formFactor != 'DESKTOP'}">
+                            <div class="slds-col slds-size_3-of-12 slds-p-left_x-small">
+                                <lightning:button variant="brand" class="slds-button_stretch" onclick="{!c.onScanStart}">
+                                    <lightning:icon src="{!$Resource.GMBLBC__scanIconSvg + '#g-icon'}" size="large"/>
+                                </lightning:button>
+                            </div>                
+                        </aura:if>
+                        <aura:set attribute="else">
+                            <div class="slds-col slds-p-left_small">
+                                <lightning:button variant="brand" onclick="{!c.onClickQtySave}">Save</lightning:button>&nbsp;
+                                <lightning:button variant="destructive" onclick="{!c.onClickResetPol}">Cancel / Back</lightning:button>                                
+                            </div>
+                        </aura:set>
+                    </aura:if>
+
+                </div>
+            </aura:if>
+
+
+            <!-- PO Moves-->
+            <aura:if isTrue="{!or(and(v.uiMode == 'scan',v.activeTab == 'poMoves'),v.uiMode == 'detail')}">
+
+                <div class="slds-text-title slds-m-top_none slds-text-align_center slds-p-around_xx-small slds-theme_shade slds-border_top slds-border_bottom">
+                    Inventory Movements ({!v.poMoves.length})
+                </div>
+
+                <ui:scrollerWrapper class="{!if(v.uiMode == 'scan', 'scroller2', 'scroller') +' slds-border_bottom'}">
+                    <aura:iteration items="{!v.poMoves}" var="r">
+        
+                        <div class="g-box slds-grid slds-wrap">
+                            <div class="slds-col slds-size_3-of-12 slds-text-align_left">
+                                <span class="slds-m-around_none slds-p-left_x-small slds-p-right_x-small slds-button slds-button_destructive"
+                                    data-selected-recordId="{!r.Id}"
+                                    onclick="{!c.onClickDeleteChild}">
+                                    delete
+                                </span>
+                            </div>                            
+                            <div class="slds-col slds-size_6-of-12 slds-text-align_center">
+                                <span class="slds-text-link"
+                                    data-selected-recordId="{!r.Id}"
+                                    onclick="{!c.goToRecord}">
+                                    {!r.Name}
+                                </span>
+                            </div>
+
+                            <div class="slds-col slds-size_3-of-12 slds-text-align_right">
+                                <!-- <span class="slds-m-around_none slds-p-left_x-small slds-p-right_x-small slds-button slds-button_brand"
+                                    data-selected-recordId="{!r.Id}"
+                                    onclick="{!c.onClickEditChild}">
+                                    edit
+                                </span> -->
+                            </div>
+                            
+                            <aura:if isTrue="{!r.AcctSeedERP__Serial_Number__c != null}">
+                                <div class="slds-col slds-size_1-of-3">Serial Number</div>
+                                <div class="slds-col slds-size_2-of-3 slds-text-align_right">{!r.AcctSeedERP__Serial_Number__c}</div>                                
+                            </aura:if>
+                            
+                            <aura:if isTrue="{!or(r.AcctSeedERP__Serial_Number__c == null,r.AcctSeedERP__Quantity__c != 1)}">
+                                <div class="slds-col slds-size_1-of-3">Qty</div>
+                                <div class="slds-col slds-size_2-of-3 slds-text-align_right">{!r.AcctSeedERP__Quantity__c}</div>                                
+                            </aura:if>
+                            
+                            <aura:if isTrue="{!v.uiMode == 'scan'}">
+                                <div class="slds-col slds-size_1-of-3">Product</div>
+                                <div class="slds-col slds-size_2-of-3 slds-text-align_right">{!r.AcctSeedERP__Inventory_Balance__r.AcctSeedERP__Product__r.Name}</div>
+                                <div class="slds-col slds-size_1-of-3">Product Code</div>
+                                <div class="slds-col slds-size_2-of-3 slds-text-align_right">{!r.AcctSeedERP__Inventory_Balance__r.AcctSeedERP__Product__r.ProductCode}</div>   
+                            </aura:if>
+                            
+                            <div class="slds-col slds-size_1-of-3">Received To</div>
+                            <div class="slds-col slds-size_2-of-3 slds-text-align_right">
+                                {!r.AcctSeedERP__Inventory_Balance__r.AcctSeedERP__Location__r.Name}
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-3">Date</div>
+                            <div class="slds-col slds-size_2-of-3 slds-text-align_right">
+                                <lightning:formattedDateTime value="{!r.AcctSeedERP__Movement_Date__c}" year="numeric" month="numeric" day="numeric"/>
+                            </div>
+                        
+                        </div>
+                    </aura:iteration>
+                </ui:scrollerWrapper>
+            </aura:if>
+
+            <aura:if isTrue="{!v.showModal}">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container">
+                            <!--
+                            <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Modal Header</h2>
+                            </header>
+                            -->
+                            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <lightning:recordForm
+                                columns="1"              
+                                recordId="{!v.modalRecordId}"
+                                objectApiName="{!v.modalObjectApiName}"
+                                fields="{!v.modalRecordFields}"
+                                mode="edit"
+                                onload="{!c.onLoadModalEdit}"                
+                                oncancel="{!c.editChild_onCancel}"
+                                onsuccess="{!c.editChild_onSuccess}">
+                                
+                            </lightning:recordForm>
+                            </div>
+                            <!--
+                            <footer class="slds-modal__footer">
+                            <lightning:button variant="neutral"
+                                                label="Cancel"
+                                                title="Cancel"/>
+                            <lightning:button variant="brand"
+                                                label="Save"
+                                                title="Save"/>
+                            </footer>
+                            -->         
+                        </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </aura:if>
+
+        </div>
+    </div>	
+</aura:component>

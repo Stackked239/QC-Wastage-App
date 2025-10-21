@@ -1,0 +1,38 @@
+<template>
+    <div class="slds-grid slds-wrap slds-theme_default" style="overflow: hidden;">
+        <div class={tabClass} style="padding-bottom : 2%;"> 
+        <lightning-button data-id="open" class="hide" variant="base" label="&#9776;" onclick={handleSidebarClick} ></lightning-button>
+        <lightning-button data-id="close" class="closebtn" variant="base" label="&#128473;" onclick={closeSideBar} ></lightning-button>
+        <!--    <lightning-layout class="slds-theme_default">      -->     
+                <lightning-layout-item >
+                <div class={sidebar}>   
+                    <lightning-vertical-navigation selected-item={selectedItem} onclick={handleClick} onselect={handleSelect} class="navigation mobileView">
+                        <h3 id="entity-header1" class="slds-nav-vertical__title">Art Approval Dashboard</h3>
+                        <hr style="margin:0%"/>
+                        <lightning-vertical-navigation-section label="Menu" active-tab-value={selectedItem}>
+                            <template if:false={isInternalUser}> <lightning-vertical-navigation-item label="Pending Art Approval" name="pending_approval"></lightning-vertical-navigation-item></template>
+                            <lightning-vertical-navigation-item label="In Revision" name="pending_revision"></lightning-vertical-navigation-item>
+                            <template if:false={isInternalUser}>  <lightning-vertical-navigation-item label="Previous Orders" name="previous_orders"></lightning-vertical-navigation-item></template>
+                        </lightning-vertical-navigation-section>
+                    </lightning-vertical-navigation>
+                </div> 
+        </lightning-layout-item></div>
+        <div  class="slds-col slds-size_1-of-1 slds-medium-size_3-of-4 slds-large-size_3-of-4" style="padding-bottom : 2%;">
+        <lightning-layout-item  padding="around-medium" style="width:100%;" >
+                <template if:false={isInternalUser}>
+                    <template if:true={isPendingArtApproval}> 
+                        <c-s-c_-art-proofing-list-component></c-s-c_-art-proofing-list-component>
+                    </template>
+                </template>
+                <template if:true={isInRevision}>
+                    <c-s-c_-art-proofing-revision-list-component></c-s-c_-art-proofing-revision-list-component>
+                </template>    
+                <template if:false={isInternalUser}>
+                    <template if:true={isPreviousOrders}>
+                        <c-art-proofing-previous-order-list></c-art-proofing-previous-order-list>
+                    </template>
+                </template> 
+            </lightning-layout-item></div>
+    <!--    </lightning-layout>  -->
+    </div>
+</template>

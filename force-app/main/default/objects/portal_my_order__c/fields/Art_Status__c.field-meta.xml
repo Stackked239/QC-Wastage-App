@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Art_Status__c</fullName>
+    <label>Art Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Assigned Out</fullName>
+                <default>false</default>
+                <label>Assigned Out</label>
+            </value>
+            <value>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+                <label>In Progress</label>
+            </value>
+            <value>
+                <fullName>Revision In Progress</fullName>
+                <default>false</default>
+                <label>Revision In Progress</label>
+            </value>
+            <value>
+                <fullName>Pause Art</fullName>
+                <default>false</default>
+                <label>Pause Art</label>
+            </value>
+            <value>
+                <fullName>Uploaded</fullName>
+                <default>false</default>
+                <label>Uploaded</label>
+            </value>
+            <value>
+                <fullName>Waiting on PA</fullName>
+                <default>false</default>
+                <label>Waiting on PA</label>
+            </value>
+            <value>
+                <fullName>Ashore Revision</fullName>
+                <default>false</default>
+                <label>Ashore Revision</label>
+            </value>
+            <value>
+                <fullName>Portal Revision</fullName>
+                <default>false</default>
+                <label>Portal Revision</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

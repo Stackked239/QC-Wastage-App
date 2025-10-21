@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Coolyz_Colors__c</fullName>
+    <label>Coolyz Colors</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Black and white</fullName>
+                <default>false</default>
+                <label>Black and white</label>
+            </value>
+            <value>
+                <fullName>Blue and white</fullName>
+                <default>false</default>
+                <label>Blue and white</label>
+            </value>
+            <value>
+                <fullName>Camo</fullName>
+                <default>false</default>
+                <label>Camo</label>
+            </value>
+            <value>
+                <fullName>Forest</fullName>
+                <default>false</default>
+                <label>Forest</label>
+            </value>
+            <value>
+                <fullName>Blue</fullName>
+                <default>false</default>
+                <label>Blue</label>
+            </value>
+            <value>
+                <fullName>Green</fullName>
+                <default>false</default>
+                <label>Green</label>
+            </value>
+            <value>
+                <fullName>Tie Dye</fullName>
+                <default>false</default>
+                <label>Tie Dye</label>
+            </value>
+            <value>
+                <fullName>Tropical</fullName>
+                <default>false</default>
+                <label>Tropical</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

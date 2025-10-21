@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Search_Julie</fullName>
+    <columns>NAME</columns>
+    <columns>Issue_Group__c</columns>
+    <columns>Pulled_from_Inventory__c</columns>
+    <columns>Inventory_SKU__c</columns>
+    <columns>Inventory_adult_sizes__c</columns>
+    <columns>Inventory_youth_sizes__c</columns>
+    <columns>of_shirts__c</columns>
+    <columns>Est_Wastage_Cost__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Inventory_colors__c</columns>
+    <columns>Outbound_Inventory_Movement__c</columns>
+    <columns>Inbound_Inventory_Movement__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Issue_Group__c</field>
+        <operation>equals</operation>
+        <value>QC Rack</value>
+    </filters>
+    <filters>
+        <field>of_shirts__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Inventory_SKU__c</field>
+        <operation>contains</operation>
+        <value>291</value>
+    </filters>
+    <label>Search-Julie</label>
+</ListView>

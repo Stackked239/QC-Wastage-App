@@ -1,0 +1,950 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <choices>
+        <name>ADD_ON</name>
+        <choiceText>ADD ON</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>ADD ON</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>ADDONDNP</name>
+        <choiceText>ADD ON/DNP</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>ADD ON/DNP</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Client</name>
+        <choiceText>Client</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Client</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Colton_Graham</name>
+        <choiceText>Colton Graham</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>0053g000000aPZ2AAM</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Crystal_McVoy</name>
+        <choiceText>Crystal McVoy</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>0054w00000AcWDpAAN</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>DNP</name>
+        <choiceText>DNP</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>DNP</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>expedited</name>
+        <choiceText>expedited</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>expedited</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Expedited1</name>
+        <choiceText>Expedited</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Expedited</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>FDchoice</name>
+        <choiceText>FD</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>FD</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Get_Quoted_Option</name>
+        <choiceText>Get Quoted Option</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Get Quoted Option</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Gianna_Carlucci</name>
+        <choiceText>Gianna Carlucci</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>005VL000000H9mrYAC</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Ground</name>
+        <choiceText>Ground</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Ground</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>High</name>
+        <choiceText>High</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>High</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Inventory</name>
+        <choiceText>Inventory</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Inventory</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Jeff_Kukuk</name>
+        <choiceText>Jeff Kukuk</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>0053g000000aPYtAAM</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>John_Rucker</name>
+        <choiceText>John Rucker</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>0053g000000aPYuAAM</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>L</name>
+        <choiceText>L</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>L</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Low</name>
+        <choiceText>Low</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Low</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Lyzzie_Ortiz</name>
+        <choiceText>Lyzzie Ortiz</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>0054w00000Bo2EeAAJ</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>M</name>
+        <choiceText>M</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>M</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Medium</name>
+        <choiceText>Medium</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Medium</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>No</name>
+        <choiceText>No</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>No</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>On_Boarding</name>
+        <choiceText>On Boarding</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>On Boarding</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Overnight_Ship</name>
+        <choiceText>Overnight Ship</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Overnight Ship</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Post_Opps_Option</name>
+        <choiceText>Post Opps</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Post Opps</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Quote_Follow_Up_Option</name>
+        <choiceText>Quote Follow Up Option</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Quote Follow Up Option</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Regular</name>
+        <choiceText>Regular</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Regular</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>RushToday</name>
+        <choiceText>Rush Today</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Rush Today</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>RushTomorrow</name>
+        <choiceText>Rush Tomorrow</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Rush Tomorrow</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>S</name>
+        <choiceText>S</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>S</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Stacia_C</name>
+        <choiceText>Stacia C.</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Stacia C.</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Stacia_Curione</name>
+        <choiceText>Stacia Curione</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>0053g000000aPZ7AAM</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Sunday_Cool</name>
+        <choiceText>Sunday Cool</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Sunday Cool</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>X2_Day_Ship</name>
+        <choiceText>2 - Day Ship</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>2 - Day Ship</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>X2XL</name>
+        <choiceText>2XL</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>2XL</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>X3_30_Rush_Today</name>
+        <choiceText>3:30 Rush Today</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>3:30 Rush Today</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>X3XL</name>
+        <choiceText>3XL</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>3XL</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>X4XL</name>
+        <choiceText>4XL</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>4XL</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>XL</name>
+        <choiceText>XL</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>XL</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>XS</name>
+        <choiceText>XS</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>XS</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Yes</name>
+        <choiceText>Yes</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Yes</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>YL</name>
+        <choiceText>YL</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>YL</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>YM</name>
+        <choiceText>YM</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>YM</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>YS</name>
+        <choiceText>YS</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>YS</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>YXL</name>
+        <choiceText>YXL</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>YXL</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>YXS</name>
+        <choiceText>YXS</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>YXS</stringValue>
+        </value>
+    </choices>
+    <decisions>
+        <name>Where_Is_the_Lead_Going</name>
+        <label>Where Is the Lead Going?</label>
+        <locationX>182</locationX>
+        <locationY>566</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Lead_Movement_Screen</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Distribute_Lead.value</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Distribute Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Lead_Distribution_Details</targetReference>
+            </connector>
+            <label>Lead Movement Screen</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>TODAY</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()</expression>
+    </formulas>
+    <formulas>
+        <name>TomorrowDate</name>
+        <dataType>Date</dataType>
+        <expression>TODAY() + 1</expression>
+    </formulas>
+    <interviewLabel>Lead Distribution Tool {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead Distribution Tool</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>Create_Lead_Dist_Task</name>
+        <label>Create Lead Dist. Task</label>
+        <locationX>50</locationX>
+        <locationY>1106</locationY>
+        <inputAssignments>
+            <field>ActivityDate</field>
+            <value>
+                <elementReference>TODAY</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>Lead_Distribution_Notes</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Opportunity_Owner</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <stringValue>High</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Open</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <stringValue>New Lead Distribution</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <stringValue>General Task</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhatId</field>
+            <value>
+                <elementReference>Get_Opportunity.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhoId</field>
+            <value>
+                <elementReference>Get_Opp_s_Contact.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_Opp_s_Contact</name>
+        <label>Get Opp&apos;s Contact</label>
+        <locationX>182</locationX>
+        <locationY>242</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Opps_Account</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity.ContactId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Opportunity</name>
+        <label>Get Opportunity</label>
+        <locationX>182</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Opp_s_Contact</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Opps_Account</name>
+        <label>Get Opps Account</label>
+        <locationX>182</locationX>
+        <locationY>350</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Lead_Distribution_Screen_1</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity.AccountId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Contact_Ownership</name>
+        <label>Update Contact Ownership</label>
+        <locationX>50</locationX>
+        <locationY>890</locationY>
+        <connector>
+            <targetReference>Update_Opps_Account</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opp_s_Contact.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Opportunity_Owner</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Opportunity_Ownership</name>
+        <label>Update Opportunity Ownership</label>
+        <locationX>50</locationX>
+        <locationY>782</locationY>
+        <connector>
+            <targetReference>Update_Contact_Ownership</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Lead_Distribution_Time__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Opportunity_Owner</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Opps_Account</name>
+        <label>Update Opps Account</label>
+        <locationX>50</locationX>
+        <locationY>998</locationY>
+        <connector>
+            <targetReference>Create_Lead_Dist_Task</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opps_Account.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Opportunity_Owner</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <screens>
+        <name>Lead_Distribution_Details</name>
+        <label>Lead Distribution Details</label>
+        <locationX>50</locationX>
+        <locationY>674</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <backButtonLabel>Exit</backButtonLabel>
+        <connector>
+            <targetReference>Update_Opportunity_Ownership</targetReference>
+        </connector>
+        <fields>
+            <name>Lead_Distribution_Details_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Lead_Distribution_Details_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Opportunity_Owner</name>
+                    <choiceReferences>Jeff_Kukuk</choiceReferences>
+                    <choiceReferences>John_Rucker</choiceReferences>
+                    <choiceReferences>Stacia_Curione</choiceReferences>
+                    <choiceReferences>Gianna_Carlucci</choiceReferences>
+                    <choiceReferences>Colton_Graham</choiceReferences>
+                    <choiceReferences>Crystal_McVoy</choiceReferences>
+                    <choiceReferences>Lyzzie_Ortiz</choiceReferences>
+                    <dataType>String</dataType>
+                    <fieldText>Opportunity Owner</fieldText>
+                    <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>12</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Lead_Distribution_Notes</name>
+            <fieldText>Lead Distribution Notes</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>Confirm Changes</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Lead_Distribution_Screen_1</name>
+        <label>Lead Distribution Screen 1</label>
+        <locationX>182</locationX>
+        <locationY>458</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Where_Is_the_Lead_Going</targetReference>
+        </connector>
+        <fields>
+            <name>Lead_Distribution_Screen_1_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Lead_Distribution_Screen_1_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Distribute_Lead</name>
+                    <extensionName>c:fsc_flowButtonBar</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>alignment</name>
+                        <value>
+                            <stringValue>center</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>orientation</name>
+                        <value>
+                            <stringValue>horizontal</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>showLines</name>
+                        <value>
+                            <stringValue>neither</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>actionMode</name>
+                        <value>
+                            <stringValue>navigation</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>buttons</name>
+                        <value>
+                            <stringValue>[{&quot;label&quot;:&quot;Distribute Lead&quot;,&quot;value&quot;:&quot;Distribute Lead&quot;,&quot;iconPosition&quot;:&quot;left&quot;,&quot;variant&quot;:&quot;success&quot;,&quot;iconName&quot;:&quot;utility:adduser&quot;,&quot;index&quot;:0}]</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <storeOutputAutomatically>true</storeOutputAutomatically>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>12</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>false</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Opportunity</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>ADDONDNPTEMPLATE</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!8a65e2f0-ad50-4dce-bd46-b11fa865d2f8}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>ArtRushTemplate</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!e119d4fc-72a6-4670-9bbb-d38f3c82aec3} - Actual # of Items - {!Get_Opportunity.Actual_Number_of_Items__c}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>InventorySlackDetails</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Garment - {!f6602a83-2350-41e3-b6ed-7ef3258891fd}
+ Contact - {!a823f2d8-a680-42cf-9a9f-15bc409f01a0}
+Address - {!Get_Opportunity.Shipping_Street__c}
+{!Get_Opportunity.Shipping_City__c}
+{!Get_Opportunity.Shipping_State__c}
+{!Get_Opportunity.Shipping_Zip__c}
+{!Get_Opportunity.Shipping_Country__c}
+Ship Type - {!ed05d642-1e78-4896-b7cc-ccca1c1d79b3}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>LeadNotes</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>-How did you hear about Sunday Cool? (lead source)
+
+-What type of ministry? (this used to be a place in sf?)
+
+-How many does your group normally run? (typical order size)
+
+-What types of events do you do/order apparel for? (buying matrix)
+
+-Have you ever ordered apparel? with who?
+
+-What products have you done/are you interested in doing?
+
+-What are they used to spending? (budget)
+
+-What is something you are looking for in a printer/partner?
+
+-(shirt size)?
+
+-(shipping address)?</text>
+    </textTemplates>
+    <textTemplates>
+        <name>PriceExceptionEmailBody</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;{!Get_Opportunity.Name}&lt;/p&gt;&lt;p&gt;{!Get_Opportunity.Owner.Name}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Grid Price - {!Get_Opportunity.Grid_Price__c}&lt;/li&gt;&lt;li&gt;Actual Number of Items - {!Get_Opportunity.Actual_Number_of_Items__c}&lt;/li&gt;&lt;li&gt;Print Summary - {!Get_Opportunity.Print_Summary__c}&lt;/li&gt;&lt;li&gt;Details - {!Get_Opportunity.Details_History_Value_Info__c}&lt;/li&gt;&lt;/ul&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>RushFDINTEMPLATE</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Vendor - {!45ab3e21-5fff-4a0b-b6e2-4e6580b2dfe6}
+Product - {!314c265a-7ea6-4342-9c2e-5febd114fc5d}
+Warehouse - {!779754fd-00f3-4fe9-aa9e-c2e92f7fb513}
+Stock - {!f3bf6ac1-3fb5-49f5-a32b-98f03f3253d8}
+Must Have - {!24bce639-27ac-42c8-9283-e59c11d455e7}
+Expedited Shipping - {!66806232-d120-4e83-8eaa-420e5147041e}
+Who is Paying - {!dd3ad658-38b6-40ab-9030-ba5814be9c98}
+Extra Information - {!d882577c-1da2-4d0f-97c7-7a7f7c00037d}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>RUSHPRINT</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Quantity - {!7019d20f-d205-463f-9592-87169c78d78d}
+Garment Type - {!40d4b326-6fb5-410b-be2e-f3c01b1f825f}
+Print Date Requested - {!ff0839eb-9149-4bc4-8785-87fe42410869}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>RushTypeChoiceBody</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!e119d4fc-72a6-4670-9bbb-d38f3c82aec3}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>TaskDetails</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Product Link - {!1eac0947-530f-453d-8a4c-1875202b6fa6}
+Product Size(s) - {!b15b85c1-6c9a-4cb8-af3a-0cc17529ec3c}
+Product Color - {!6ef55571-4edc-4b49-9a7a-085f91398cac}
+Shipping Type - {!588f1ed0-757a-46d4-86aa-a640a3afb576}
+Comments - {!cba62b8c-4c61-4f4e-ae28-604fb09a27f7}</text>
+    </textTemplates>
+    <variables>
+        <name>CaseId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ContentDocId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Log_a_Call_Notes_Var</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>RushTypeChoice2</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>SelectedRushType</name>
+        <dataType>Picklist</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>VarContentDocumentIds</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>varRContentDocumentLink</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>ContentDocumentLink</objectType>
+    </variables>
+    <variables>
+        <name>varRContentDocumentLinks</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>ContentDocumentLink</objectType>
+    </variables>
+</Flow>

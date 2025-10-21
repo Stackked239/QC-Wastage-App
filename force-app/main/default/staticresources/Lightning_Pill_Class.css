@@ -1,0 +1,9 @@
+.pillClass .slds-pill{
+    background-color:#F0737A;
+    color: white;
+    padding-left: 0.5rem;
+}
+
+.pillClass .slds-pill .slds-button_icon{
+    color:white;
+}

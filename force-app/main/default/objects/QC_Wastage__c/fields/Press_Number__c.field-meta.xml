@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Press_Number__c</fullName>
+    <label>Press Number</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Press 1</fullName>
+                <default>false</default>
+                <label>Press 1</label>
+            </value>
+            <value>
+                <fullName>Press 2</fullName>
+                <default>false</default>
+                <label>Press 2</label>
+            </value>
+            <value>
+                <fullName>Press 3</fullName>
+                <default>false</default>
+                <label>Press 3</label>
+            </value>
+            <value>
+                <fullName>Press 4</fullName>
+                <default>false</default>
+                <label>Press 4</label>
+            </value>
+            <value>
+                <fullName>Press 5</fullName>
+                <default>false</default>
+                <label>Press 5</label>
+            </value>
+            <value>
+                <fullName>Press 6</fullName>
+                <default>false</default>
+                <label>Press 6</label>
+            </value>
+            <value>
+                <fullName>Press 7</fullName>
+                <default>false</default>
+                <label>Press 7</label>
+            </value>
+            <value>
+                <fullName>Direct To Film</fullName>
+                <default>false</default>
+                <label>Direct To Film</label>
+            </value>
+            <value>
+                <fullName>Digital</fullName>
+                <default>false</default>
+                <label>Digital</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,60 @@
+<apex:page standardController="Opportunity" renderAs="pdf" applyBodyTag="false" applyHtmlTag="false" showHeader="false">
+    <head>
+        <title> CSI Report </title>
+        <style type="text/css" media="print">
+            @page {
+                size: A4;
+                margin-left:5%;
+            	margin-right:5%;
+            	margin-top:190px; 
+            	margin-bottom:20px;
+                
+                @top-center {
+                    content: element(header);
+                }
+            }
+            div.header {
+                display: block;
+            	margin-top:50px;
+            	margin-bottom: 10px;
+                position: running(header);
+            	text-align:center;
+            }
+          
+        </style>
+    </head>
+    <body>
+    	<div class="header">            
+            <table width="100%">  
+                <tr>
+                    <td style="width:10%;vertical-align:top;text-align:center;">
+                        <span><apex:image url="{!$Resource.logo}" width="60" /></span>
+                    </td>
+                    <td style="width:90%;text-align:center;"> 
+                         <span><apex:image url="{!$Resource.CSI_Report_Image}" width="80%" /></span>
+                    </td>
+                </tr>
+            </table>
+    	</div>
+        <br/>
+        <b>CSI Order#: {!Opportunity.Name}</b>
+        
+        <br/>
+        <br/>
+        "Other" notes:<br/>
+        <div style="min-height:100px;border:0.8px solid;padding:5px;" >
+            <apex:repeat value="{!Opportunity.Cases1__r}" var="c" rows="1">
+            	<apex:outputField value="{!c.Department__c}"/>
+            </apex:repeat>
+        </div>
+        <br/>
+        Resolution:<br/>
+        <div style="min-height:200px;border:0.8px solid;padding:5px;" >
+            <apex:repeat value="{!Opportunity.Cases1__r}" var="c" rows="1">
+            	<apex:outputField value="{!c.Resolution__c}"/>
+            </apex:repeat>
+        </div>
+        
+    </body>
+    
+</apex:page>

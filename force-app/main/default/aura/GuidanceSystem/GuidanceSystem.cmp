@@ -1,0 +1,877 @@
+<aura:component controller="GuidanceSystemController" implements="forceCommunity:themeLayout,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <aura:handler  name="init" value="{!this}" action="{!c.doinit}"/>
+    
+    <aura:attribute name="homepage" type="Boolean"/>
+    <aura:attribute name="openorders" type="Boolean"/>
+    <aura:attribute name="artproofs" type="Boolean"/>
+    <aura:attribute name="myorderpage" type="Boolean"/>    
+    <aura:attribute name="profilepage" type="Boolean"/>
+    <aura:attribute name="accountpage" type="Boolean"/>
+    <aura:attribute name="startorderpage" type="Boolean"/>
+    <aura:attribute name="revisionpage" type="Boolean"/>
+    <aura:attribute name="completeorderpage" type="Boolean"/>
+    
+    <aura:attribute name="home" type="Boolean"/>
+    <aura:attribute name="support" type="Boolean" />
+    <aura:attribute name="order" type="Boolean" />
+    <aura:attribute name="pending1" type="Boolean"/>
+    <aura:attribute name="pending2" type="Boolean"/>
+    <aura:attribute name="revision1" type="Boolean"/>
+    <aura:attribute name="revision2" type="Boolean"/>
+    <aura:attribute name="previous" type="Boolean"/>
+    <aura:attribute name="myorders" type="Boolean"/>
+    <aura:attribute name="stage" type="Boolean"/>
+    <aura:attribute name="submitby" type="Boolean"/>
+    <aura:attribute name="inhandsdate" type="Boolean"/>
+    <aura:attribute name="balancedue" type="Boolean"/>
+    <aura:attribute name="totalprice" type="Boolean"/>
+    
+    <aura:attribute name="yourprofile" type="Boolean"/>
+    <aura:attribute name="account" type="Boolean"/>
+    <aura:attribute name="startorder" type="Boolean"/>
+    
+    <aura:attribute name="myorderdetail" type="Boolean"/>
+    <aura:attribute name="stagebar" type="Boolean"/>
+    <aura:attribute name="productname" type="Boolean"/>
+    <aura:attribute name="color" type="Boolean"/>
+    <aura:attribute name="quantity" type="Boolean"/>
+    <aura:attribute name="priceperitem" type="Boolean"/>
+    <aura:attribute name="invoice" type="Boolean"/>
+    <aura:attribute name="shippingdetails" type="Boolean"/>
+    <aura:attribute name="confirmation" type="Boolean"/>
+    <aura:attribute name="file" type="Boolean"/>
+    <aura:attribute name="image" type="Boolean"/>
+    <aura:attribute name="revisiondetail" type="Boolean"/>
+    <aura:attribute name="commentsection" type="Boolean"/>
+    <aura:attribute name="completemyorder" type="Boolean"/>
+    <aura:attribute name="completetotalprice" type="Boolean"/>
+    <aura:attribute name="trackingno" type="Boolean"/>
+    
+    <aura:attribute name="cgsList" type="List"/>
+    <aura:attribute name="ordermessage" type="String"/>
+    <aura:attribute name="ordertitle" type="String"/>
+    <aura:attribute name="supportmessage" type="String"/>
+    <aura:attribute name="supporttitle" type="String"/>
+    <aura:attribute name="homemessage" type="String"/>
+    <aura:attribute name="hometitle" type="String"/>
+    <aura:attribute name="pendingmessage1" type="String"/>
+    <aura:attribute name="pendingtitle1" type="String"/>
+    <aura:attribute name="pendingmessage2" type="String"/>
+    <aura:attribute name="pendingtitle2" type="String"/>
+    <aura:attribute name="revisionmessage1" type="String"/>
+    <aura:attribute name="revisiontitle1" type="String"/>
+    <aura:attribute name="revisionmessage2" type="String"/>
+    <aura:attribute name="revisiontitle2" type="String"/>
+    <aura:attribute name="previousmessage" type="String"/>
+    <aura:attribute name="previoustitle" type="String"/>
+    
+    <aura:attribute name="myordermessage" type="String"/>
+    <aura:attribute name="myordertitle" type="String"/>
+    <aura:attribute name="stagemessage" type="String"/>
+    <aura:attribute name="stagetitle" type="String"/>
+    <aura:attribute name="submitbymessage" type="String"/>
+    <aura:attribute name="submitbytitle" type="String"/>
+    <aura:attribute name="inhandsdatemessage" type="String"/>
+    <aura:attribute name="inhandsdatetitle" type="String"/>
+    <aura:attribute name="balanceduemessage" type="String"/>
+    <aura:attribute name="balanceduetitle" type="String"/>
+    <aura:attribute name="totalpricemessage" type="String"/>
+    <aura:attribute name="totalpricetitle" type="String"/>
+    
+    <aura:attribute name="yourprofilemessage" type="String"/>
+    <aura:attribute name="yourprofiletitle" type="String"/>
+    
+    <aura:attribute name="accountmessage" type="String"/>
+    <aura:attribute name="accounttitle" type="String"/>
+    
+    <aura:attribute name="startordermessage" type="String"/>
+    <aura:attribute name="startordertitle" type="String"/>
+    
+    
+    <aura:attribute name="orderdetailmessage" type="String"/>
+    <aura:attribute name="orderdetailtitle" type="String"/>
+    <aura:attribute name="stagebarmessage" type="String"/>
+    <aura:attribute name="stagebartitle" type="String"/>
+    <aura:attribute name="productmessage" type="String"/>
+    <aura:attribute name="producttitle" type="String"/>
+    <aura:attribute name="colormessage" type="String"/>
+    <aura:attribute name="colortitle" type="String"/>
+    <aura:attribute name="quantitymessage" type="String"/>
+    <aura:attribute name="quantitytitle" type="String"/>
+    <aura:attribute name="pricemessage" type="String"/>
+    <aura:attribute name="pricetitle" type="String"/>
+    <aura:attribute name="invoicemessage" type="String"/>
+    <aura:attribute name="invoicetitle" type="String"/>
+    <aura:attribute name="shippingmessage" type="String"/>
+    <aura:attribute name="shippingtitle" type="String"/>
+    
+    <aura:attribute name="confirmmessage" type="String"/>
+    <aura:attribute name="confirmtitle" type="String"/>
+    
+    <aura:attribute name="filemessage" type="String"/>
+    <aura:attribute name="filetitle" type="String"/>
+    <aura:attribute name="imagemessage" type="String"/>
+    <aura:attribute name="imagetitle" type="String"/>
+    <aura:attribute name="revisiondetailmessage" type="String"/>
+    <aura:attribute name="revisiondetailtitle" type="String"/>
+    <aura:attribute name="commentmessage" type="String"/>
+    <aura:attribute name="commenttitle" type="String"/>
+    
+    <aura:attribute name="completeordermessage" type="String"/>
+    <aura:attribute name="completeordertitle" type="String"/>
+    <aura:attribute name="completepricemessage" type="String"/>
+    <aura:attribute name="completepricetitle" type="String"/>
+    <aura:attribute name="trackingnomessage" type="String"/>
+    <aura:attribute name="trackingnotitle" type="String"/>
+    
+    <aura:attribute name="enableCompleteGuideSystem" type="Boolean"/>
+    
+    <aura:if isTrue="{!v.enableCompleteGuideSystem}">
+        <div>
+            <aura:if isTrue="{!v.homepage}">
+                <aura:if isTrue="{!v.order}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-nubbin_top-left responsiveOrder" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.ordertitle}</b></h1>
+                                    </header>
+                                    <p>{!v.ordermessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <a href="" class="Hide" onclick="{!c.cancelMethod }">Hide</a>
+                    </section>
+                </aura:if>
+                
+                <aura:if isTrue="{!v.support}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_top-right responsivediv" role="dialog"
+                             style="background:#f2f2f2;padding:10px;">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.supporttitle}</b></h1>
+                                    </header>
+                                    <p>{!v.supportmessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <button class="slds-button slds-button_neutral PreviousButton" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="HideButton" onclick="{!c.cancelMethod }">Hide</a>
+                    </section>
+                </aura:if>
+                
+                <aura:if isTrue="{!v.home}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_bottom responsiveHome" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.hometitle}</b></h1>
+                                    </header>
+                                    <p>{!v.homemessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral Previous" onclick="{!c.PreviousPopup}" ><b>Previous</b></button>
+                        <a href="" class="Hide" onclick="{!c.cancelMethod }" >Hide</a>
+                    </section>
+                </aura:if>
+            </aura:if>
+            
+            <aura:if isTrue="{!v.artproofs}">
+                <aura:if isTrue="{!v.pending1}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-nubbin_left-bottom responsivePending1" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.pendingtitle1}</b></h1>
+                                    </header>
+                                    <p>{!v.pendingmessage1}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <a href="" class="Hide" onclick="{!c.cancelMethod }" >Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.pending2}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_left-top responsivePending2" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.pendingtitle2}</b></h1>
+                                    </header>
+                                    <p>{!v.pendingmessage2}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <button class="slds-button slds-button_neutral PreviousButton" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="HideButton" onclick="{!c.cancelMethod }" >Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.revision1}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_left-bottom responsiveRevision1" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.revisiontitle1}</b></h1>
+                                    </header>
+                                    <p>{!v.revisionmessage1}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <button class="slds-button slds-button_neutral PreviousButton" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="HideButton" onclick="{!c.cancelMethod }" >Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.revision2}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_left-top responsiveRevision2" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.revisiontitle2}</b></h1>
+                                    </header>
+                                    <p>{!v.revisionmessage2}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <button class="slds-button slds-button_neutral PreviousButton" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="HideButton" onclick="{!c.cancelMethod }" >Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.previous}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_left responsivePrevious" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.previoustitle}</b></h1>
+                                    </header>
+                                    <p>{!v.previousmessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral Previous" onclick="{!c.PreviousPopup}" ><b>Previous</b></button>
+                        <a href="" class="Hide" onclick="{!c.cancelMethod }" >Hide</a>
+                    </section>
+                </aura:if>        
+            </aura:if>
+            <aura:if isTrue="{!v.openorders}">
+                <aura:if isTrue="{!v.myorders}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-nubbin_bottom-left responsiveMyorders" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.myordertitle}</b></h1>
+                                    </header>
+                                    <p>{!v.myordermessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <a href="" class="Hide" onclick="{!c.cancelMethod }">Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.stage}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_bottom responsiveStage" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.stagetitle}</b></h1>
+                                    </header>
+                                    <p>{!v.stagemessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <button class="slds-button slds-button_neutral PreviousButton" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="HideButton" onclick="{!c.cancelMethod }" >Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.submitby}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_bottom responsiveSubmitby" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.submitbytitle}</b></h1>
+                                    </header>
+                                    <p>{!v.submitbymessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <button class="slds-button slds-button_neutral PreviousButton" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="HideButton" onclick="{!c.cancelMethod }" >Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.inhandsdate}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_bottom responsiveHandsdate" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.inhandsdatetitle}</b></h1>
+                                    </header>
+                                    <p>{!v.inhandsdatemessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <button class="slds-button slds-button_neutral PreviousButton" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="HideButton" onclick="{!c.cancelMethod }" >Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.balancedue}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_bottom responsiveBalancedue" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.balanceduetitle}</b></h1>
+                                    </header>
+                                    <p>{!v.balanceduemessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <button class="slds-button slds-button_neutral PreviousButton" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="HideButton" onclick="{!c.cancelMethod }" >Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.totalprice}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_bottom responsiveTotalprice" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.totalpricetitle}</b></h1>
+                                    </header>
+                                    <p>{!v.totalpricemessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral Previous" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="Hide" onclick="{!c.cancelMethod }" >Hide</a>
+                    </section>
+                </aura:if>
+            </aura:if>
+            <aura:if isTrue="{!v.profilepage}">    
+                <aura:if isTrue="{!v.yourprofile}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_left responsiveProfile" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.yourprofiletitle}</b></h1>
+                                    </header>
+                                    <p>{!v.yourprofilemessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="" class="Hide" onclick="{!c.cancelMethod }" style="text-decoration: underline;margin-left: 11px;" >Hide</a>
+                    </section>
+                </aura:if>
+            </aura:if>
+            
+            <aura:if isTrue="{!v.accountpage}">
+                <aura:if isTrue="{!v.account}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_left responsiveAccount" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.accounttitle}</b></h1>
+                                    </header>
+                                    <p>{!v.accountmessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="" class="Hide" onclick="{!c.cancelMethod }" style="text-decoration: underline;margin-left: 11px;" >Hide</a>
+                    </section>
+                </aura:if>
+            </aura:if>
+            
+            <aura:if isTrue="{!v.startorderpage}">
+                <aura:if isTrue="{!v.startorder}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_bottom-right slds-popover_small responsiveStart" role="dialog"
+                             style="background:#f2f2f2;padding:10px;">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.startordertitle}</b></h1>
+                                    </header>
+                                    <p>{!v.startordermessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="" class="Hide" onclick="{!c.cancelMethod }" style="text-decoration: underline;margin-left: 11px;" >Hide</a>
+                    </section>
+                </aura:if>
+            </aura:if>
+            
+            <aura:if isTrue="{!v.myorderpage}">
+                <aura:if isTrue="{!v.myorderdetail}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-nubbin_left responsiveOrderDet" role="dialog"
+                             style="background:#f2f2f2;padding:10px;">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.orderdetailtitle}</b></h1>
+                                    </header>
+                                    <p>{!v.orderdetailmessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <a href="" class="Hide" onclick="{!c.cancelMethod }">Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.stagebar}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_bottom responsivesStageBar" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.stagebartitle}</b></h1>
+                                    </header>
+                                    <p>{!v.stagebarmessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <button class="slds-button slds-button_neutral PreviousButton" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="HideButton" onclick="{!c.cancelMethod }">Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.productname}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_bottom responsiveProductName" role="dialog"
+                             style="background:#f2f2f2;padding:10px;">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.producttitle}</b></h1>
+                                    </header>
+                                    <p>{!v.productmessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <button class="slds-button slds-button_neutral PreviousButton" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="HideButton" onclick="{!c.cancelMethod }">Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.color}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_bottom responsiveColor" role="dialog"
+                             style="background:#f2f2f2;padding:10px;">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.colortitle}</b></h1>
+                                    </header>
+                                    <p>{!v.colormessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <button class="slds-button slds-button_neutral PreviousButton" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="HideButton" onclick="{!c.cancelMethod }">Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.quantity}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_bottom responsiveQuantity" role="dialog"
+                             style="background:#f2f2f2;padding:10px;">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.quantitytitle}</b></h1>
+                                    </header>
+                                    <p>{!v.quantitymessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <button class="slds-button slds-button_neutral PreviousButton" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="HideButton" onclick="{!c.cancelMethod }">Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.priceperitem}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_bottom responsivePrice" role="dialog"
+                             style="background:#f2f2f2;padding:10px;">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.pricetitle}</b></h1>
+                                    </header>
+                                    <p>{!v.pricemessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <button class="slds-button slds-button_neutral PreviousButton" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="HideButton" onclick="{!c.cancelMethod }">Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.invoice}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_left responsivesInvoice" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.invoicetitle}</b></h1>
+                                    </header>
+                                    <p>{!v.invoicemessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <button class="slds-button slds-button_neutral PreviousButton" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="HideButton" onclick="{!c.cancelMethod }">Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.shippingdetails}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_left responsivesShipping" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.shippingtitle}</b></h1>
+                                    </header>
+                                    <p>{!v.shippingmessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral Previous" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="Hide" onclick="{!c.cancelMethod }">Hide</a>
+                    </section>
+                </aura:if>
+            </aura:if>
+            <aura:if isTrue="{!v.revisionpage}">
+                <aura:if isTrue="{!v.file}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_left responsivesFile" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.filetitle}</b></h1>
+                                    </header>
+                                    <p>{!v.filemessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <a href="" class="Hide" onclick="{!c.cancelMethod }">Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.image}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_left responsivesImage" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.imagetitle}</b></h1>
+                                    </header>
+                                    <p>{!v.imagemessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <button class="slds-button slds-button_neutral PreviousButton" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="HideButton" onclick="{!c.cancelMethod }">Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.revisiondetail}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_right responsiveRevdet" role="dialog"
+                             style="background:#f2f2f2;padding:10px;">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.revisiondetailtitle}</b></h1>
+                                    </header>
+                                    <p>{!v.revisiondetailmessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <button class="slds-button slds-button_neutral PreviousButton" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="HideButton" onclick="{!c.cancelMethod }">Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.commentsection}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_right responsiveCommSec" role="dialog"
+                             style="background:#f2f2f2;padding:10px;">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.commenttitle}</b></h1>
+                                    </header>
+                                    <p>{!v.commentmessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral Previous" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="Hide" onclick="{!c.cancelMethod }">Hide</a>
+                    </section>
+                </aura:if>
+            </aura:if>
+            
+            <aura:if isTrue="{!v.completeorderpage}">
+                <aura:if isTrue="{!v.completemyorder}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_bottom responsivesComplMyorder" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.completeordertitle}</b></h1>
+                                    </header>
+                                    <p>{!v.completeordermessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <a href="" class="Hide" onclick="{!c.cancelMethod }">Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.completetotalprice}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_bottom responsivesComplPrice" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.completepricetitle}</b></h1>
+                                    </header>
+                                    <p>{!v.completepricemessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral NextButton" onclick="{!c.NextPopup}"><b>Next</b></button>
+                        <button class="slds-button slds-button_neutral PreviousButton" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="HideButton" onclick="{!c.cancelMethod }">Hide</a>
+                    </section>
+                </aura:if>
+                <aura:if isTrue="{!v.trackingno}">
+                    <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_bottom responsivesTrackno" role="dialog">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.confirmClose }"
+                                              alternativeText="Close dialog"
+                                              variant="bare"
+                                              class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                        <div class="slds-popover__body" id="dialog-body-id-113">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <header class="slds-popover__header">
+                                        <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.trackingnotitle}</b></h1>
+                                    </header>
+                                    <p>{!v.trackingnomessage}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_neutral Previous" onclick="{!c.PreviousPopup}"><b>Previous</b></button>
+                        <a href="" class="Hide" onclick="{!c.cancelMethod }">Hide</a>
+                    </section>
+                </aura:if>
+            </aura:if>
+        </div>
+        <aura:if isTrue="{!v.confirmation}">
+            <div style="position: absolute;" aura:id="confirmId">
+                <section aria-describedby="dialog-body-id-113" aria-labelledby="dialog-heading-id-118" class="slds-popover slds-popover slds-nubbin_top-right" role="dialog"
+                         style="background:#f2f2f2;padding:10px;">
+                    <lightning:buttonIcon iconName="utility:close"
+                                          onclick="{!c.confirmClose }"
+                                          alternativeText="Close dialog"
+                                          variant="bare"
+                                          class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"/>
+                    <div class="slds-popover__body" id="dialog-body-id-113">
+                        <div class="slds-media">
+                            <div class="slds-media__body">
+                                <header class="slds-popover__header">
+                                    <h1 class="slds-text-heading_small" id="dialog-heading-id-118" style="font-family:sans-serif"><b>{!v.confirmtitle}</b></h1>
+                                </header>
+                                <p>{!v.confirmmessage}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="slds-button slds-button_neutral Previous" onclick="{!c.confirmCloseCallout}" style="margin-left:205px;"><b>Confirm</b></button>
+                </section>
+            </div>
+        </aura:if>
+    </aura:if>
+</aura:component>

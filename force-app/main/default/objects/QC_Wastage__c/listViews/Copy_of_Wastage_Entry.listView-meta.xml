@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_Wastage_Entry</fullName>
+    <columns>Purchase_Order__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Front_door_color__c</columns>
+    <columns>of_shirts__c</columns>
+    <columns>Specify__c</columns>
+    <columns>New_Product_ETA__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Solution_Complete__c</columns>
+    <columns>Solution__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Purchase_Order_Line_Look_Up__c</field>
+        <operation>notContain</operation>
+        <value>54903</value>
+    </filters>
+    <filters>
+        <field>Product_Name__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>PO QC Ticket - FD</label>
+</ListView>

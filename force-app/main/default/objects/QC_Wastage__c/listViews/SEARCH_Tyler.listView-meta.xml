@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SEARCH_Tyler</fullName>
+    <columns>NAME</columns>
+    <columns>Pulled_from_Inventory__c</columns>
+    <columns>Job__c</columns>
+    <columns>Inventory_SKU__c</columns>
+    <columns>Inventory_colors__c</columns>
+    <columns>Inventory_adult_sizes__c</columns>
+    <columns>Inventory_youth_sizes__c</columns>
+    <columns>of_shirts__c</columns>
+    <columns>Coolyz_Colors__c</columns>
+    <columns>of_non_shirt_items__c</columns>
+    <columns>Avoidable__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterOrEqual</operation>
+        <value>5/1/2023 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>Job__c</field>
+        <operation>contains</operation>
+        <value>Inbound</value>
+    </filters>
+    <label>SEARCH - Tyler</label>
+</ListView>

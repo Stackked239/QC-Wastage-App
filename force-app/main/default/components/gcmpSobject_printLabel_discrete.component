@@ -1,0 +1,41 @@
+<apex:component layout="none">
+	<apex:attribute name="labels" type="Object[]" default="[]" description=""/>
+    <head>
+        <style type="text/css">
+            @page {
+                margin:3mm;
+                padding:0;
+                size: {!NULLVALUE($CurrentPage.parameters.pageSize, '4in 2in')};
+            }
+            body {
+                font-family: sans-serif;
+                font-size:12pt;
+                margin:0;
+                padding:0;
+            }
+	        .rpt{
+	            width: 100%;
+	            page-break-inside: avoid;
+	        }
+	        .rpt+.rpt{
+	            page-break-before:always;
+	        }
+	        div.barcode div table{
+	            margin:0 auto;
+	        }
+        </style>
+    </head>
+    <body>
+
+        <apex:outputPanel rendered="{!labels.size == 0}">
+            <div style="text-align:center">Please select at least one record, prior to clicking the button.</div>
+        </apex:outputPanel>
+
+        <apex:repeat value="{!labels}" var="label" rendered="{!labels.size != 0}">
+            <div class="rpt">
+                <c:gcmpSobject_printLabel label="{!label}"/>
+            </div>
+        </apex:repeat>
+
+    </body>
+</apex:component>

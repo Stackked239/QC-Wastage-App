@@ -1,0 +1,68 @@
+<apex:component layout="none">
+    <apex:attribute name="label" type="Object" required="true" description=""/>
+
+    <div style="text-align:center; border:1px solid white;">
+
+        <!-- label header -->
+        <table width="100%" style="border-collapse:collapse; page-break-inside:avoid; margin-bottom:1mm;">
+            <tr>
+                <td width="35%" style="border-bottom:2px solid black; vertical-align:top;">
+                    <apex:outputPanel layout="none" rendered="{!label['product']['Size__c'] != null}">
+                        <div style="text-align:center; font-size:8pt;">size</div>
+                        <div style="text-align:center;font-size:30pt;border:1px solid black;">
+                            {!label['product']['Size__c']}
+                        </div>
+                    </apex:outputPanel>               
+                </td>
+                <td style="text-align:center; vertical-align:top; padding-top:1mm; padding-bottom:0mm; border-bottom:2px solid black;">
+                    <apex:image url="{!$Resource.logo}" height="0.8in"/>
+
+                </td>
+                <td width="35%" style="border-bottom:2px solid black; vertical-align:top; ">
+                    <div style="text-align:center; font-size:8pt;">case count</div>
+                    <apex:outputPanel layout="none" rendered="{!label['product']['Case_Count__c'] != null}">
+                        <div style="text-align:center;font-size:30pt;border:1px solid black;">
+                            {!label['product']['Case_Count__c']}
+                        </div>
+                    </apex:outputPanel> 
+                </td>
+                <!-- <td style="text-align:left; padding-left:2mm; border-bottom:2px solid black;padding-bottom:1mm;">
+                    Sunday Cool<br/>
+                    510 E. Alfred St.<br/>
+                    Tavares, FL 32778<br/>
+                    USA
+                </td> -->
+            </tr>
+        </table>
+
+        <!-- Generic Object -->
+        <apex:outputPanel layout="none" rendered="{!label['obj'] != null}">
+            <apex:outputPanel layout="none" rendered="{!label['obj']['Name'] != null}">
+                <div>
+                    {!LEFT(label['obj']['Name'],30)}
+                </div>                
+            </apex:outputPanel>
+
+            <br/>
+            <div class="barcode">
+                <GMBLBC:barcode value="{!label['obj']['Id']}" height="25"/>       
+            </div>
+        </apex:outputPanel>
+
+        <!-- Product -->
+        <apex:outputPanel layout="none" rendered="{!label['product'] != null}">
+            <div>
+                {!LEFT(label['product']['Name'],36)}
+                <apex:outputPanel layout="none" rendered="{!LEN(label['product']['Name'])>36}">...</apex:outputPanel>
+            </div>
+            <apex:outputPanel layout="none" rendered="{!!ISBLANK(BLANKVALUE(label['product']['GTIN_1__c'],label['product']['ProductCode']))}">
+                <div class="barcode" style="margin-top:1.5mm;">
+                    <GMBLBC:barcode value="{!BLANKVALUE(label['product']['GTIN_1__c'],label['product']['ProductCode'])}" height="28"/>       
+                </div>            
+            </apex:outputPanel>
+            <apex:outputPanel layout="none" rendered="{!ISBLANK(BLANKVALUE(label['product']['GTIN_1__c'],label['product']['ProductCode']))}">
+                [No Product Code or GTIN-1]            
+            </apex:outputPanel>
+        </apex:outputPanel>
+    </div>
+</apex:component>

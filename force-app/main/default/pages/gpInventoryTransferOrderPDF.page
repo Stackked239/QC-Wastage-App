@@ -1,0 +1,223 @@
+<apex:page applyBodyTag="false"
+           applyHtmlTag="false"
+           readOnly="true"
+           renderAs="pdf"
+           showHeader="false"
+           standardController="Inventory_Transfer_Order__c"
+           extensions="gcInventoryTransferOrderPDF">
+
+    <head>
+        <style>
+            @page {
+                size:portrait;
+                margin-right:0.25in;
+                margin-left:0.25in;
+                margin-top:3in;
+                margin-bottom:1in;
+                border:0;
+                padding:0;
+
+                @top-center{content: element(header);}
+                @bottom-center{content: element(footer);}
+            }
+            body{
+                margin:0;
+                padding:0;
+                border:1px solid white;
+            }
+            *{
+                font-family: sans-serif;
+                font-size:12pt;
+            }
+            .align-center{
+                text-align:center;
+            }
+            .align-right{
+                text-align:right;
+            }
+            .align-left{
+                text-align:left;
+            }
+            .align-top{
+                vertical-align:top;
+            }  
+
+            .border1{
+                border: 1px solid #000;
+            }
+            .documentTitle {
+                font-family: sans-serif;
+                font-size:18pt;
+                font-weight:bold;
+                text-align:center;
+                vertical-align:top;
+            }
+            .headerLabel{
+                font-size:14pt;
+                font-weight:bold;
+            }
+            .headerLabelSmall{
+                font-size:10pt;
+                font-weight:bold;
+            }
+            .headerValue{
+                font-size:14pt;
+            }            
+            .pageNumber:before{
+                content:counter(page);
+            }
+            .pageCount:before{
+                content: counter(pages);
+            }            
+            .runningFooter {
+                position: running(footer);
+                width:100%;
+                border:1px solid white;
+                padding:0;
+                margin:0 auto;
+            }
+            .runningHeader{
+                position:running(header);
+                width:100%;
+                border:1px solid white;
+            }
+            table.gTable{
+                width:100%;
+                table-layout: fixed;
+                border-collapse: collapse;
+            }
+            .tableHeading, .tableHeading span {
+                vertical-align:middle;
+                text-align:center;
+            }
+            .tableHeadingSmall, .tableHeadingSmall span {
+                vertical-align:middle;
+                text-align:center;
+            }           
+            td{
+                vertical-align:top;
+            }
+            table.gTable-detail tr td{
+                padding:5px;
+            }
+            div.barcode div table{
+                margin:0 auto;
+            }
+        </style>
+    </head>
+
+    <div class="runningHeader">            
+        <table class="gTable">
+            <tr>
+                <td style="text-align:left; vertical-align:top;" width="2.5in;">
+                    <apex:image url="{!$Resource.logo}" width="2in"/>
+                </td>
+                <td style="vertical-align:top; padding-top:0.1in;">
+                    <table class="gTable">
+                        <tr class="headerLabel">
+                            <td>
+                                Transfer Origin:
+                            </td>
+                        </tr>
+                        <tr class="headerValue">
+                            <td style="padding-bottom:0.2in;">
+                                {!wrapTfr.tfr.Origin_Location__r.AcctSeedERP__Warehouse__r.Name}<br/>
+                                {!wrapTfr.tfr.Origin_Location__r.Name}
+                            </td>
+                        </tr>
+                        <tr class="headerLabel">
+                            <td>
+                                Transfer Destination:
+                            </td>
+                        </tr>
+                        <tr class="headerValue">
+                            <td>
+                                {!wrapTfr.tfr.Destination_Location__r.AcctSeedERP__Warehouse__r.Name}<br/>
+                                {!wrapTfr.tfr.Destination_Location__r.Name}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="text-align:right; vertical-align:top; padding-top:0.1in;" width="2.5in">
+                    <table class="gTable">
+                        <tr>
+                            <td class="border1 documentTitle" colspan="2">
+                                    INVENTORY TRANSFER
+                            </td>                                
+                        </tr>
+                        <tr style="text-align: center; vertical-align: top;">
+                            <td class="border1 align-center">
+                                <b>Order Date</b> <br/>
+                                <apex:outputText value="{0, date, MMMM d','  yyyy}">
+                                    <apex:param value="{!wrapTfr.tfr.CreatedDate}" />
+                                </apex:outputText>
+                            </td>
+                            <td class="border1 align-center">
+                                <b>Page</b> <br/>
+                                <span class="pageNumber"/>&nbsp;of&nbsp;<span class="pageCount"/>
+                            </td>
+                        </tr>
+                        <tr style="text-align: center; vertical-align: top;">
+                            <td class="border1 align-center" colspan="2">
+                                <b>Transfer Order #</b> <br/>
+                                {!wrapTfr.tfr.Name}
+                            </td>
+                        </tr>
+                        <tr style="text-align: center; vertical-align: top;">
+                                <td class="border1 align-center" colspan="2" style="padding:5px;">
+                                    <div class="barcode">
+                                        <GMBLBC:barcode value="{!wrapTfr.tfr.Name}"/>
+                                    </div>
+                                </td>
+                            </tr>                            
+                    </table>
+                </td>
+            </tr>
+        </table>      
+    </div>
+
+    <div>
+        <div style="margin-top:10px;">
+            <table class="gTable gTable-detail">
+                <tr>
+                    <td width="8%" class="border1 tableHeading align-center">
+                        <span  class="headerLabelSmall" style="font-weight:bold;">Line</span>
+                    </td>
+                    <td class="border1 tableHeading">
+                        <span  class="headerLabel" style="font-weight:bold">Product</span>
+                    </td>
+                    <td width="10%" class="border1 tableHeadingSmall align-center">
+                        <span  class="headerLabelSmall" style="font-weight:bold">Qty<br/>Box Count</span>
+                    </td> 
+                    <td width="10%" class="border1 tableHeadingSmall align-center">
+                        <span  class="headerLabelSmall" style="font-weight:bold">Qty<br/>Sent</span>
+                    </td>
+                </tr>
+
+                <apex:variable value="{!1}" var="lineNum"/>
+                <apex:repeat value="{!wrapTfr.tfr.Inventory_Transfer_Order_Lines__r}" var="line">
+                    <tr style="background-color:{!IF(mod(lineNum,2)==0, '#FFFFFF', '#FFFFFF')};">
+                        <td class="border1 align-top font1" style="text-align:center;">
+                            <span>{!lineNum}</span>
+                        </td>
+                        <td class="border1 align-top font1">
+                            {!line.Product__r.Name}&nbsp;<br/>
+                            {!line.Product__r.ProductCode}&nbsp;
+                        </td>
+                        <td class="border1 align-top align-center font1">
+                            <apex:outputText value="{0, number,###,##0}">
+                                <apex:param value="{!line.Box_Count_Sent__c}"/>
+                            </apex:outputText>
+                        </td>
+                        <td class="border1 align-top align-center font1">
+                            <apex:outputText value="{0, number,###,###}">
+                                <apex:param value="{!line.Quantity_Sent__c}"/>
+                            </apex:outputText>
+                        </td>
+                    </tr>
+                    <apex:variable var="lineNum" value="{!lineNum+1}"/>
+                </apex:repeat>
+            </table>
+        </div>
+    </div>
+</apex:page>

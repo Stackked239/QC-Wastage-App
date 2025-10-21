@@ -1,0 +1,11 @@
+.THIS .scroller {
+    max-height:370px;
+    overflow-y:auto;
+}
+.THIS .scroller2 {
+    max-height:370px;
+    overflow-y:auto;
+}
+.THIS .g-text-color_link{
+    color: #016DCC;
+}

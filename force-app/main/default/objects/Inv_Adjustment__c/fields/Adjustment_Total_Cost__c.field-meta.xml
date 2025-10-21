@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Adjustment_Total_Cost__c</fullName>
+    <formula>(Unit_Cost__c *  IF(OR(Deficit_Count__c &gt; 0,  WH1_Deficit__c &gt; 0), - Deficit_Count__c - WH1_Deficit__c, 0)) + 
+(Unit_Cost__c  * IF ( Overage_Count__c &gt; 0, Overage_Count__c, 0))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Adjustment Total Cost</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>4</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

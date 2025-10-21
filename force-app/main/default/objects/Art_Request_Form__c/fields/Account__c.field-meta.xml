@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Account</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Art Request Forms CSA and Conceptual (Account)</relationshipLabel>
+    <relationshipName>Art_Request_Forms_CSA_and_Conceptual1</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

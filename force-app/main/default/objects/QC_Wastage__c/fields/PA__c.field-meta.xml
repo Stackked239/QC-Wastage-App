@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PA__c</fullName>
+    <label>PA</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Colton Graham</fullName>
+                <default>false</default>
+                <label>Colton Graham</label>
+            </value>
+            <value>
+                <fullName>John Rucker</fullName>
+                <default>false</default>
+                <label>John Rucker</label>
+            </value>
+            <value>
+                <fullName>Lily Hooper</fullName>
+                <default>false</default>
+                <label>Lily Hooper</label>
+            </value>
+            <value>
+                <fullName>Stacia Curione</fullName>
+                <default>false</default>
+                <label>Stacia Curione</label>
+            </value>
+            <value>
+                <fullName>Jeff Kukuk</fullName>
+                <default>false</default>
+                <label>Jeff Kukuk</label>
+            </value>
+            <value>
+                <fullName>Jessica Harris</fullName>
+                <default>false</default>
+                <label>Jessica Harris</label>
+            </value>
+            <value>
+                <fullName>Crystal McVoy</fullName>
+                <default>false</default>
+                <label>Crystal McVoy</label>
+            </value>
+            <value>
+                <fullName>Gianna Carlucci</fullName>
+                <default>false</default>
+                <label>Gianna Carlucci</label>
+            </value>
+            <value>
+                <fullName>Melissa Suarez</fullName>
+                <default>false</default>
+                <label>Melissa Suarez</label>
+            </value>
+            <value>
+                <fullName>Lyzzie Ortiz</fullName>
+                <default>false</default>
+                <label>Lyzzie Ortiz</label>
+            </value>
+            <value>
+                <fullName>Zach Barnes</fullName>
+                <default>false</default>
+                <label>Zach Barnes</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

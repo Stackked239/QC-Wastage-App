@@ -1,0 +1,15 @@
+<apex:page applyHtmlTag="false"
+cache="false"
+contentType="text/HTML"
+docType="html-5.0"
+extensions="gcSobject_printLabel"
+recordSetVar="records"
+renderAs="pdf"
+showHeader="false"
+sidebar="false"
+standardController="Product2" 
+standardStylesheets="false">
+
+<c:gcmpSobject_printLabel_discrete labels="{!labels}"/>
+
+</apex:page>

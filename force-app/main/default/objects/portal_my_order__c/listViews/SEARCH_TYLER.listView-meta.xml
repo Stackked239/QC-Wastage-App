@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SEARCH_TYLER</fullName>
+    <columns>Submit_Revision_Time__c</columns>
+    <columns>NAME</columns>
+    <columns>Opportunity__c</columns>
+    <columns>Account__c</columns>
+    <columns>Art_Proof_Detail__c</columns>
+    <columns>Must_Have_Date__c</columns>
+    <columns>Contact__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>In_Revision__c</columns>
+    <columns>Stage__c</columns>
+    <columns>Opportunity_Owner_1__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Submit_Revision_Time__c</field>
+        <operation>greaterThan</operation>
+        <value>7/11/2023 1:00 PM</value>
+    </filters>
+    <label>SEARCH  - TYLER</label>
+</ListView>

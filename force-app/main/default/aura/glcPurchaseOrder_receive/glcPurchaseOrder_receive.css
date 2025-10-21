@@ -1,0 +1,39 @@
+.THIS .scroller {
+    max-height:290px;
+}
+.THIS .scroller2 {
+    max-height:400px;
+}
+.THIS .g-text-color_link{
+    color: #016DCC;
+}
+.THIS .g-text-size_x-small{
+    font-size:x-small;
+}
+.THIS .g-text-size_small{
+    font-size:small;
+}
+.THIS .g-text-style_italic{
+    font-style:italic;
+}
+.THIS .g-text-weight_bold{
+    font-weight:bold;
+}
+.THIS .g-text-align_right{
+    text-align:right;
+}
+.THIS .g-input-align_right input { 
+    text-align: right;
+}
+.THIS .g-box {
+    margin-bottom: 4px;
+    /*margin-right: 10px;*/
+    padding: 4px;
+    padding-right: 10px;
+    border-radius: 4px;
+    border: 1px solid rgb(221, 219, 218);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10);
+}
+.THIS lightning-icon.g-fill-blue > lightning-primitive-icon > svg > use{
+    fill: #016DCC;
+}

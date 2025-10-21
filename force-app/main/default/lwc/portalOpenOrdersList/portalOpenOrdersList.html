@@ -1,0 +1,236 @@
+<template>
+    <div class="slds-grid slds-gutters headerTitle">
+        <div class="slds-col slds-size_2-of-3 slds-p-top--large">{tableHeader}</div>
+    </div>
+
+    <!-- table to show pending orders -->
+    <template if:true={showDataTable}>
+        <template if:true={showPendingOrders}>
+            <div class="container">        
+                <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped" style="border-radius: 15px;" > 
+                    <thead>
+                        <tr>
+                            <th scope="col" class="tableHeader" style="width:30%;">
+                                <div class="slds-truncate" title="MyOrder">My Order</div>
+                            </th>
+                            <th scope="col" class="tableHeader" style="width:30%;">
+                                <div class="slds-truncate" title="Stage">Stage</div>
+                            </th>
+                            <th scope="col" class="tableHeader" style="width:30%;">
+                                <div class="slds-truncate" title="BalanceDue">Balance Due</div>
+                            </th>                                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={pageData} for:item="order" for:index="indx">
+                            <tr key={order.id} id={order.id}> 
+                                <td style="text-align: center;">
+                                    <a href={order.URL} target="_self">
+                                        <span>{order.Name}</span>
+                                    </a>
+                                </td>
+                                <td style="text-align: center;border-left: 2px solid #dadada;border-right:2px solid #dadada;">
+                                    <span>{order.Stage__c}</span>
+                                </td>
+                                <td style="text-align: center;">
+                                    <span>${order.Balance_Due__c}</span>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+            <div class="slds-align--absolute-center slds-p-top--large">
+                <lightning-button-group>
+                    <lightning-button label="&#x00AB;" onclick={first} style="width: 50px;"></lightning-button>
+                    <lightning-button label="&lt;" onclick={previous} style="width: 50px;"></lightning-button>
+                    <lightning-button label="&gt;" onclick={next} style="width: 50px;"></lightning-button>
+                    <lightning-button label="&#x00BB;" onclick={last} style="width: 50px;"></lightning-button>
+                </lightning-button-group>
+                <span>{startRange}-{endRange} of {totalOrders}</span>
+            </div>
+        </template>
+
+        <!-- table to show completed orders -->
+        <template if:true={showCompletedOrders}>
+            <div class="container">        
+                <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped" style="border-radius: 15px;" > 
+                    <thead>
+                        <tr>
+                            <th scope="col" class="tableHeader" style="width:25%;">
+                                <div class="slds-truncate" title="MyOrder">My Order</div>
+                            </th>
+                            <th scope="col" class="tableHeader" style="width:25%;">
+                                <div class="slds-truncate" title="TotalPrice">Total Price</div>
+                            </th>
+                            <th scope="col" class="tableHeader" style="width:25%;">
+                                <div class="slds-truncate" title="TrackingNumber">Tracking Number</div>
+                            </th>
+                            <th scope="col" class="tableHeader" style="width:25%;">
+                                <div class="slds-truncate" title="CreatedDate">Created Date</div>
+                            </th>   
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={pageData} for:item="order" for:index="indx">
+                            <tr key={order.id} id={order.id}> 
+                                <td style="text-align: center;">
+                                    <a href={order.URL} target="_self">
+                                        <span>{order.Name}</span>
+                                    </a>
+                                </td>
+                                <td style="text-align: center;border-left: 2px solid #dadada;border-right:2px solid #dadada;">
+                                    <span>${order.Total_Price__c}</span>
+                                </td>
+                                <td style="text-align: center;border-right:2px solid #dadada;">
+                                    <span>{order.Tracking_Number__c}</span>
+                                </td>
+                                <td style="text-align: center;">
+                                    <lightning-formatted-date-time value={order.CreatedDate} year="numeric" month="numeric" day="numeric"></lightning-formatted-date-time>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+            <div class="slds-align--absolute-center slds-p-top--large">
+                <lightning-button-group>
+                    <lightning-button label="&#x00AB;" onclick={first} style="width: 50px;"></lightning-button>
+                    <lightning-button label="&lt;" onclick={previous} style="width: 50px;"></lightning-button>
+                    <lightning-button label="&gt;" onclick={next} style="width: 50px;"></lightning-button>
+                    <lightning-button label="&#x00BB;" onclick={last} style="width: 50px;"></lightning-button>
+                </lightning-button-group>
+                <span>{startRange}-{endRange} of {totalOrders}</span>
+            </div>
+        </template>
+
+         <!-- table to show invoiced orders -->
+         <template if:true={showInvoiceOrders}>
+            <div class="container">        
+                <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped" style="border-radius: 15px;" > 
+                    <thead>
+                        <tr>
+                            <th scope="col" class="tableHeader" style="width:25%;">
+                                <div class="slds-truncate" title="MyOrder">My Order</div>
+                            </th>
+                            <th scope="col" class="tableHeader" style='width:14%;'>
+                                <div class="slds-truncate" title="BalanceDue">Balance Due</div>
+                            </th>
+                            <th scope="col" class="tableHeader" style="width:25%;">
+                                <div class="slds-truncate" title="TrackingNumber">Tracking Number</div>
+                            </th>
+                            <th scope="col" class="tableHeader" style="width:25%;">
+                                <div class="slds-truncate" title="CreatedDate">Created Date</div>
+                            </th>   
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={pageData} for:item="order" for:index="indx">
+                            <tr key={order.id} id={order.id}> 
+                                <td style="text-align: center;">
+                                    <a href={order.URL} target="_self">
+                                        <span>{order.Name}</span>
+                                    </a>
+                                </td>
+                                <td style="text-align: center;border-left: 2px solid #dadada;border-right:2px solid #dadada;">
+                                    <span>${order.Balance_Due__c}</span>
+                                </td>
+                                <td style="text-align: center;border-right:2px solid #dadada;">
+                                    <span>{order.Tracking_Number__c}</span>
+                                </td>
+                                <td style="text-align: center;">
+                                    <lightning-formatted-date-time value={order.CreatedDate} year="numeric" month="numeric" day="numeric"></lightning-formatted-date-time>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+            <div class="slds-align--absolute-center slds-p-top--large">
+                <lightning-button-group>
+                    <lightning-button label="&#x00AB;" onclick={first} style="width: 50px;"></lightning-button>
+                    <lightning-button label="&lt;" onclick={previous} style="width: 50px;"></lightning-button>
+                    <lightning-button label="&gt;" onclick={next} style="width: 50px;"></lightning-button>
+                    <lightning-button label="&#x00BB;" onclick={last} style="width: 50px;"></lightning-button>
+                </lightning-button-group>
+                <span>{startRange}-{endRange} of {totalOrders}</span>
+            </div>
+        </template>
+
+        <!-- table to show open orders -->
+        <template if:true={showOpenOrders}>
+            <div class="container">        
+                <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped" style="border-radius: 15px;" > 
+                    <thead>
+                        <tr>
+                            <th scope="col" class="tableHeader" style="width:14%;">
+                                <div class="slds-truncate" title="MyOrder">My Order</div>
+                            </th>
+                            <th scope="col" class="tableHeader" style='width:14%;'>
+                                <div class="slds-truncate" title="Stage">Status</div>
+                            </th>
+                            <th scope="col" class="tableHeader" style='width:14%;'>
+                                <div class="slds-truncate" title="SubmitBy">Approve By</div>
+                            </th>
+                            <th scope="col" class="tableHeader" style='width:14%;'>
+                                <div class="slds-truncate" title="InHandsDate">Delivery Date</div>
+                            </th>
+                            <th scope="col" class="tableHeader" style='width:14%;'>
+                                <div class="slds-truncate" title="BalanceDue">Balance Due</div>
+                            </th>
+                            <th scope="col" class="tableHeader" style='width:14%;'>
+                                <div class="slds-truncate" title="TotalPrice">Total</div>
+                            </th>
+                            <th scope="col" class="tableHeader" style='width:14%;'>
+                                <div class="slds-truncate" title="Created">Date Created</div>
+                            </th>     
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={pageData} for:item="order" for:index="indx">
+                            <tr key={order.id} id={order.id}> 
+                                <td style="text-align: center;">
+                                    <a href={order.URL} target="_self">
+                                        <span>{order.Name}</span>
+                                    </a>
+                                </td>
+                                <td style="text-align: center;border-left: 2px solid #dadada;border-right:2px solid #dadada;">
+                                    <span>{order.Stage__c}</span>
+                                </td>
+                                <td style="text-align: center;border-right:2px solid #dadada;">
+                                    <lightning-formatted-date-time value={order.Needs_Approval_Date__c} year="numeric" month="numeric" day="numeric"></lightning-formatted-date-time>
+                                </td>
+                                <td style="text-align: center;border-right:2px solid #dadada;">
+                                    <lightning-formatted-date-time value={order.Must_Have_Date__c} year="numeric" month="numeric" day="numeric"></lightning-formatted-date-time>
+                                </td>
+                                <td style="text-align: center;border-right:2px solid #dadada;">
+                                    <span>${order.Balance_Due__c}</span>
+                                </td>
+                                <td style="text-align: center;border-right:2px solid #dadada;">
+                                    <span>${order.Total_Price__c}</span>
+                                </td>
+                                <td style="text-align: center;">
+                                    <lightning-formatted-date-time value={order.CreatedDate} year="numeric" month="numeric" day="numeric"></lightning-formatted-date-time>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+            <div class="slds-align--absolute-center slds-p-top--large">
+                <lightning-button-group>
+                    <lightning-button label="&#x00AB;" onclick={first} style="width: 50px;"></lightning-button>
+                    <lightning-button label="&lt;" onclick={previous} style="width: 50px;"></lightning-button>
+                    <lightning-button label="&gt;" onclick={next} style="width: 50px;"></lightning-button>
+                    <lightning-button label="&#x00BB;" onclick={last} style="width: 50px;"></lightning-button>
+                </lightning-button-group>
+                <span>{startRange}-{endRange} of {totalOrders}</span>
+            </div>
+        </template>
+    </template>
+
+    <template if:false={showDataTable}>
+        <div style="font-size: 16px;">{noDataMsg}</div>
+    </template>
+
+</template>

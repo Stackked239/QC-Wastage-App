@@ -1,0 +1,57 @@
+<template>
+    <template if:true={ShowMyProducts}>
+        <div class="container">        
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped" style="border-radius: 15px;" > 
+                <thead>
+                    <tr>
+                        <th scope="col" class="tableHeader" style="width:20%;">
+                            <div class="slds-truncate" title="ProductName">Product Name</div>
+                        </th>
+                        <th scope="col" class="tableHeader" style="width:20%;">
+                            <div class="slds-truncate" title="Color">Color</div>
+                        </th>
+                        <th scope="col" class="tableHeader" style="width:20%;">
+                            <div class="slds-truncate" title="Quantity">Quantity</div>
+                        </th>
+                        <th scope="col" class="tableHeader" style="width:20%;">
+                            <div class="slds-truncate" title="PricePerItem">Price Per Item</div>
+                        </th>
+                        <th scope="col" class="tableHeader" style="width:20%;">
+                            <div class="slds-truncate" title="TotalPrice">Total Price</div>
+                        </th>  
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={productList} for:item="prod" for:index="indx">
+                        <tr key={prod.id} id={prod.id}> 
+                            <td style="text-align: center;">
+                                <span>{prod.Name}</span>
+                            </td>
+                            <td style="text-align: center;border-left: 2px solid #dadada;border-right:2px solid #dadada;">
+                                <span>{prod.Color__c}</span>
+                            </td>
+                            <td style="text-align: center;border-left: 2px solid #dadada;border-right:2px solid #dadada;">
+                                <span>{prod.Quantity__c}</span>
+                            </td>
+                            <td style="text-align: center;border-left: 2px solid #dadada;border-right:2px solid #dadada;">
+                                <span>${prod.Price_Per_Item__c}</span>
+                            </td>
+                            <td style="text-align: center;">
+                                <span>${prod.Total_Price__c}</span>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+        <div class="slds-align--absolute-center slds-p-top--large">
+            <lightning-button-group>
+                <lightning-button label="&#x00AB;" onclick={first} style="width: 50px;"></lightning-button>
+                <lightning-button label="&lt;" onclick={previous} style="width: 50px;"></lightning-button>
+                <lightning-button label="&gt;" onclick={next} style="width: 50px;"></lightning-button>
+                <lightning-button label="&#x00BB;" onclick={last} style="width: 50px;"></lightning-button>
+            </lightning-button-group>
+            <span>{startRange}-{endRange} of {totalProds}</span>
+        </div>
+    </template>
+</template>

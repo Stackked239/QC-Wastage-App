@@ -1,0 +1,10 @@
+<template>
+    <lightning-button-group class="slds-float_right">
+      <template if:true={showPreviousButton}>
+         <lightning-button label={Previous} onclick={handleBack} variant="brand"> </lightning-button>
+      </template>&nbsp;&nbsp;
+       <template if:true={showNextButton}>
+          <lightning-button label={Next} onclick={handleNext} variant="brand"></lightning-button>
+       </template>
+    </lightning-button-group><br/><br/>
+</template>

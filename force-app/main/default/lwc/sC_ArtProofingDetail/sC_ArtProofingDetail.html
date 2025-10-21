@@ -1,0 +1,577 @@
+<template>
+   <template if:true={showVersionPicker}>
+      <div class="slds-grid slds-wrap slds-theme_default" style="padding:20px 0px 20px 15px">
+         <template if:true={contentDocList}>
+            <lightning-combobox name="List Of Files" label="Select File To Be Displayed" value={value}
+               placeholder="Select Files" options={contentDocList} onchange={handleChange}>
+            </lightning-combobox>   
+         </template>
+      </div> 
+      
+      <div class="slds-grid slds-wrap slds-theme_default" style="padding: 0px 0px 20px 15px;">
+            <template for:each={fileVersionsToBeDisplay} for:item="version">
+               <div key={version.versionId} style="text-align: center;">
+                  <img class="previewimgclass" key={version.versionId}  src={version.fileUrl} alt="Trulli"
+                    style={version.style} width="100px" height="100px;" data-id={version.versionId} onclick={previewImgOnSel}><br/>
+                    <template if:true={isInternalUser}>  
+                        <lightning-icon icon-name='utility:preview' alternative-text='Last-View Date' size='xx-small' title='Last-View Date'></lightning-icon> {version.lastViewDate}
+                    </template>              
+                <!--  <div style="text-align: center;" class="slds-p-around_xx-small">{version.pathOnClient}  </div>-->
+               </div>
+            </template>
+      </div>   
+        
+        
+   </template>   
+
+   <div class="slds-grid slds-gutters slds-wrap slds-theme_default">
+
+     <!-- <lightning-flow flow-api-name="Revision_Screen_Flow_Portal">
+
+      </lightning-flow>-->
+  
+
+      <!-- Base variant: Makes a button look like a link -->
+         <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4 slds-large-size_1-of-4" style="padding-bottom : 2%;"> 
+            <c-s-c_-art-proofing-side-bar page-displayed="detailDisplayed" selected-item={sourceTab} ></c-s-c_-art-proofing-side-bar>
+         </div>
+      <!-- ** ** ** -->
+      <!-- Detail page of Pending Art Approval Tab  -->
+      <!-- ** ** ** -->
+         <template if:true={isSourceTabArtApproval}>
+            <!-- Umesh Rana-->
+   
+               <div class="column1 slds-col slds-size_1-of-1 slds-medium-size_2-of-4 slds-large-size_2-of-4" >
+                  <div><b>{versionOnDisplay}</b></div> 
+                  <div class="slds-box" style="background-color:#F8F8F8;">
+                     <!--Changed width from 487px to auto-->
+                     <div ishtmlcontainer="true" class="dropZoneDiv"  style="width:375px;" onclick={createAnnotation} ondragover={allowDrop}><!--onclick={createAnnotation} ondragover={allowDrop} ondrop={drop}-->
+                        <div ishtmlcontainer="true"  class="annotations" style="position:absolute"></div>
+                        <img  src={fileUrl} alt="Trulli" width="700" height="200">
+                     </div>
+                  </div>
+                  <template if:true={showPopup}>
+
+                     <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container slds-p-around_x-small">
+                           <header class="slds-modal__header" style="border-bottom-style:none;">
+                              <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                                 <lightning-icon icon-name="utility:close" alternative-text="close"
+                                    variant="inverse" size="small" ></lightning-icon>
+                                 <span class="slds-assistive-text">Close</span>
+                              </button>
+                              <p style="width:100%;text-align:center;font-size:35px;font-family:Times New Roman,Times,serif;">Almost Done !</p>
+                        </header>
+                 
+                           <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1"> 
+                              
+                              <p style="width:100%;text-align:center;font-size:15px;" class="slds-p-bottom_small slds-align_absolute-center">
+                                 I {currentUserName} do hereby approve my awesome artwork <br/> and I have double-checked the following:
+                              </p>
+                           <!--<p style="width:100%;text-align:center;font-size:15px;"></p>--> 
+                              <div class="slds-box" style="background-color:#F8F8F8">
+                                 <div class="slds-grid">
+                                    <div class="slds-col">
+                                         <ul class="slds-list_dotted slds-p-bottom_small" style="margin-left:30%">
+                                          <li>Design Placement</li>
+                                           <li>Design Colors</li>
+                                          <li>Spelling</li>
+                                          <li>Product</li>
+                                           <li>Product Color</li>
+                                         </ul>   
+                                     </div>
+
+                                     <div class="slds-col">
+                                       <img  src={fileUrl} alt="Trulli" width="100" height="100">   
+                                     </div>
+                                  </div>                        
+                              <button class="slds-button slds-button_success slds-align_absolute-center" onclick={approveModal} title="Approve">Approve</button>
+                              </div>                           
+                              <!--<div class="slds-align_absolute-center slds-p-top_small slds-p-bottom_small"><a>Terms &amp; Condition</a></div> -->                           
+                           </div>
+                        </div>
+                     </section>
+                     <div class="slds-backdrop slds-backdrop_open"></div>
+                  </template>
+               </div>
+               <!-- Umesh Rana-->
+               <div  class="column2 slds-col slds-size_1-of-1 slds-medium-size_1-of-4 slds-large-size_1-of-4" style="padding-bottom : 2%;">
+                  <div class="slds-box" style="padding: 20px;">          
+                     <div style="font-size:17px;" class="slds-p-bottom_medium">
+                        <b>Order#: {orderName}</b>
+                     </div>
+                     <div style="font-size:14px;color:red" class="slds-p-bottom_medium">
+                        <b>Approval needed by:  <lightning-formatted-date-time value={mustHaveDate} year="numeric" month="numeric" day="numeric">
+                                                </lightning-formatted-date-time>  </b> 
+                     </div>
+                     <div style="font-size:12px;" class="slds-p-bottom_medium">
+                        <a> ({remainingDays} days remaining) </a> 
+                     </div>
+                     <!--<div style="font-size:11px;color:#DCDCDC	">
+                        <a> Need Help?</a>
+                     </div><br/>-->
+                     <div>
+                        <lightning-button variant="success" label="APPROVE" title="APPROVE" onclick={handleApprove} class="slds-m-left_x-small" disabled={disableApproveBtn}></lightning-button>
+                        <lightning-button variant="destructive" label="REVISE" title="REVISE" onclick={handleArtApprovalRevise} class="slds-m-left_x-small" disabled={disabledReviseBtn}></lightning-button>
+                     </div><br/>
+                     
+                     <template if:true={isArtApprovalRevise}>
+                        <template if:true={isLatest}>
+                              <p style="color:red">Click Proof to Add Comments!</p><br/>
+                        <lightning-input type="text"  variant="label-hidden" read-only="true" value="I would Like To:" style="border:1px solid grey;padding-left: 10px;"></lightning-input>
+                        <div class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid" id="5"
+                           onmouseenter={handleMouseEnter} onmouseleave={handleMouseleave} role="listbox" style="position:relative;transform:unset !important;float:none;left:0% !important">
+                           <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                              <template for:each={revisionChoices} for:item="option">
+                                 <li class="slds-listbox__item" data-selected="false" data-id={option.value}
+                                 data-value={option.value} key={option.value} role="presentation"
+                                 onclick={handleSelection} style={option.style}>
+                                    <div class="slds-radio">
+                                       <input type="radio" id={option.value} value={option.value} name={option.value}  /> <!-- checked="" -->
+                                       <label class="slds-radio__label" for={option.value}>
+                                          <span class="slds-radio_faux"></span>
+                                          <span class="slds-form-element__label">{option.value}</span>
+                                       </label>
+                                    </div>
+                                 </li>
+                              </template>
+                           </ul>
+                        </div>
+                     </template>
+                     </template>
+
+                        <div style="padding:5px;"></div>
+                        <template if:true={selectedRevisions}>
+                           <template for:each={selectedRevisions} for:item="option">
+                              <div key={option.value} style="padding: 0px 7px 0px 7px;background-color:bisque;width:max-content;height: 20px;border-radius: 50px;border: 1px solid grey;">
+                                 <b>{option.value}</b>
+                              </div>
+                           </template>
+
+                           <template for:each={commentsArr} for:item="comment">
+                              <div key={comment.commDescription} class="slds-p-around_x-small ">
+                                 <div style="width:50%;display: inline;">
+                                    <!-- comment for different user -->
+                                    <template if:false={comment.sameUser}>                     
+                                       <div key={comment.commDescription} class="slds-p-around_x-small"
+                                          style="background-color:#DCDCDC;border-radius: 5px 5px 5px 0px;text-align: left;">
+                                          <!-- avtar for different user -->
+                                          <div style="display: flex;padding: 10px 0px 10px 0px;">
+                                             <div class="commentCircle"><p class="commentCircleInner">{comment.userInitials}</p></div>
+                                             <div style="font-size:9px;line-height: 10px;padding-left: 5px;">
+                                                <b>{comment.createdBy}</b><br/> 
+                                                <span style="font-size:9px;"> {comment.createdDateTime}</span>
+                                             </div>
+                                          </div>
+                                          <!--<div class="commentCircle" style="text-align: left;">
+                                             <p class="commentCircleInner">{comment.userInitials}</p>
+                                          </div><br/>-->
+                                          <template if:true={comment.hasCommentNumber}>
+                                             <b>Comment for #{comment.commentNumber}</b>
+                                          </template>
+                                          <div style="text-align: left;padding-right: 30px" >{comment.commDescription}
+                                             <!--<div style="font-size:9px;">{comment.createdBy} {comment.createdDateTime}</div> -->    
+                                          </div>              
+                                       </div>
+                                    </template>
+                                 </div>
+                                 <div style="width:50%;display: inline;">                  
+                                    <!-- comment for same user -->
+                                    <template if:true={comment.sameUser}>                     
+                                       <div key={comment.commDescription} class="slds-p-around_x-small" 
+                                          style="background-color: #F1E0D2; border-radius: 5px 5px 0px 5px;text-align: right;">
+                                          <!-- avtar for same user -->
+                                          <div style="display: inline-flex;padding: 10px 0px 10px 0px;text-align: right;">
+                                             <div style="font-size:9px;line-height: 10px;padding: 3px 5px 0px 0px;">
+                                                <b>{comment.createdBy}</b><br/> 
+                                                <span style="font-size:9px;"> {comment.createdDateTime}</span>
+                                             </div>
+                                             <div class="commentCircle" style="text-align: right;"><p class="commentCircleInner">{comment.userInitials}</p></div>
+                                          </div><br/>
+                                          <!--<div class="commentCircle" style="text-align: right;">
+                                             <p class="commentCircleInner">{comment.userInitials}</p>
+                                          </div><br/>-->
+                                          <template if:true={comment.hasCommentNumber}>
+                                             <b>Comment for #{comment.commentNumber}</b>
+                                          </template>
+                                          <div style="text-align: right;padding-left: 10px" >{comment.commDescription}
+                                             <!--<div style="font-size:9px;">{comment.createdBy} {comment.createdDateTime}</div>--> 
+                                          </div>              
+                                       </div>
+                                    </template>                            
+                                 </div>
+                              </div>            
+                           </template>
+                           <!-- temporary comments -->
+                           <template for:each={tempComment} for:item="comment">
+                              <div key={comment.commDescription} class="slds-p-around_x-small ">
+                                 <div style="width:50%;display: inline;"></div>
+                                 <div style="width:50%;display: inline;">                  
+                                       <div key={comment.commDescription} class="slds-p-around_x-small" 
+                                          style="background-color: #FFFFE0; border-radius: 5px 5px 0px 5px;text-align: right;">
+                                          <!-- avtar for same user -->
+                                          <div style="display: inline-flex;padding: 10px 0px 10px 0px;text-align: right;">
+                                             <div style="font-size:9px;line-height: 10px;padding: 3px 5px 0px 0px;">
+                                                <b>{comment.createdBy}</b><br/> 
+                                                <span style="font-size:9px;"> {comment.createdDateTime}</span>
+                                             </div>
+                                             <div class="commentCircle" style="text-align: right;"><p class="commentCircleInner">{comment.userInitials}</p></div>
+                                          </div><br/>
+                                          <template if:true={comment.hasCommentNumber}>
+                                             <b>Comment for #{comment.commentNumber}</b>
+                                          </template>
+                                          <div style="text-align: right;padding-left: 10px" >{comment.commDescription}
+                                          </div>              
+                                       </div>
+                                 </div>
+                              </div>            
+                           </template>
+
+                           <!--  temporary comments -->   
+                        </template> <br/>
+                        <template if:true={isArtApprovalRevise}>
+                        <template if:true={isLatest}>
+                           <lightning-textarea name="comment1" label={inRevisionCmntLabel}  value={comment} disabled={commentDisabled} onchange={handleArtApprovalCommentChange}></lightning-textarea>
+                              <div class="slds-grid">
+                                  <div class="slds-col" style="padding-right:0px;padding-left:0px;">
+                                    <lightning-button variant="brand-outline" label="New Comment" title="New Comment" onclick={NewComment} class="slds-m-left_x-small"></lightning-button>
+                                  </div>
+                               </div>
+  
+                              <!--Flow Called-->  
+                              <div class="slds-grid">
+                                 <div class="slds-col" style="padding-right:0px;padding-left:0px;">
+                                   <template if:true={flowInputVariables}>
+                                  <lightning-flow flow-api-name="Revision_Screen_Flow_Portal" flow-input-variables={flowInputVariables}>
+                                  </lightning-flow>
+                                   </template>
+                              </div>
+                              </div>
+
+                              <div class="slds-grid">
+                               <div class="slds-col" style="padding-right:0px;padding-left:0px;">                              
+                                 <lightning-button variant="success" label="Submit Revision" style="background-color: grey;" title="Submit Revision" onclick={handleArtApprovalSubmitRevision} class="slds-m-left_x-small"></lightning-button>
+                               </div>
+                               </div>
+                        </template>
+                        </template><br/>
+                     <!--</template>-->
+
+                  </div>
+      
+         <!--<label  class="slds-form-element__label" for="textarea-id-01">Add Comment</label>
+         <div  class="slds-form-element__control">
+         <lightning-textarea name="input2" variant="label-hidden" value={commentDescription} onchange={commentChange}></lightning-textarea>
+         </div>
+         <lightning-button variant="brand" label="Save" title="Primary action" onclick={handleSave} class="slds-m-left_x-small"></lightning-button>
+         <br/>  <br/>  <br/>
+         <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped" aria-label="Example table of Opportunities with striped rows">
+      <thead>
+         <tr class="slds-line-height_reset">
+         <th class="" scope="col">
+            <div class="slds-truncate" title="Owner Name">Owner Name</div>
+         </th>
+         <th class="" scope="col">
+            <div class="slds-truncate" title="Owner Name">Comment Description</div>
+         </th>
+         </tr>
+      </thead>
+      <tbody>
+            <template if:true={commentsArr}>
+                  <template for:each={commentsArr} for:item="comment">
+                     <tr key={comment.Id} class="slds-hint-parent">
+                        <td data-label="Owner Name">
+                        <div class="slds-truncate" title="Cloudhub">{comment.ownerName}</div>
+                        </td>
+                        <td data-label="Comment Description">
+                        <div class="slds-truncate" title="4/14/2015">{comment.commDescription}</div>
+                        </td>
+                     </tr>
+                  </template>
+               </template>
+      </tbody>
+         </table>-->
+
+      
+
+               </div>
+    
+         </template>
+
+   <!-- ** ** ** -->
+   <!-- Detail page of Revision Tab  -->
+   <!-- ** ** ** -->
+      <template if:true={isSourceTabRevision}>
+         <template if:true={showFileUploadModal}>
+            <section role="dialog" style="opacity: 0.9;" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+               <div class="slds-modal__container">
+                  <header class="slds-modal__header" style="border-bottom-style:none;">
+                     <div style="font-size:18px;"><b>Upload New File</b></div>
+                     To complete the revision upload new version of the art.
+                     <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                         <lightning-icon icon-name="utility:close"
+                             alternative-text="close" variant="inverse" size="small" ></lightning-icon>
+                         <span class="slds-assistive-text">Close</span>
+                     </button>
+                 </header>
+                  <div class="slds-modal__content" id="modal-content-id-2" style="padding: 0px 15px 0px 15px;">
+                     <div>
+                        <!--<lightning-input type="file" label="" onchange={handleFileChanges} multiple></lightning-input>-->
+                        <lightning-file-upload label="Upload File" name="fileUploader"
+                           accept={acceptedFormats} record-id={ordId} onuploadfinished={handleUploadFinished} 
+                           multiple>
+                        </lightning-file-upload> <br/>
+                     </div>
+                     <!--<div if:true={fileNames} class="slds-text-body_small slds-text-color_error">{fileNames}
+                     </div><br/>
+                     <button class="slds-button slds-button_success slds-m-top_small slds-align_absolute-center"
+                         onclick={handleSaveFiles} type="button">Upload Files</button>
+                         <br/> -->
+                  </div>
+               </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+         </template>
+         <!-- Umesh Rana-->
+         <div class="column1 slds-col slds-size_1-of-1 slds-medium-size_2-of-4 slds-large-size_2-of-4">
+            <div><b>{versionOnDisplay}</b></div> 
+            <div class="slds-box imagexx" style="background-color:#F8F8F8;" >
+               <!--Changed width from 463px to auto-->
+               <div ishtmlcontainer="true" class="dropZoneDiv" onclick={createAnnotation} ondragover={allowDrop} 
+                  ondrop={drop} style="width:375px;"><!--class="dropZoneDiv"-->
+                 <div ishtmlcontainer="true"  class="annotations" style="position:absolute"></div> 
+                  <img  src={fileUrl} alt="Trulli" width="700" height="200">
+               </div>
+            </div>
+         </div>
+         <!-- Umesh Rana-->
+         <div class="column2 slds-col slds-size_1-of-1 slds-medium-size_1-of-4 slds-large-size_1-of-4" style="padding-bottom : 2%;">
+            <div class="slds-box" style="padding: 20px;">       
+               <div style="font-size:20px;" class="slds-p-bottom_medium">
+                  <b>Order#: {orderName}</b>
+               </div>
+
+                <template if:true={showcounter}>
+                 <p  style="color:red;font-size:26px;"><b>{timer}</b></p>
+                 <p style="color:red;font-size:11px;" class="slds-p-bottom_medium"><b>You have 5 Minutes to submit more comments!</b></p>
+                </template>
+
+               <div style="font-size:17px;color:red" class="slds-p-bottom_medium">
+                  <b>Revision needed by: <lightning-formatted-date-time value={mustHaveDate} year="numeric" month="numeric" day="numeric">
+                  </lightning-formatted-date-time></b>
+               </div>
+               <div style="font-size:12px;" class="slds-p-bottom_medium">
+                  <a> ({remainingDays} days remaining) </a>
+               </div>
+               <!--<div style="font-size:12px;color:#dcdcdcda	" class="slds-p-bottom_small">
+                  <a> Need Help?</a>
+               </div>-->
+               <div class="slds-p-top_xx-small slds-p-bottom_small slds-text-align_center"> 
+                  <button type="button" title="Revise"
+                     onclick={handleInRevise} class="slds-m-left_x-small slds-button slds-button_success" disabled>IN REVISION</button>
+                  <template if:true={isInternalUser}>
+                     <button type="button" onclick={fileUploadModal} class="slds-button slds-button_success">
+                        Complete Revision
+                     </button>
+                  </template>
+               </div>
+               <div style="font-size:15px;" class="slds-border_bottom slds-border_top slds-p-around_x-small">
+                  <b>Comments & Revisions </b> 
+               </div> 
+               <template if:true={hasRevisionOrComments}  >             
+               <div style="display: flex;padding: 20px 0px 20px 0px;">
+                  <div class="circle"><p class="circleInner">{currentUserInitials}</p></div>
+                  <div style="font-size:12px;line-height: 14px;padding-top:13px;">
+                     <b>{currentUserName}</b><br/> 
+                     <span style="font-size:10px;">Submitted {lastCommentDateTime}</span>
+                  </div>
+               </div>
+            </template> 
+           <!--  <lightning-input type="text"  variant="label-hidden" read-only="true" value="I would Like To:" style="border:1px solid grey"></lightning-input>
+            <div class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid" id="toBeFilled"
+                     onmouseenter={handleMouseEnter} onmouseleave={handleMouseleave} role="listbox" style="position:relative;transform:unset !important;float:none;left:0% !important">
+                     <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                        <template for:each={revisionChoices} for:item="option">
+                           <li class="slds-listbox__item" data-selected="false" data-id={option.value}
+                           data-value={option.value} key={option.value} role="presentation"
+                           onclick={handleSelection} style={option.style}>
+                           <div class="slds-radio">
+                              <input type="radio" id={option.value} value={option.value} name={option.value} checked="" />
+                              <label class="slds-radio__label" for={option.value}>
+                                <span class="slds-radio_faux"></span>
+                                <span class="slds-form-element__label">{option.value}</span>
+                              </label>
+                           </div>
+                          </li>
+                        </template>
+                     </ul>
+         </div> -->
+               <template for:each={selectedRevisions} for:item="option">
+                  <div key={option.value} style="padding: 0px 7px 0px 7px;background-color:bisque;width:max-content;height: 20px;border-radius: 50px;border: 1px solid grey;">
+                     <b>{option.value}</b>
+                  </div>
+               </template><br/>
+               <template for:each={commentsArr} for:item="comment">
+                  <div key={comment.commDescription} class="slds-p-around_x-small ">
+                     <div style="width:50%;display: inline;">
+                        <!-- comment for different user -->
+                        <template if:false={comment.sameUser}>                     
+                           <div key={comment.commDescription} class="slds-p-around_x-small"
+                              style="background-color:#DCDCDC;border-radius: 5px 5px 5px 0px;text-align: left;">
+                              <!-- avtar for different user -->
+                              <div style="display: flex;padding: 10px 0px 10px 0px;">
+                                 <div class="commentCircle"><p class="commentCircleInner">{comment.userInitials}</p></div>
+                                 <div style="font-size:9px;line-height: 10px;padding-left: 5px;">
+                                    <b>{comment.createdBy}</b><br/> 
+                                    <span style="font-size:9px;"> {comment.createdDateTime}</span>
+                                 </div>
+                              </div>
+                              <!--<div class="commentCircle" style="text-align: left;">
+                                 <p class="commentCircleInner">{comment.userInitials}</p>
+                              </div><br/>-->
+                              <template if:true={comment.hasCommentNumber}>
+                                 <b>Comment for #{comment.commentNumber}</b>
+                              </template>
+                              <div style="text-align: left;padding-right: 30px" >{comment.commDescription}
+                                 <!--<div style="font-size:9px;">{comment.createdBy} {comment.createdDateTime}</div> -->    
+                              </div>              
+                           </div>
+                        </template>
+                     </div>
+                     <div style="width:50%;display: inline;">                  
+                        <!-- comment for same user -->
+                        <template if:true={comment.sameUser}>                     
+                           <div key={comment.commDescription} class="slds-p-around_x-small" 
+                              style="background-color: #F1E0D2; border-radius: 5px 5px 0px 5px;text-align: right;">
+                              <!-- avtar for same user -->
+                              <div style="display: inline-flex;padding: 10px 0px 10px 0px;text-align: right;">
+                                   <div style="font-size:9px;line-height: 10px;padding: 3px 5px 0px 0px;">
+                                    <b>{comment.createdBy}</b><br/> 
+                                    <span style="font-size:9px;"> {comment.createdDateTime}</span>
+                                 </div>
+                                 <div class="commentCircle" style="text-align: right;"><p class="commentCircleInner">{comment.userInitials}</p></div>
+                              </div><br/>
+                              <!--<div class="commentCircle" style="text-align: right;">
+                                 <p class="commentCircleInner">{comment.userInitials}</p>
+                              </div><br/>-->
+                              <template if:true={comment.hasCommentNumber}>
+                                 <b>Comment for #{comment.commentNumber}</b>
+                              </template>
+                              <div style="text-align: right;padding-left: 10px" >{comment.commDescription}
+                                 <!--<div style="font-size:9px;">{comment.createdBy} {comment.createdDateTime}</div>--> 
+                              </div>              
+                           </div>
+                        </template>
+                   
+                     </div>
+                  </div>            
+               </template><br/>
+               <div>
+                  <template if:true={isLatest}>
+
+                     <lightning-textarea name="comment1" label={inRevisionCmntLabel} value={inRevisionComment}
+                     onchange={handleInRevisionComment} class="slds-p-around_small" disabled={disableComment}></lightning-textarea>
+                     <button type="button" onclick={submitInRevision} label="Submit" class="slds-button slds-button_success slds-m-top_small slds-align_absolute-center" >Submit</button>
+                  </template>
+               </div> 
+            </div> 
+         </div>
+      </template>
+      <!-- ** ** ** -->
+      <!-- Detail page of Previous Order Tab  -->
+      <!-- ** ** ** -->
+      <template if:true={isSourceTabPreviousOrder}>
+         <!-- Umesh Rana-->
+         <div class="column1 slds-col slds-size_1-of-1 slds-medium-size_2-of-4 slds-large-size_2-of-4">
+            <div><b>{versionOnDisplay}</b></div> 
+            <div class="slds-box" style="background-color:#F8F8F8;">
+               <!--Changed width from 463px to auto-->
+               <div ishtmlcontainer="true" class="dropZoneDiv" style="width:375px;">
+                  <div ishtmlcontainer="true"  class="annotations" style="position:absolute;"></div>
+                  <img  src={fileUrl} alt="Trulli" width="700" height="200">
+               </div>
+            </div>
+         </div>
+         <!-- Umesh Rana-->
+         <div class="column2 slds-col slds-size_1-of-1 slds-medium-size_1-of-4 slds-large-size_1-of-4" style="padding-bottom : 2%;">
+            <div class="slds-box" style="padding: 20px;">       
+               <div style="font-size:20px;" class="slds-p-bottom_medium">
+                  <b>Order#: {orderName}</b>
+               </div>
+               <div style="font-size:17px;color:red" class="slds-p-bottom_medium">
+                  <b>Approved Date: <lightning-formatted-date-time value={mustHaveDate} year="numeric" month="numeric" day="numeric">
+                  </lightning-formatted-date-time></b>
+               </div>
+              <!-- <div style="font-size:12px;" class="slds-p-bottom_small">
+                  <a> (3 days remaining) </a>
+               </div>
+               <div style="font-size:12px;color:#dcdcdcda	" class="slds-p-bottom_small">
+                  <a> Need Help?</a>
+               </div>    -->           
+               <div style="font-size:15px;" class="slds-border_bottom slds-border_top slds-p-around_x-small">
+                  <b>Comments</b> 
+               </div>
+               <template if:true={hasRevisionOrComments}  >                 
+               <div style="display: flex;padding: 20px 0px 20px 0px;">
+                  <div class="circle"><p class="circleInner">{currentUserInitials}</p></div>
+                  <div style="font-size:12px;line-height: 14px;padding-top:13px;">
+                     <b>{currentUserName}</b><br/> 
+                     <span style="font-size:10px;">Submitted {lastCommentDateTime}</span>
+                  </div>
+               </div> 
+                 </template>       
+               <template for:each={selectedRevisions} for:item="option">
+                  <div key={option.value} style="padding: 0px 7px 0px 7px;background-color:bisque;width:max-content;height: 20px;border-radius: 50px;px;border: 1px solid grey;">
+                     <b>{option.value}</b>
+                  </div>
+               </template><br/>
+               <template for:each={commentsArr} for:item="comment">
+                  <div key={comment.commDescription} class="slds-p-around_x-small ">
+                     <div style="width:50%;display: inline;">
+                        <!-- comment for different user -->
+                        <template if:false={comment.sameUser}>                     
+                           <div key={comment.commDescription} class="slds-p-around_x-small"
+                              style="background-color:#DCDCDC;border-radius: 5px 5px 5px 0px;text-align: left;">
+                              <!-- avtar for different user -->
+                              <div style="display: flex;padding: 10px 0px 10px 0px;">
+                                 <div class="commentCircle"><p class="commentCircleInner">{comment.userInitials}</p></div>
+                                 <div style="font-size:9px;line-height: 10px;padding-left: 5px;">
+                                    <b>{comment.createdBy}</b><br/> 
+                                    <span style="font-size:9px;"> {comment.createdDateTime}</span>
+                                 </div>
+                              </div>
+                              <template if:true={comment.hasCommentNumber}>
+                                 <b>Comment for #{comment.commentNumber}</b>
+                              </template>
+                              <div style="text-align: left;padding-right: 30px" >{comment.commDescription} </div>              
+                           </div>
+                        </template>
+                     </div>
+                     <div style="width:50%;display: inline;">                  
+                        <!-- comment for same user -->
+                        <template if:true={comment.sameUser}>                     
+                           <div key={comment.commDescription} class="slds-p-around_x-small" 
+                              style="background-color: #F1E0D2; border-radius: 5px 5px 0px 5px;text-align: right;">
+                              <!-- avtar for same user -->
+                              <div style="display: inline-flex;padding: 10px 0px 10px 0px;text-align: right;">
+                                 <div style="font-size:9px;line-height: 10px;padding: 3px 5px 0px 0px;">
+                                    <b>{comment.createdBy}</b><br/> 
+                                    <span style="font-size:9px;"> {comment.createdDateTime}</span>
+                                 </div>
+                                 <div class="commentCircle" style="text-align: right;"><p class="commentCircleInner">{comment.userInitials}</p></div>
+                              </div><br/>
+                              <template if:true={comment.hasCommentNumber}>
+                                 <b>Comment for #{comment.commentNumber}</b>
+                              </template>
+                              <div style="text-align: right;padding-left: 10px" >{comment.commDescription}</div>              
+                           </div>
+                        </template>
+                   
+                     </div>
+                  </div>            
+               </template><br/>               
+            </div> 
+         </div>
+      </template>
+   </div>  
+</template>

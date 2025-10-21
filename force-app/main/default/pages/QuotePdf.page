@@ -1,0 +1,346 @@
+<apex:page standardController="Quote" renderAs="pdf" extensions="QuotePdfClass"  applyBodyTag="false">
+    
+    <head>
+        <style type="text/css" media="print">
+            @page {
+            size: A4;
+            margin-left:2%;
+            margin-bottom:110px;
+            margin-right:2%;
+            @top-center {
+            content: element(header);
+            position:relative;
+            }
+            @bottom-center { 
+            content: element(footer);
+            }
+            }
+            div.headerArea {
+            
+            }
+            .tableHeader {
+            height: 20px;
+            padding: 3px;
+            vertical-align: top;
+            border: solid 1px black;
+            background-color :#E8E8E8;
+            }
+            .tableContent {
+            height: 20px;
+            padding: 3px;
+            vertical-align: top;
+            border: solid 1px black;
+            }
+            tr {page-break-inside: avoid;}
+            
+        </style>
+    </head>
+    
+    <!-- Header Area -->
+    <div class="headerArea">
+        
+        <table style="width:100%;"> 
+            <tr>
+                <td style="width:40%;" >
+                    <table style="width:100%;">
+                        <tr>
+                            <td  style="text-align:left;padding:5px;">
+                                <b style="font-size:17px;margin-left:30px; font-family: Arial, Helvetica, sans-serif;">Quote#: </b> <apex:outputText style="font-size:11px; font-family: Arial, Helvetica, sans-serif;font-size:13px;" value="{!Quote.QuoteNumber}" /><br/>
+                                <b style="font-size:15px; font-family: Arial, Helvetica, sans-serif;margin-left:3px;"> Opportunity: </b><apex:outputText style="font-size:12px; font-family: Arial, Helvetica, sans-serif;font-size:13px;" value="{!oppRecord.Name}" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        
+        <table style="width:100%;">
+            <tr>
+                <td style="width:33%;">
+                    <table style="width:100%;">
+                        <tr>
+                            <td  style="text-align:left;">
+                                <apex:image value="{!URLFOR($Resource.logo)}" height="180px" width="170px" alt="Smiley face"  />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="width:33%;">
+                    <table style="width:100%;">
+                        <tr>
+                            <td  style="text-align:left;font-size:15px;padding:5px;font-weight:bold; font-family: Arial, Helvetica, sans-serif;">
+                                <b> Sunday Cool </b><br/>
+                                <b> 510 E. Alfred Street  </b><br/>
+                                <b> Tavares, FL 32778</b><br/>
+                                <b> 800-865-0726</b><br/>
+                                <b>Sundaycool.com</b><br/><br/><br/><br/><br/>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="width:33%;">
+                    <table style="width:100%;">
+                        <tr>
+                            <td  style="font-size:15px;padding:5px;font-family: Arial, Helvetica, sans-serif;">
+                                <b> Created Date: </b> <apex:outputText value="{0,date,MM'-'dd'-'yyyy}"><apex:param value="{!Quote.CreatedDate}" /></apex:outputText><br/>
+                                <b style="margin-left: -19px;">Expiration Date:  </b><apex:outputText value="{0,date,MM'-'dd'-'yyyy}"><apex:param value="{!quoteRecord.CreatedDate+14}" /></apex:outputText><br/>
+                                <b style="margin-left: 10px;"> Quote Total: </b><apex:outputField value="{!Quote.GrandTotal}"/> 
+                                <br/><br/><br/>
+                                
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        
+        <hr/>
+        
+        <!-- Customer Address -->  
+        
+        <table style="width:100%;">
+            <tr>
+                <td  style="width:33%;">
+                  <table style="width:100%;">
+                        <tr>
+                            <td >
+                            </td>
+                      </tr>
+                    </table>
+                </td>
+                <td style="width:33%;vertical-align:top;">
+                    <table style="width:100%;">
+                        <tr>
+                            <td >
+                                <b style="text-align:left;font-size:15px;padding:5px;font-weight:bold;font-family: Arial, Helvetica, sans-serif;"> Customer Shipping </b><br/>
+                                <p style="padding:5px;">
+                                    <apex:outputField value="{!quoteRecord.Opportunity.Name}" rendered="{!!ISBLANK(quoteRecord.Opportunity.Name)}"/>
+                                    <apex:outputText value="<br/>" escape="false" rendered="{!!ISBLANK(quoteRecord.Opportunity.Name)}" />
+                                    <apex:outputField value="{!quoteRecord.Opportunity.Shipping_Street__c}" rendered="{!!ISBLANK(quoteRecord.Opportunity.Shipping_Street__c)}" />
+                                    <apex:outputText value=",&nbsp;" escape="false" rendered="{!!ISBLANK(quoteRecord.Opportunity.Shipping_Street__c)}" />
+                                    <apex:outputField value="{!quoteRecord.Opportunity.Shipping_City__c}" rendered="{!!ISBLANK(quoteRecord.Opportunity.Shipping_City__c)}" />
+                                    <apex:outputText value=",&nbsp;" escape="false" rendered="{!!ISBLANK(quoteRecord.Opportunity.Shipping_City__c)}" />
+                                     <apex:outputText value="<br/>" escape="false" rendered="{!!ISBLANK(quoteRecord.Opportunity.Shipping_City__c)}" />
+                                    <apex:outputField value="{!quoteRecord.Opportunity.Shipping_State__c}" rendered="{!!ISBLANK(quoteRecord.Opportunity.Shipping_State__c)}" />
+                                    <apex:outputText value=",&nbsp;" escape="false" rendered="{!!ISBLANK(quoteRecord.Opportunity.Shipping_State__c)}" />
+                                    <apex:outputField value="{!quoteRecord.Opportunity.Shipping_Zip__c}" rendered="{!!ISBLANK(quoteRecord.Opportunity.Shipping_Zip__c)}" />
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="width:33%;vertical-align:top;">
+                    <table style="width:100%;">
+                        <tr>
+                            <td>
+                                <b style="text-align:left;font-size:15px;padding:5px;font-weight:bold;font-family: Arial, Helvetica, sans-serif;"> Customer Notes </b><br/>
+                                <p style="padding:5px;">
+                                    <apex:outputField value="{!Quote.description}" rendered="{!!ISBLANK(Quote.description)}" />  
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>      
+    </div>
+    <br/><br/>
+    
+    <!-- End of the Header -->
+    
+    <table style="width:100%;border-collapse:collapse;">
+        <colgroup span="7"></colgroup>
+        <thead>
+            <tr class="tableHeader">
+                <td class="tableHeader" style="width:120px;font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                    <apex:outputText value="Category" />
+                </td>
+                <td class="tableHeader" style="width:120px;font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                    <apex:outputText value="Product" />
+                </td>
+                <td class="tableHeader" style="width:40px;font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                    <apex:outputText value="Color" />
+                </td>
+                <td class="tableHeader" style="width:120px;font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                    <apex:outputText value="Description" />
+                </td>
+                <td class="tableHeader" style="width:40px;font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                    <apex:outputText value="Qty" />               
+                </td>
+                <td class="tableHeader" style="width:80px;font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                    <apex:outputText value="Price" />
+                </td>           
+                <td class="tableHeader" style="width:80px;font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                    <apex:outputText value="Total" />
+                </td>
+            </tr>
+        </thead>
+        <apex:repeat value="{!quoteLineItems}" var="Item">
+            <tr class="tableContent">
+                <td class="tableContent" style="width:120px;font-size:14px;font-family: Arial, Helvetica, sans-serif;">
+                      <apex:outputText value="{!Item.Product2.Family}" />
+                </td>
+                <td class="tableContent" style="width:120px;font-size:14px;font-family: Arial, Helvetica, sans-serif;">
+                    <apex:outputText value="{!Item.Product2.Name}" />
+                </td>
+                <td class="tableContent" style="width:40px;font-size:14px;font-family: Arial, Helvetica, sans-serif;">
+                    <apex:outputText value="{!Item.Color_Field__c}" />
+                </td>
+                <td class="tableContent" style="width:120px;font-size:14px;font-family: Arial, Helvetica, sans-serif;">
+                    <apex:outputText value="{!Item.Description}" />
+                </td>
+                <td class="tableContent" style="width:40px;font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                    <apex:outputText value="{!Item.Quantity}"/>
+                </td>
+                <td class="tableContent" style="width:80px;font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                    <apex:outputField value="{!Item.UnitPrice}"/>
+                </td>
+                <td class="tableContent" style="width:80px;font-size:14px;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                    <apex:outputField value="{!Item.TotalPrice}"/>
+                </td>
+            </tr>
+        </apex:repeat>
+    </table> 
+    
+    <!-- Conga And Summary Section -->
+    <br/><br/>
+    <table style="width:100%;">
+        <tr>
+            <td style="width:55%;vertical-align:top;">
+                <table style="width:100%;border: 1px solid black;">
+                    <tr>
+                        <td style="height:40px;">
+                            <b style="text-align:left;color:#FF0000;font-size:16px;padding:2px;font-weight:bold;font-family: Arial, Helvetica, sans-serif;"> Accepted:</b> <p style="font-size:11px;display:inline"> \wb1 {"apiName":"Customer_Accepted__c"}\ </p>         
+                         </td>
+                    </tr>
+                    <tr>
+                        <td style="height:40px;">
+                        </td>
+                    </tr>
+                 <!--   <tr>
+                         <td style="height:40px;">
+                             <b style="text-align:left;color:#FF0000;font-size:16px;padding:2px;font-weight:bold;font-family: Arial, Helvetica, sans-serif;"> Rejected: </b><br/>   <p style="font-size:11px;display:inline"> \wb1 {"apiName":"Customer_Rejected__c","required":"false"}\ </p>
+                                 
+                        </td>
+                    </tr> -->
+                    
+                    
+                    <tr>
+                        <td style="height:40px;">
+                         <!--   <b style="text-align:left;color:#FF0000;font-size:16px;padding:2px;font-weight:bold;font-family: Arial, Helvetica, sans-serif;"> Comments </b> <br/>
+                            <p style="font-size:11px;">
+                                \wb1 {"apiName":"Customer_Comments__c"}\
+                            </p>            <br/><br/>-->
+                            
+                            <p style="font-size:11px;">
+                               \signature1\     
+                            </p> <br/>
+                            
+                            <p style="font-size:11px;">
+                             \date1\     
+                            </p>
+                            <p style="font-size:11px;">
+                               \fullname1\ 
+                            </p>
+                         <!--  <textarea id="signature" name="" rows="4" value="\signature1 {'size': 'large'}"/>-->
+                        </td>  
+                    </tr>
+                    <tr>
+                        <td style="height:40px;">
+                            <b style="text-align:left;color:#FF0000;font-size:16px;padding:2px;font-weight:bold;font-family: Arial, Helvetica, sans-serif;">ATTN:</b>    
+                            <p style="font-size:11px;">
+                             \wb1 {"apiName":"Opportunity.Attention_to_if_applicable__c"}\
+                            </p>
+                        </td>
+                    </tr>     
+                    <tr>
+                        <td style="height:40px;">
+                            <b style="text-align:left;color:#FF0000;font-size:16px;padding:2px;font-weight:bold;font-family: Arial, Helvetica, sans-serif;"> Shipping Street:</b>    
+                            <p style="font-size:11px;">
+                                \wb1 {"apiName":"Opportunity.Conga_Shipping_Street__c"}\  
+                            </p>
+                        </td>
+                    </tr>     
+                    <tr>
+                        <td style="height:40px;">
+                            <b style="text-align:left;color:#FF0000;font-size:16px;padding:2px;font-weight:bold;font-family: Arial, Helvetica, sans-serif;"> Shipping City:</b>
+                            <p style="font-size:11px;">
+                                \wb1 {"apiName":"Opportunity.Shipping_City__c"}\
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="height:40px;">
+                            <b style="text-align:left;color:#FF0000;font-size:16px;padding:2px;font-weight:bold;font-family: Arial, Helvetica, sans-serif;"> Shipping State:</b>
+                            <p style="font-size:11px;">
+                                \wb1 {"apiName":"Opportunity.Shipping_State__c"}\ 
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="height:40px;">
+                            <b style="text-align:left;color:#FF0000;font-size:16px;padding:2px;font-weight:bold;font-family: Arial, Helvetica, sans-serif;"> Shipping Zip:</b>    
+                            <p style="font-size:11px;">
+                                \wb1 {"apiName":"Opportunity.Shipping_Zip__c"}\
+                            </p>
+                        </td>
+                    </tr>
+                  
+                </table>
+            </td>
+            <td style="width:3%;"></td>
+            <td style="width:37%;vertical-align:top;">
+                <table style="width:100%;  border: 1px solid black;">
+                    <tr class="tableContent">
+                        <td  style="border-bottom:1px solid black;height:40px;">
+                            <b style="text-align:left;font-size:15px;padding:5px;font-weight:bold;font-family: Arial, Helvetica, sans-serif;"> Total Quantity:</b>
+                           <apex:outputField value="{!Quote.Total_Items__c}"/> 
+                        </td>           
+                    </tr>
+                    <tr class="tableContent" >
+                        <td style="border-bottom:1px solid black;height:40px;">
+                            <b style="text-align:left;font-size:15px;padding:5px;font-weight:bold;font-family: Arial, Helvetica, sans-serif;"> Sub Total:</b>   
+                             <apex:outputField value="{!Quote.SubTotal}"/> 
+                        </td>
+                    </tr>
+                    <tr class="tableContent">
+                        <td style="border-bottom:1px solid black;height:40px;">
+                          <b style="text-align:left;font-size:15px;padding:5px;font-weight:bold;font-family: Arial, Helvetica, sans-serif;"> Tax:</b>   
+                             <apex:outputField value="{!Quote.Tax}"/> 
+                        </td>
+                    </tr>
+                    <tr class="tableContent">
+                       <td style="border-bottom:1px solid black;height:40px;">
+                          <b style="text-align:left;font-size:15px;padding:5px;font-weight:bold;font-family: Arial, Helvetica, sans-serif;"> Discount:</b>   
+                            <apex:outputField value="{!Quote.Discount}"/> 
+                        </td>
+                    </tr>
+                    <tr class="tableContent">
+                        <td style="height:40px;">
+                          <b style="text-align:left;font-size:15px;padding:5px;font-weight:bold;font-family: Arial, Helvetica, sans-serif;"> Total Quote Amount:</b>
+                            <apex:outputField value="{!Quote.TotalPrice}"/> 
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <br/><br/>
+    
+    <table  style="width:100%;">
+        <tr>
+            <td style="width:100%;vertical-align:top;">
+                <table style="width:100%;">
+                     <tr>
+                            <td  style="width:50%;text-align:left;">
+                                <b style="text-align:left;color:#FF0000;font-size:16px;padding:2px;font-weight:bold;font-family: Arial, Helvetica, sans-serif;">To reject this quote, please click the link in the original email as shown below:</b><br/><br/><br/>
+                                <apex:image value="{!URLFOR($Resource.CongaReject)}" alt="Smiley face"  />
+                            </td>
+                        </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    
+    
+</apex:page>

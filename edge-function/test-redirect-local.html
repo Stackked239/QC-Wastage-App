@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Wastage App Redirect</title>
+    <style>
+        body {
+            font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #fffdf0;
+        }
+        h1 {
+            color: #0a213a;
+            border-bottom: 3px solid #fddd00;
+            padding-bottom: 12px;
+        }
+        .test-section {
+            background: white;
+            border: 2px solid #0a213a;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .test-url {
+            background: #f5f5f5;
+            padding: 12px;
+            border-radius: 4px;
+            font-family: monospace;
+            word-break: break-all;
+            margin: 12px 0;
+        }
+        .button {
+            background: #fddd00;
+            color: #000;
+            border: 2px solid #000;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 8px 8px 8px 0;
+        }
+        .button:hover {
+            background: #fda318;
+            transform: translateY(-1px);
+        }
+        .status {
+            padding: 12px;
+            border-radius: 4px;
+            margin: 12px 0;
+        }
+        .status.pending {
+            background: #ffeec6;
+            color: #6a6a6a;
+        }
+        .status.success {
+            background: #d4f4dd;
+            color: #0a213a;
+        }
+        .status.error {
+            background: #ffeaec;
+            color: #0a213a;
+        }
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Wastage App Redirect Test Suite</h1>
+
+    <div class="test-section">
+        <h2>📋 Test Scenarios</h2>
+        <p>Click the buttons below to test different redirect scenarios:</p>
+
+        <h3>1. Valid Sales Order ID</h3>
+        <p>Should redirect to app with Sales Order loaded</p>
+        <div class="test-url">
+            ?salesOrderId=a23VL000008kNwHYAU
+        </div>
+        <a href="?salesOrderId=a23VL000008kNwHYAU" class="button">Test Valid ID</a>
+        <a href="http://localhost:5174/?salesOrderId=a23VL000008kNwHYAU" class="button">Open in App</a>
+
+        <h3>2. Different Valid Sales Order</h3>
+        <p>Test with another Sales Order ID</p>
+        <div class="test-url">
+            ?salesOrderId=a23VL000008w1LiYAI
+        </div>
+        <a href="?salesOrderId=a23VL000008w1LiYAI" class="button">Test Different ID</a>
+        <a href="http://localhost:5174/?salesOrderId=a23VL000008w1LiYAI" class="button">Open in App</a>
+
+        <h3>3. Invalid Sales Order ID</h3>
+        <p>Should show error (too short)</p>
+        <div class="test-url">
+            ?salesOrderId=a23VL000008
+        </div>
+        <a href="?salesOrderId=a23VL000008" class="button">Test Invalid ID</a>
+
+        <h3>4. No Sales Order ID</h3>
+        <p>Should redirect to scanner page</p>
+        <div class="test-url">
+            (no parameter)
+        </div>
+        <a href="http://localhost:5174/" class="button">Test No ID</a>
+    </div>
+
+    <div class="test-section">
+        <h2>🔍 Current URL Analysis</h2>
+        <div id="url-analysis" class="status pending">
+            Analyzing current URL...
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>📝 Expected Behavior</h2>
+        <ul>
+            <li><strong>Valid ID:</strong> App loads with Sales Order data automatically</li>
+            <li><strong>Invalid ID:</strong> Error message shown (or redirects to scanner)</li>
+            <li><strong>No ID:</strong> Barcode scanner displayed</li>
+            <li><strong>URL normalization:</strong> <code>?salesOrderId=X</code> → <code>?id=X</code></li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>🔗 Simulated Community URL</h2>
+        <p>This is what your existing QR codes contain:</p>
+        <div class="test-url">
+            https://sundaycool.my.site.com/portal/s/wastage-for-so?salesOrderId=a23VL000008kNwHYAU
+        </div>
+        <p>After redirect setup, this will automatically redirect to:</p>
+        <div class="test-url">
+            https://your-app-domain.com/?salesOrderId=a23VL000008kNwHYAU
+        </div>
+        <p>Then the app normalizes it to:</p>
+        <div class="test-url">
+            https://your-app-domain.com/?id=a23VL000008kNwHYAU
+        </div>
+    </div>
+
+    <script>
+        // Analyze current URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const salesOrderId = urlParams.get('salesOrderId');
+        const id = urlParams.get('id');
+        const analysisDiv = document.getElementById('url-analysis');
+
+        if (salesOrderId) {
+            if (/^a[0-9A-Za-z]{17}$/.test(salesOrderId)) {
+                analysisDiv.className = 'status success';
+                analysisDiv.innerHTML = `
+                    ✅ <strong>Valid Sales Order ID detected:</strong> ${salesOrderId}<br>
+                    This would redirect to: <code>/?salesOrderId=${salesOrderId}</code><br>
+                    App would normalize to: <code>/?id=${salesOrderId}</code>
+                `;
+            } else {
+                analysisDiv.className = 'status error';
+                analysisDiv.innerHTML = `
+                    ❌ <strong>Invalid Sales Order ID:</strong> ${salesOrderId}<br>
+                    Format must be: 'a' followed by 17 alphanumeric characters
+                `;
+            }
+        } else if (id) {
+            analysisDiv.className = 'status success';
+            analysisDiv.innerHTML = `
+                ✅ <strong>Normalized ID detected:</strong> ${id}<br>
+                App is using internal parameter format
+            `;
+        } else {
+            analysisDiv.className = 'status pending';
+            analysisDiv.innerHTML = `
+                ℹ️ <strong>No parameters detected</strong><br>
+                App would show barcode scanner
+            `;
+        }
+    </script>
+</body>
+</html>

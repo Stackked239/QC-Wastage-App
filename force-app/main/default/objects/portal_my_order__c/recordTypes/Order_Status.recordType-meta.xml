@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Order_Status</fullName>
+    <active>true</active>
+    <label>Order Status</label>
+    <picklistValues>
+        <picklist>Art_Priority__c</picklist>
+        <values>
+            <fullName>%21Rush Today%21</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSI Revision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>National</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>National Revision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Normal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Revision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rush</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rush Revision</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Art_Status__c</picklist>
+        <values>
+            <fullName>Ashore Revision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Assigned Out</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Progress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pause Art</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Portal Revision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Revision In Progress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Uploaded</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waiting on PA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Deco_Type__c</picklist>
+        <values>
+            <fullName>Build your Brand Project</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Promo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Screen Printing</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Garment_Colors__c</picklist>
+        <values>
+            <fullName>Value1</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Product_Types__c</picklist>
+        <values>
+            <fullName>Value1</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Production_Stage__c</picklist>
+        <values>
+            <fullName>Job Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Job Shipped</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Printing in Progress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scheduled for Production</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Project__c</picklist>
+        <values>
+            <fullName>TURN INTO PROJECT%21%21</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ship_Type__c</picklist>
+        <values>
+            <fullName>Value1</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Shipping_Carrier__c</picklist>
+        <values>
+            <fullName>Customer Pick Up</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Express Option</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fedex Ground</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UPS Ground</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Value1</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Stage__c</picklist>
+        <values>
+            <fullName>Art Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Art Ready</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Art Started</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quote Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quote Ready</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quote_Request</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Scheduled for Production</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sizes Submitted</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

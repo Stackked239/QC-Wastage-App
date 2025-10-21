@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shipping_Carrier__c</fullName>
+    <label>Shipping Carrier</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Value1</fullName>
+                <default>false</default>
+                <label>Value1</label>
+            </value>
+            <value>
+                <fullName>Fedex Ground</fullName>
+                <default>false</default>
+                <label>Fedex Ground</label>
+            </value>
+            <value>
+                <fullName>UPS Ground</fullName>
+                <default>false</default>
+                <label>UPS Ground</label>
+            </value>
+            <value>
+                <fullName>Customer Pick Up</fullName>
+                <default>false</default>
+                <label>Customer Pick Up</label>
+            </value>
+            <value>
+                <fullName>Express Option</fullName>
+                <default>false</default>
+                <label>Express Option</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

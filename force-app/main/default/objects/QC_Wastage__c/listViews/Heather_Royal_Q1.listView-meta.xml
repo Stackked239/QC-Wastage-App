@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Heather_Royal_Q1</fullName>
+    <columns>Good_Type__c</columns>
+    <columns>of_shirts__c</columns>
+    <columns>Inventory_colors__c</columns>
+    <columns>Inventory_SKU__c</columns>
+    <columns>Inventory_youth_sizes__c</columns>
+    <columns>Inventory_adult_sizes__c</columns>
+    <columns>Job__c</columns>
+    <columns>Issue_Group__c</columns>
+    <columns>Issue_Description__c</columns>
+    <columns>Responsible_Party__c</columns>
+    <columns>NAME</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Inventory_colors__c</field>
+        <operation>equals</operation>
+        <value>Royal</value>
+    </filters>
+    <filters>
+        <field>Issue_Group__c</field>
+        <operation>contains</operation>
+        <value>Manufacturing,Pinhole,Sample,Test Tees</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterThan</operation>
+        <value>1/1/2023 12:00 AM</value>
+    </filters>
+    <label>Heather Royal Q1</label>
+</ListView>

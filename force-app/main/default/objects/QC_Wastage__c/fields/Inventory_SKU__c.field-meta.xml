@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Inventory_SKU__c</fullName>
+    <label>Inventory SKU</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>202</fullName>
+                <default>false</default>
+                <label>202</label>
+            </value>
+            <value>
+                <fullName>235</fullName>
+                <default>false</default>
+                <label>235</label>
+            </value>
+            <value>
+                <fullName>291</fullName>
+                <default>false</default>
+                <label>291</label>
+            </value>
+            <value>
+                <fullName>320</fullName>
+                <default>false</default>
+                <label>320</label>
+            </value>
+            <value>
+                <fullName>340</fullName>
+                <default>false</default>
+                <label>340</label>
+            </value>
+            <value>
+                <fullName>Coolyz</fullName>
+                <default>false</default>
+                <label>Coolyz</label>
+            </value>
+            <value>
+                <fullName>FM19</fullName>
+                <default>false</default>
+                <label>FM19</label>
+            </value>
+            <value>
+                <fullName>FM21</fullName>
+                <default>false</default>
+                <label>FM21</label>
+            </value>
+            <value>
+                <fullName>450</fullName>
+                <default>false</default>
+                <label>450</label>
+            </value>
+            <value>
+                <fullName>1182</fullName>
+                <default>false</default>
+                <label>1182</label>
+            </value>
+            <value>
+                <fullName>BP78</fullName>
+                <default>false</default>
+                <label>BP78</label>
+            </value>
+            <value>
+                <fullName>C112</fullName>
+                <default>false</default>
+                <label>C112</label>
+            </value>
+            <value>
+                <fullName>SP12 Black/Char</fullName>
+                <default>false</default>
+                <label>SP12 Black/Char</label>
+            </value>
+            <value>
+                <fullName>LP101 black</fullName>
+                <default>false</default>
+                <label>LP101 black</label>
+            </value>
+            <value>
+                <fullName>6006</fullName>
+                <default>false</default>
+                <label>6006</label>
+            </value>
+            <value>
+                <fullName>5001</fullName>
+                <default>false</default>
+                <label>5001</label>
+            </value>
+            <value>
+                <fullName>9001</fullName>
+                <default>false</default>
+                <label>9001</label>
+            </value>
+            <value>
+                <fullName>Note Jotter Max</fullName>
+                <default>false</default>
+                <label>Note Jotter Max</label>
+            </value>
+            <value>
+                <fullName>6606 black</fullName>
+                <default>false</default>
+                <label>6606 black</label>
+            </value>
+            <value>
+                <fullName>1001</fullName>
+                <default>false</default>
+                <label>1001</label>
+            </value>
+            <value>
+                <fullName>6606</fullName>
+                <default>false</default>
+                <label>6606</label>
+            </value>
+            <value>
+                <fullName>c115</fullName>
+                <default>false</default>
+                <label>c115</label>
+            </value>
+            <value>
+                <fullName>AD969</fullName>
+                <default>false</default>
+                <label>AD969</label>
+            </value>
+            <value>
+                <fullName>Tiny Tee</fullName>
+                <default>false</default>
+                <label>Tiny Tee</label>
+            </value>
+            <value>
+                <fullName>8502 Canvas tote bag</fullName>
+                <default>false</default>
+                <label>8502 Canvas tote bag</label>
+            </value>
+            <value>
+                <fullName>602</fullName>
+                <default>false</default>
+                <label>602</label>
+            </value>
+            <value>
+                <fullName>39-165</fullName>
+                <default>false</default>
+                <label>39-165</label>
+            </value>
+            <value>
+                <fullName>6506</fullName>
+                <default>false</default>
+                <label>6506</label>
+            </value>
+            <value>
+                <fullName>SF500</fullName>
+                <default>false</default>
+                <label>SF500</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

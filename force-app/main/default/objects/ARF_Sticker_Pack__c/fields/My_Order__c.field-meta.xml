@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Order__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>My Order</label>
+    <referenceTo>portal_my_order__c</referenceTo>
+    <relationshipLabel>ARF_Sticker_Pack</relationshipLabel>
+    <relationshipName>ARF_Sticker_Pack</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

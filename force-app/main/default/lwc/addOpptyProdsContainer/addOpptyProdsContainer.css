@@ -1,0 +1,44 @@
+.headerTitle{
+	font-family: Helvetica;
+    font-size: 24px;
+	background-color: #ebe2df;
+}
+
+:host {
+   --sds-c-textarea-sizing-min-height: 100px;
+}
+
+/* Start CSS For Add Product */
+.actionHeaderBtns {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+}
+
+.actionHeaderDiv {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding-bottom: 2rem;
+}
+
+.tableDisplaySection {
+    display: flex;
+    flex-direction: column;
+}
+
+.refreshBtn{
+    display:flex;
+    justify-content: flex-start;
+    padding-bottom: 0.5rem;
+}
+.popUpContainer {
+    max-width: 60rem !important;
+    width: 60% !important;
+}
+.newProdContainer{
+    width: 90% !important;
+    max-width: 90% !important;
+}
+/* End CSS For Add Product */

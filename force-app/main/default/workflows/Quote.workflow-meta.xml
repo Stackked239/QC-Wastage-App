@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Expiration_Date</fullName>
+        <description>add days to expiration date</description>
+        <field>ExpirationDate</field>
+        <formula>TODAY()+30</formula>
+        <name>Expiration Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>TODAY_90</fullName>
+        <field>ExpirationDate</field>
+        <formula>TODAY() + 90</formula>
+        <name>TODAY + 90</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>ADD DAYS TO EXPIRATION DATE</fullName>
+        <actions>
+            <name>TODAY_90</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Quote.CreatedDate</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>+ DAYS TO THE EXPIRATION DATE OF THE QUOTE</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Expiration Date</fullName>
+        <actions>
+            <name>Expiration_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>adjust the expiration date of a quote</description>
+        <formula>ISBLANK(ExpirationDate)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Link Contact</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Quote.Name</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>link the opp contact to the quote</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

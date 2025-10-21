@@ -1,0 +1,8 @@
+.THIS .btncss {
+    background-color:rgb(117, 45, 45);
+    color : white;
+}
+.THIS .slds-modal__content{
+    /*height: 900px !important; 
+    max-height: 90px !important;*/
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>No_of_Pieces__c</columns>
+    <columns>Color_1__c</columns>
+    <columns>Color_2__c</columns>
+    <columns>Color_3__c</columns>
+    <columns>Color_4__c</columns>
+    <columns>Color_5__c</columns>
+    <columns>Color_6__c</columns>
+    <columns>Color_7__c</columns>
+    <columns>Color_8__c</columns>
+    <columns>Color_9__c</columns>
+    <columns>Color_10__c</columns>
+    <columns>GP_Church__c</columns>
+    <columns>Contract_Pricing_Merch__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

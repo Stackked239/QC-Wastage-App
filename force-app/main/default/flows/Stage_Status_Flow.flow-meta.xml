@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Quote_Approved</name>
+        <label>Quote Approved</label>
+        <locationX>326</locationX>
+        <locationY>603</locationY>
+        <defaultConnectorLabel>Quote not approved</defaultConnectorLabel>
+        <rules>
+            <name>Quote_is_approved</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Production Schedule/Quote Approval</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Quote_Approval</targetReference>
+            </connector>
+            <label>Quote is approved</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Stage_won</name>
+        <label>Stage won?</label>
+        <locationX>327</locationX>
+        <locationY>386</locationY>
+        <defaultConnector>
+            <targetReference>Quote_Approved</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Stage not won</defaultConnectorLabel>
+        <rules>
+            <name>Stage_won_decision</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Won</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Stage_Won</targetReference>
+            </connector>
+            <label>Stage is Won</label>
+        </rules>
+    </decisions>
+    <description>Updates Checkboxes when status is closed won or quote approved
+V3 Slack message for closed won
+V5 moved slack message to its own flow</description>
+    <environments>Default</environments>
+    <interviewLabel>Stage Status Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Stage Status Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Check_Quote_Approval</name>
+        <label>Check Quote Approval</label>
+        <locationX>332</locationX>
+        <locationY>786</locationY>
+        <inputAssignments>
+            <field>Quote_Approved__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Check_Stage_Won</name>
+        <label>Check Stage Won</label>
+        <locationX>517</locationX>
+        <locationY>385</locationY>
+        <connector>
+            <targetReference>Quote_Approved</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Closed_Won__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>49</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Stage_won</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Production Schedule/Quote Approval</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed Won</stringValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

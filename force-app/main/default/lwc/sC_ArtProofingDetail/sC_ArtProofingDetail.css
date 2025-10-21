@@ -1,0 +1,85 @@
+.dummy{
+	color : black;
+}
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+.previewimgclass {
+   border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  margin-left:5px;
+}
+.previewimgclass :hover{
+border-style: solid;
+}
+.circle {
+  display: inline-block;
+    background-color: #e96a6a;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.circleInner {
+  color: white;
+  display: table-cell;
+  vertical-align: middle; 
+  text-align: center;
+  text-decoration: none;
+  height: 35px;
+  width: 35px;  
+  font-size: 14px;
+}
+.commentCircle {
+  display: inline-block;
+    background-color: #e96a6a;
+    border-radius: 50%;
+}
+
+.commentCircleInner {
+  color: white;
+  display: table-cell;
+  vertical-align: middle; 
+  text-align: center;
+  text-decoration: none;
+  height: 23px;
+  width: 23px;  
+  font-size: 10px;
+}
+.previewimgclass:hover{
+border-color: gray;
+border-width:thin;
+}
+.sidebar {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+
+
+@media only screen and (max-width: 620px) {
+  /* For mobile phones: */
+  .columns-container{
+    display:flex;
+    flex-direction:column; 
+  }
+    .column1 {
+      order: 2;
+    }
+    .column2 {
+        order: 1;
+    }
+  
+}

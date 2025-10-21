@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Inventory_youth_sizes__c</fullName>
+    <label>Inventory youth sizes</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>YXS</fullName>
+                <default>false</default>
+                <label>YXS</label>
+            </value>
+            <value>
+                <fullName>YS</fullName>
+                <default>false</default>
+                <label>YS</label>
+            </value>
+            <value>
+                <fullName>YM</fullName>
+                <default>false</default>
+                <label>YM</label>
+            </value>
+            <value>
+                <fullName>YL</fullName>
+                <default>false</default>
+                <label>YL</label>
+            </value>
+            <value>
+                <fullName>YXL</fullName>
+                <default>false</default>
+                <label>YXL</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

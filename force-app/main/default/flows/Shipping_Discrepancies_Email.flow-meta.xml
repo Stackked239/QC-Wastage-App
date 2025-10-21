@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Email_with_Sales_at_fault</name>
+        <label>Email with Sales at fault</label>
+        <locationX>289</locationX>
+        <locationY>667</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Check_box</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>salesemail</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>OPowneremailSalesonly</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>&quot;Shipping Discrepancy&quot; </stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Emailproductionatfault</name>
+        <label>Email with production at fault</label>
+        <locationX>556</locationX>
+        <locationY>662</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Check_box</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>ProductionEmail</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>PRODemailaddress</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>&quot;Production Shipping Discrepancy&quot; </stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <apiVersion>53.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <name>Blankunlessproduction</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue></stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <name>Cost_greater_than_billed</name>
+        <label>Cost greater than billed</label>
+        <locationX>172</locationX>
+        <locationY>444</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Cost_greater</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Shipping_Cost__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <elementReference>$Record.Billed_Shipping__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Ship_date_greater_than_prod</targetReference>
+            </connector>
+            <label>Cost greater</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Ship_date_greater_than_prod</name>
+        <label>Ship date greater than prod</label>
+        <locationX>419</locationX>
+        <locationY>445</locationY>
+        <defaultConnector>
+            <targetReference>Email_with_Sales_at_fault</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Ship_date_grater</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Ship_Date__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <elementReference>$Record.Auto_Production_Date__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Emailproductionatfault</targetReference>
+            </connector>
+            <label>Ship date grater</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>ShippingCostDifference</name>
+        <dataType>Currency</dataType>
+        <expression>{!$Record.Billed_Shipping__c}-{!$Record.Shipping_Cost__c}</expression>
+        <scale>2</scale>
+    </formulas>
+    <interviewLabel>Shipping Discrepancies Email {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Shipping Discrepancies Email</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Check_box</name>
+        <label>Check box</label>
+        <locationX>429</locationX>
+        <locationY>898</locationY>
+        <inputAssignments>
+            <field>ShippingDiscrepancy__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Cost_greater_than_billed</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Shipping_Cost__c</field>
+            <operator>GreaterThan</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>OPP_Owner__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Vanessa Mahai</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Billed_Shipping__c</field>
+            <operator>GreaterThan</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Auto_Production_Date__c</field>
+            <operator>GreaterThan</operator>
+            <value>
+                <dateValue>2022-01-01</dateValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ShippingDiscrepancy__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>ProductionEmail</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>It looks like this order is shipping after its posted production date. 
+Shipping cost us {!ShippingCostDifference} more than billed on this order. 
+Please get with shipping department ASAP if this can be fixed.
+Order Name:
+{!$Record.Name}
+Order link: 
+{!OPURL2}
+Thanks
+Auto, do not reply</text>
+    </textTemplates>
+    <textTemplates>
+        <name>salesemail</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Shipping cost us {!ShippingCostDifference} more than billed on this order. 
+Order Name:
+{!$Record.Name}
+Order Link:
+{!OPURL2}
+Thanks
+Auto, do not reply</text>
+    </textTemplates>
+    <variables>
+        <name>OPowneremailSalesonly</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>{!$Record.Owner.Email},</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>OPURL2</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>https://sundaycool.lightning.force.com/lightning/r/Opportunity/{!$Record.OPP_ID18__c}/view</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>PRODemailaddress</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>{!$Record.Owner.Email},jairo@sundaycool.com</stringValue>
+        </value>
+    </variables>
+</Flow>

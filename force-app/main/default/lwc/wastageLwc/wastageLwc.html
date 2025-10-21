@@ -1,0 +1,162 @@
+<template>
+    <div lwc:if={spinner}>
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </div>
+    <template lwc:if={formDisplay}>
+        <lightning-quick-action-panel header="Wastage from SO">
+            <lightning-card title="Sales Order" icon-name="">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-1 slds-p-around_small">
+                        <lightning-combobox data-id="Printer" name="pressNumber" label="Press Number"
+                            placeholder="--NONE--" value={wastageWrapper.pressNumber} options={pressNumber}
+                            onchange={handleSalesOrderChange}></lightning-combobox>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+                        <lightning-combobox data-id="Printer" name="printer" label="Printer" placeholder="--NONE--"
+                            value={wastageWrapper.printer} options={printer} onchange={handleSalesOrderChange}>
+                        </lightning-combobox>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+                        <lightning-combobox data-id="Unloader" name="unloader" label="Unloader" placeholder="--NONE--"
+                            value={wastageWrapper.unloader} options={unloader} onchange={handleSalesOrderChange}>
+                        </lightning-combobox>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+                        <lightning-combobox data-id="Catcher" name="catcher" label="Catcher" placeholder="--NONE--"
+                            value={wastageWrapper.catcher} options={catcher} onchange={handleSalesOrderChange}>
+                        </lightning-combobox>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+                        <lightning-combobox data-id="JobApproved" name="jobApprovedBy" label="Job Approved By"
+                            placeholder="--NONE--" value={wastageWrapper.jobApprovedBy} options={jobApprovedBy}
+                            onchange={handleSalesOrderChange}></lightning-combobox>
+                    </div>
+                </div>
+            </lightning-card>
+            <lightning-card title="Wastage" icon-name="">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+                        <lightning-combobox data-id="Responsible" name="Responsible" label="Responsible Party"
+                            placeholder="--NONE--" value={value} options={responsible} onchange={handleChange}>
+                        </lightning-combobox>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+                        <lightning-combobox data-id="Issue Group" name="Issue" label="Issue Group"
+                            placeholder="--NONE--" options={issue} onchange={handleChange}></lightning-combobox>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+                        <lightning-combobox data-id="Location" name="Location" label="Location" placeholder="--NONE--"
+                            options={location} onchange={handleChange}></lightning-combobox>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+                        <lightning-input type="text" label="Issue Description" data-id="Issue Description"
+                            onchange={handleChange}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="checkbox-unique-id-80">Avoidable?</label>
+                            <div class="slds-form-element__control">
+                                <span class="slds-checkbox slds-checkbox_standalone">
+                            <input type="checkbox"  name="label" value=""  data-id="Avoidable" onchange={handleChange}/>
+                            <span class="slds-checkbox_faux"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+                        <!-- Button Neeed -->
+                        <lightning-button data-id="Waste All" variant="brand" label="Waste All" title="Waste All"
+                            onclick={handleWasteAll} class="slds-m-left_x-small"></lightning-button>
+                    </div>
+                </div>
+            </lightning-card>
+            <lightning-card title="Sales Order Items" icon-name="custom:custom14">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered"
+                    aria-labelledby="element-with-table-label other-element-with-table-label">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Product Name">Product<br/>Name</div>
+                            </th>
+                            <th class="" scope="col" style="border-left: 1px solid #9a9a9a;">
+                                <div class="slds-truncate" title="Color">Color</div>
+                            </th>
+                            <th class="" scope="col" style="border-left: 1px solid #9a9a9a;">
+                                <div class="slds-truncate" title="Quantity Need">Quantity<br/>Needed</div>
+                            </th>
+                            <th class="" scope="col" style="border-left: 1px solid #9a9a9a;">
+                                <div class="slds-truncate" title="Responsible Party">Responsible<br/>Party</div>
+                            </th>
+                            <th class="" scope="col" style="border-left: 1px solid #9a9a9a;">
+                                <div class="slds-truncate" title="Issue Group">Issue<br/>Group</div>
+                            </th>
+                            <th class="" scope="col" style="border-left: 1px solid #9a9a9a;">
+                                <div class="slds-truncate" title="Location">Location</div>
+                            </th>
+                            <th class="" scope="col" style="border-left: 1px solid #9a9a9a;">
+                                <div class="slds-truncate" title="Issue Description">Issue<br/>Description</div>
+                            </th>
+                            <th class="" scope="col" style="border-left: 1px solid #9a9a9a;">
+                                <div class="slds-truncate" title="Avoidable">Avoidable?</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={wastageWrapper.salesOrderItems} for:item="lineItem">
+                            <tr class="slds-hint-parent" key={lineItem.Id}>
+                                <td style="word-wrap: break-word;white-space: normal;">
+                                    {lineItem.productName}
+                                    <!--lightning-input  class="slds-truncate" read-only label="" value={lineItem.productName}></lightning-input-->
+                                </td>
+                                <td style="border-left: 1px solid #9a9a9a;word-wrap: break-word;white-space: normal;">
+                                    {lineItem.color}
+                                    <!--lightning-input style="" label="" value={lineItem.color} title={lineItem.color} ></lightning-input-->
+                                </td>
+                                <td style="border-left: 1px solid #9a9a9a;">
+                                    <lightning-input data-index={lineItem.index} name="quantityNeeded" type="number" 
+                                        label="" value={lineItem.quantityNeeded} onchange={handleRecordChange}>
+                                    </lightning-input>
+                                </td>
+                                <td style="border-left: 1px solid #9a9a9a;">
+                                    <lightning-combobox data-index={lineItem.index} name="responsibleParty" label="" class="reqFields"
+                                        placeholder="--NONE--" value={lineItem.responsibleParty} required={lineItem.isrequired}
+                                        onchange={handleRecordChange} options={responsible}></lightning-combobox>
+                                </td>
+                                <td style="border-left: 1px solid #9a9a9a;">
+                                    <lightning-combobox class="reqFields" data-index={lineItem.index} name="issueGroup" label="" required={lineItem.isrequired}
+                                        placeholder="--NONE--" value={lineItem.issueGroup} onchange={handleRecordChange}
+                                        options={issue}></lightning-combobox>
+                                </td>
+                                <td style="border-left: 1px solid #9a9a9a;">
+                                    <lightning-combobox data-index={lineItem.index} name="location" label="" required={lineItem.isrequired}
+                                        placeholder="--NONE--" value={lineItem.location} onchange={handleRecordChange} class="reqFields"
+                                        options={location}></lightning-combobox>
+                                </td>
+                                <td style="border-left: 1px solid #9a9a9a;">
+                                    <lightning-input data-index={lineItem.index} name="issueDescription" type="text"
+                                        label="" value={lineItem.issueDescription} onchange={handleRecordChange}>
+                                    </lightning-input>
+                                </td>
+                                <td style="border-left: 1px solid #9a9a9a;">
+                                    <lightning-input data-index={lineItem.index} type="checkbox" name="avoidable"
+                                        checked={lineItem.avoidable} onchange={handleRecordChange}></lightning-input>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </lightning-card>
+            <div class="slds-p-around_small slds-align_absolute-center">
+                <lightning-button label="Cancel" title="Non-primary action" onclick={handleCancelClick}
+                    class="slds-m-left_x-small"></lightning-button>
+                <lightning-button variant="brand" label="Submit" title="Primary action" onclick={handleSubmitClick}
+                    class="slds-m-left_x-small"></lightning-button>
+            </div>
+        </lightning-quick-action-panel>
+    </template>
+    <template lwc:else>
+        <div  class="slds-align_absolute-center slds-p-around_x-large">
+            <span style="font-size: 30px;color: green;font-weight:bold">Successfully Submitted</span>
+        </div>
+    </template>
+</template>

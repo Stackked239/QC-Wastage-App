@@ -1,0 +1,36 @@
+.slds-modal__container {
+	margin: auto;
+}
+
+.video-container {
+	position: relative;
+	height: 0;
+	padding-bottom: 56.25%;
+}
+
+.video-container video {
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+.play-button {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	background-color: rgba(0, 0, 0, 0.6);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	padding: 20px;
+}
+
+:host {
+	--sds-c-button-brand-color-background: rgb(227, 89, 93);
+	--slds-c-button-brand-text-color: white;
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SEARCH</fullName>
+    <columns>NAME</columns>
+    <columns>Job__c</columns>
+    <columns>Front_door_brand__c</columns>
+    <columns>of_shirts__c</columns>
+    <columns>Front_door_color__c</columns>
+    <columns>Front_door_product_type__c</columns>
+    <columns>Front_door_sizes__c</columns>
+    <columns>Front_door_SKU__c</columns>
+    <columns>Issue_Group__c</columns>
+    <columns>Issue_Description__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Job__c</field>
+        <operation>equals</operation>
+        <value>137626</value>
+    </filters>
+    <label>SEARCH</label>
+</ListView>

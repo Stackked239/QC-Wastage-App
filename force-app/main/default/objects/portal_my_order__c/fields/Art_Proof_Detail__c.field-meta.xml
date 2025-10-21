@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Art_Proof_Detail__c</fullName>
+    <externalId>false</externalId>
+    <formula>HYPERLINK(&quot;/lightning/n/Art_Proof_Detail?c__Id=&quot;+Id+ &quot;&amp;c__source=pending_revision&quot;,&quot;Art Proofing Detail&quot;,&apos;_blank&apos;)</formula>
+    <label>Art Proof Detail</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

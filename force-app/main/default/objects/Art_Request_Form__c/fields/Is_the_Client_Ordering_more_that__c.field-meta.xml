@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_the_Client_Ordering_more_that__c</fullName>
+    <defaultValue>false</defaultValue>
+    <label>Is the Client ordering more than one col</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

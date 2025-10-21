@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tyler_Search</fullName>
+    <booleanFilter>1 OR 2 OR 3</booleanFilter>
+    <columns>Sort_Order__c</columns>
+    <columns>Product__c</columns>
+    <columns>WH1_Actual__c</columns>
+    <columns>WH1_IQA__c</columns>
+    <columns>AUX_UNFINISH_Actual__c</columns>
+    <columns>Unfinished_Aux_IQA__c</columns>
+    <columns>AUX_FINISH_Actual__c</columns>
+    <columns>Finished_Aux_IQA__c</columns>
+    <columns>Overage_Count__c</columns>
+    <columns>QC_RACK_Actual__c</columns>
+    <columns>WH1_Deficit__c</columns>
+    <columns>Deficit_Count__c</columns>
+    <columns>NAME</columns>
+    <columns>Project__c</columns>
+    <columns>Holding_IQA__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Deficit_Count__c</field>
+        <operation>greaterThan</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>WH1_Deficit__c</field>
+        <operation>greaterThan</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Overage_Count__c</field>
+        <operation>greaterThan</operation>
+        <value>0</value>
+    </filters>
+    <label>Tyler - Search</label>
+</ListView>

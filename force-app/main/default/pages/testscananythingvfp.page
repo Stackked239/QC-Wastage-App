@@ -1,0 +1,20 @@
+<apex:page >
+  <apex:includeLightning />    
+    <div id="LightningComponentid" />    
+    <script>
+    $Lightning.use("c:testscananythingapp", function() {
+        $Lightning.createComponent("ScanAnything:code",
+          { 
+              recordId : 'a234w00000QoS2SAAV',
+              fieldApiName : 'AcctSeedERP__Sales_Order__c.Id',
+              codeType  : 'qrcode',
+              text : 'https://sundaycool.lightning.force.com/lightning/r/AcctSeedERP__Sales_Order__c/a234w00000QoS2SAAV/view',
+              scale : 2
+          },
+          "LightningComponentid",
+          function(cmp) {
+             console.log('LWC Component added in VF page');
+          });
+    });
+    </script>
+</apex:page>

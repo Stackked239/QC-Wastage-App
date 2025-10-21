@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Potential_Revision_Issues</fullName>
+    <booleanFilter>((1 AND 2) OR (4 AND 5 AND 6)) AND 3</booleanFilter>
+    <columns>Submit_Revision_Time__c</columns>
+    <columns>NAME</columns>
+    <columns>Opportunity__c</columns>
+    <columns>Account__c</columns>
+    <columns>Art_Proof_Detail__c</columns>
+    <columns>Must_Have_Date__c</columns>
+    <columns>Contact__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>In_Revision__c</columns>
+    <columns>Stage__c</columns>
+    <columns>Opportunity_Owner_1__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Stage__c</field>
+        <operation>equals</operation>
+        <value>Art Ready</value>
+    </filters>
+    <filters>
+        <field>In_Revision__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>portal_my_order__c.Order_Status</value>
+    </filters>
+    <filters>
+        <field>Stage__c</field>
+        <operation>equals</operation>
+        <value>Art Started</value>
+    </filters>
+    <filters>
+        <field>Submit_Revision_Time__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>In_Revision__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>Potential Revision Issues</label>
+</ListView>

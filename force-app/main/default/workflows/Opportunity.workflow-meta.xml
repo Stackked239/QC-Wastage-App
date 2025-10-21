@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>AAkPay__Set_Opportunity_Create_URL_Token</fullName>
+        <description>Set Create Contact URL Token To TRUE so that the URL Token generation is triggered</description>
+        <field>AAkPay__Create_URL_Token__c</field>
+        <literalValue>1</literalValue>
+        <name>Set  Opportunity Create URL Token</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Add_won_date</fullName>
+        <field>Time_Closed_Won__c</field>
+        <formula>NOW()</formula>
+        <name>Add won date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Check_FL_Account</fullName>
+        <field>Florida_Account__c</field>
+        <literalValue>1</literalValue>
+        <name>Check FL Account</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Check_HIdden_Fieldshiptime</fullName>
+        <field>Hidden_check_date_field__c</field>
+        <literalValue>1</literalValue>
+        <name>Check HIdden Fieldshiptime</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Check_Transit_time_V4</fullName>
+        <field>Hidden_check_date_field__c</field>
+        <literalValue>1</literalValue>
+        <name>Check Transit time V4</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>True_if_shipline1_used</fullName>
+        <field>AA_SIZESTRUE__c</field>
+        <literalValue>1</literalValue>
+        <name>True if shipline1 used</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>True_if_shipline1_usedV3</fullName>
+        <field>Hidden_check_date_field__c</field>
+        <literalValue>1</literalValue>
+        <name>True if shipline1 usedV3</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>DronaOpp_Set_to</fullName>
+        <apiVersion>59.0</apiVersion>
+        <endpointUrl>https://hook.us1.make.com/g7yi2cqt7u9qfoekmtod7u6g3ny6eqh3</endpointUrl>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>tyler@sundaycool.com</integrationUser>
+        <name>DronaOpp Set to Art Request Received</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>Get_Tracking_Number</fullName>
+        <apiVersion>59.0</apiVersion>
+        <endpointUrl>https://hook.us1.make.com/5icmc4hrlaekkv2lbsc4o79jh4oyhdee</endpointUrl>
+        <fields>Id</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>austin@sundaycool.com</integrationUser>
+        <name>Make Get Tracking Number</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>Make_Get_SKUs_and_Colors</fullName>
+        <apiVersion>60.0</apiVersion>
+        <endpointUrl>https://hook.us1.make.com/d676gy55v6d1dqo5hs9sg8g62xn9yg4w</endpointUrl>
+        <fields>Id</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>shaffaq@bijli.org</integrationUser>
+        <name>Make Get SKUs and Colors</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>Update_Close_Date_in_Wrike</fullName>
+        <apiVersion>60.0</apiVersion>
+        <endpointUrl>https://hook.us1.make.com/kcxv62dh2ev4dm9u4xm4hpccj0ekmbgu</endpointUrl>
+        <fields>CloseDate</fields>
+        <fields>Id</fields>
+        <fields>VIP_Client__c</fields>
+        <fields>Wrike_ID__c</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>tyler@sundaycool.com</integrationUser>
+        <name>Update Close Date in Wrike</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>AAkPay__Create Opportunity URL Token</fullName>
+        <actions>
+            <name>AAkPay__Set_Opportunity_Create_URL_Token</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Opportunity.AAkPay__Create_URL_Token__c</field>
+            <operation>notEqual</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Sets Create URL Checkbox to trigger creation of a related URL Token.
+Update the filter parameters for this workflow to selectively create these.
+URL Tokens are used for creating object specific targeted payment requests.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Add won date</fullName>
+        <actions>
+            <name>Add_won_date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.Closed_Won__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>add date when hit closed won</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Check Transit time V2</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Opportunity.Shipping_Street_Line_1__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Check_Transit_time_V4</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Opportunity.Timesource_5_min_offset__c</offsetFromField>
+            <timeLength>-1</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>FL account OP created</fullName>
+        <actions>
+            <name>Check_FL_Account</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Account.Florida_Account__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

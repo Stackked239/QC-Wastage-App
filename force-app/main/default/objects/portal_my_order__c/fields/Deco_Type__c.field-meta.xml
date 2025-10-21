@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deco_Type__c</fullName>
+    <label>Deco Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Screen Printing</fullName>
+                <default>false</default>
+                <label>Screen Printing</label>
+            </value>
+            <value>
+                <fullName>Promo</fullName>
+                <default>false</default>
+                <label>Promo</label>
+            </value>
+            <value>
+                <fullName>Build your Brand Project</fullName>
+                <default>false</default>
+                <label>Build your Brand Project</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

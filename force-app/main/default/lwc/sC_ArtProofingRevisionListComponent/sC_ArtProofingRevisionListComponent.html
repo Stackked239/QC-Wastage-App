@@ -1,0 +1,41 @@
+<template>
+
+    <div class="slds-grid slds-wrap slds-theme_default">
+        
+          <div class="slds-col slds-size--1-of-1">
+              <br/><br/>
+              <div style="width:100%;text-align:center;font-size:35px;">
+              <h3><b>Hi, {contactName}!</b></h3>
+              </div>
+            <div style="width:100%;text-align:center;font-size:45px;  font-family: Times New Roman, Times, serif;">
+                We <u>love</u> your designs!<br/>
+                Let's get it <u>approved</u>  
+            </div>
+            <br/><br/>
+              <!--<div style="width:100%;text-align:center;font-size:20px;  font-family: Times New Roman, Times, serif;">
+                <i>"ArtWork Approved on time Stays on Schedule" - Taylor Swift</i>
+            </div>-->
+              <br/>
+                <template for:each={AllfileVersions} for:item="version">
+                    <div  key={version.versionId} style="width:100%;margin-left:15%;">
+                      <div key={version.versionId} class="slds-box" style="width:270px;float:left;text-align:center">
+                        <img class="previewimgclass" key={version.versionId}  src={version.fileUrl} 
+                        alt="Trulli" width="100px" height="100px;" style="min-height: 100px; max-height: 100px;"
+                         data-id={version.versionId} onclick={previewImgOnSel}><br/>
+                          <span style="font-size: 16px;"><b>Order: {version.OrderName}</b></span><br/>
+                          <span style="color:red;"><b>Revision needed by:
+                            <lightning-formatted-date-time value={version.MustHaveDate} year="numeric" month="numeric"
+                            day="numeric" ><!--time-zone={currentUserTimeZone}-->
+                           </lightning-formatted-date-time>  
+                            </b></span><br/>
+                          <span style="font-size: 12px;">({version.RemainingDays} days remaining)</span><br/>
+                          <b>Status: </b><span style="color:orange;"> In Revision</span> 
+                          <button type="button" onclick={viewProof} class="slds-button slds-button_success slds-m-top_small slds-align_absolute-center" data-id={version.OrderId}>View Proof</button>
+                      </div>
+                      </div>
+                </template>
+  
+          </div>
+    </div>
+  
+  </template>

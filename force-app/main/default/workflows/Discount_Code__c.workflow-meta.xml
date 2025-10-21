@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <outboundMessages>
+        <fullName>Discount_Code_to_Shopify</fullName>
+        <apiVersion>63.0</apiVersion>
+        <endpointUrl>https://hook.us1.make.com/ooadjkbrpkn3vm61r3l4rnlui7f1nl1n</endpointUrl>
+        <fields>CreatedDate</fields>
+        <fields>Discount_Amount__c</fields>
+        <fields>Discount_Type__c</fields>
+        <fields>Expiration_Date__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>tyler@sundaycool.com</integrationUser>
+        <name>Discount Code to Shopify</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+</Workflow>

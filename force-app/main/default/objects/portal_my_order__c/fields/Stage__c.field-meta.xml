@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stage__c</fullName>
+    <label>Stage</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Quote_Request</fullName>
+                <default>true</default>
+                <label>Quote Request</label>
+            </value>
+            <value>
+                <fullName>Quote Ready</fullName>
+                <default>false</default>
+                <label>Quote Ready</label>
+            </value>
+            <value>
+                <fullName>Quote Approved</fullName>
+                <default>false</default>
+                <label>Quote Approved</label>
+            </value>
+            <value>
+                <fullName>Art Started</fullName>
+                <default>false</default>
+                <label>Art Started</label>
+            </value>
+            <value>
+                <fullName>Art Ready</fullName>
+                <default>false</default>
+                <label>Art Ready</label>
+            </value>
+            <value>
+                <fullName>Art Approved</fullName>
+                <default>false</default>
+                <label>Art Approved</label>
+            </value>
+            <value>
+                <fullName>Sizes Submitted</fullName>
+                <default>false</default>
+                <label>Sizes Submitted</label>
+            </value>
+            <value>
+                <fullName>Scheduled for Production</fullName>
+                <default>false</default>
+                <label>Scheduled for Production</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses>
+        <apexClass>AddOpptyProdsController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>preventDuplicateSkuPriceHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>AddOpportunityProduct</name>
+    </customPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.Saved_Opportunity_Products__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Add Opportunity Product User</label>
+    <license>Salesforce</license>
+</PermissionSet>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Live_IQA__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Real location to be used for inbound inventory movements</description>
+    <label>Live IQA</label>
+    <referenceTo>AcctSeedERP__Inventory_Balance__c</referenceTo>
+    <relationshipLabel>Inv. Adjustments (Live IQA)</relationshipLabel>
+    <relationshipName>Inv_Adjustments</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

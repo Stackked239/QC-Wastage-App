@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>AAkPay__Set_Contact_Create_URL_Token</fullName>
+        <description>Set Create Contact URL Token To TRUE so that the URL Token generation is triggered</description>
+        <field>AAkPay__Create_URL_Token__c</field>
+        <literalValue>1</literalValue>
+        <name>Set Contact Create URL Token</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AAkPay__Set_Contact_Update_Geocode_to_true</fullName>
+        <description>This will set the geocode update checkbox to true</description>
+        <field>AAkPay__Update_Geocode__c</field>
+        <literalValue>1</literalValue>
+        <name>Set Contact Update Geocode to true</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Mogli_SMS__UpdateMogliNumber</fullName>
+        <description>Update Mogli Number based on value in Mobile field (remove all non-numerical values)</description>
+        <field>Mogli_SMS__Mogli_Number__c</field>
+        <formula>SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(MobilePhone, &quot;(&quot;, &quot;&quot;), &quot;)&quot;, &quot;&quot;), &quot; &quot;, &quot;&quot;), &quot;-&quot;, &quot;&quot;)</formula>
+        <name>Update Mogli Number</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Mogli_SMS__Update_Mogli_Number_with_WITH_PLUS</fullName>
+        <description>Update Mogli Number based on value in Mobile field (remove all non-numerical values) WITH PLUS added to front of Mogli Number</description>
+        <field>Mogli_SMS__Mogli_Number__c</field>
+        <formula>TRIM(SUBSTITUTE(SUBSTITUTE(
+IF(ISBLANK(TRIM(MobilePhone)),
+&quot;&quot;,
+IF(BEGINS(MobilePhone, &apos;+1&apos;),
+&quot;+&quot; &amp; SUBSTITUTE( SUBSTITUTE( SUBSTITUTE( SUBSTITUTE( SUBSTITUTE( SUBSTITUTE( MobilePhone, &quot;(&quot;,&quot;&quot;), &quot;)&quot;,&quot;&quot;), &quot;-&quot;,&quot;&quot;), &quot; &quot;,&quot;&quot;), &quot;+&quot;,&quot;&quot;), &quot;.&quot;,&quot;&quot;),
+IF(BEGINS(MobilePhone, &apos;1&apos;),
+&quot;+&quot; &amp; SUBSTITUTE( SUBSTITUTE( SUBSTITUTE( SUBSTITUTE( SUBSTITUTE( SUBSTITUTE( MobilePhone, &quot;(&quot;,&quot;&quot;), &quot;)&quot;,&quot;&quot;), &quot;-&quot;,&quot;&quot;), &quot; &quot;,&quot;&quot;), &quot;+&quot;,&quot;&quot;), &quot;.&quot;,&quot;&quot;),
+&quot;+1&quot; &amp; SUBSTITUTE( SUBSTITUTE( SUBSTITUTE( SUBSTITUTE( SUBSTITUTE( SUBSTITUTE( MobilePhone, &quot;(&quot;,&quot;&quot;), &quot;)&quot;,&quot;&quot;), &quot;-&quot;,&quot;&quot;), &quot; &quot;,&quot;&quot;), &quot;+&quot;,&quot;&quot;), &quot;.&quot;,&quot;&quot;)))
+),
+&apos;‎&apos;, &apos;&apos;),
+&apos;‎&apos;, &apos;&apos;)
+)</formula>
+        <name>Update Mogli Number with WITH PLUS</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>Send_to_MemberStack</fullName>
+        <apiVersion>60.0</apiVersion>
+        <endpointUrl>https://hook.us1.make.com/tj7w715kh42f5fs3vbar1h829afnlor1</endpointUrl>
+        <fields>Email</fields>
+        <fields>FirstName</fields>
+        <fields>Id</fields>
+        <fields>LastName</fields>
+        <fields>Memberstack_Id__c</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>tyler@sundaycool.com</integrationUser>
+        <name>Send to MemberStack</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>AAkPay__Create Contact URL Token</fullName>
+        <actions>
+            <name>AAkPay__Set_Contact_Create_URL_Token</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Contact.AAkPay__Create_URL_Token__c</field>
+            <operation>notEqual</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Sets Create URL Checkbox to trigger creation of a related URL Token.
+Update the filter parameters for this workflow to selectively create these.
+URL Tokens are used for creating object specific targeted payment requests.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>AAkPay__Set Contact Update Geocode</fullName>
+        <actions>
+            <name>AAkPay__Set_Contact_Update_Geocode_to_true</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Contact.AAkPay__Update_Geocode__c</field>
+            <operation>notEqual</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>This sets the checkbox for the geocoding. If true then the geocoding will run</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Mogli_SMS__WITH PLUS - onCreateEditWhenMobileNotNull</fullName>
+        <actions>
+            <name>Mogli_SMS__Update_Mogli_Number_with_WITH_PLUS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Update Mogli Number based on value in Mobile field (remove all non-numerical values) WITH PLUS added to front of Mogli Number</description>
+        <formula>ISBLANK(Mogli_SMS__Mogli_Number__c) || ISCHANGED(MobilePhone)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Mogli_SMS__onCreateEditWhenMobileNotNull</fullName>
+        <actions>
+            <name>Mogli_SMS__UpdateMogliNumber</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Contact.MobilePhone</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>Update Mogli Number based on value in Mobile field (and remove all non-numerical values)</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

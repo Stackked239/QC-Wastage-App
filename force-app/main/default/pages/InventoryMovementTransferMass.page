@@ -1,0 +1,16 @@
+<apex:page id="thePage" standardController="AcctSeedERP__Inventory_Balance__c" title="Transfer | Accounting Seed" lightningStylesheets="true">
+  <apex:includeScript value="{!URLFOR($Resource.AcctSeed__accounting_resources, '/javascript/jquery.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.AcctSeed__accounting_resources, '/javascript/accounting-common.js')}" />
+    <apex:variable var="customLEX" value="customLEXOn" rendered="{!$User.UIThemeDisplayed = 'Theme4d' || $User.UIThemeDisplayed = 'Theme4u'}">
+        <apex:stylesheet value="{!URLFOR($Resource.AcctSeed__accounting_resources, '/css/visualforce-lex-ext.css')}" />
+    </apex:variable>
+    <script type="text/javascript">
+        function setFocusOnLoad() {}
+    </script>       
+  <h1>Transfer Products in Mass</h1>
+    <apex:form id="theForm">
+        <apex:sectionHeader title="Inventory Quantity Available" />
+        <apex:pageBlock id="thePageBlock" title="Inventory Transfer">
+        </apex:pageBlock>
+   </apex:form>
+</apex:page>

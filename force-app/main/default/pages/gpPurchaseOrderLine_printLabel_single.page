@@ -1,0 +1,14 @@
+<apex:page applyHtmlTag="false"
+cache="false"
+contentType="text/HTML"
+docType="html-5.0"
+extensions="gcSobject_printLabel"
+renderAs="pdf"
+showHeader="false"
+sidebar="false"
+standardController="AcctSeedERP__Purchase_Order_Line__c" 
+standardStylesheets="false">
+
+<c:gcmpSobject_printLabel_discrete labels="{!labels}"/>
+
+</apex:page>
